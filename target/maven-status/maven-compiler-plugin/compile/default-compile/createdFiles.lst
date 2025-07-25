@@ -1,8 +1,8 @@
 gui\TelaMenu$3.class
 controller\LoginController.class
+model\LoginDao.class
 gui\TelaLogin$1.class
 gui\TelaLogin.class
-modelDao\LoginDao.class
 gui\TelaMenu$2.class
 gui\TelaMenu.class
 model\Usuario.class

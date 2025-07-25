@@ -1,13 +1,10 @@
 package gui;
 
 import controller.LoginController;
+import model.LoginDao;
+import model.Usuario;
 
 public class TelaLogin extends javax.swing.JFrame {
-
-    public TelaLogin() {
-        initComponents();
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,19 +87,23 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     
+    public TelaLogin() {
+    initComponents();
+}
+
+     //INSTANCIANDO O CONTROLLER( ORQUESTRADOR DE TUDO) 
+    private  LoginController lc = new LoginController();
+
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         String usuario = jTextFieldUsuario.getText();
         String senha = jTextFieldSenha.getText();
-        LoginController c = new LoginController();
-        boolean sucesso =  c.validarUsuario(usuario,senha);
+        boolean sucesso = lc.controllerValidarUsuario(usuario, senha);
                 if (sucesso) {
                 this.dispose();
                 }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new TelaLogin().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
@@ -113,4 +114,8 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSenha;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
+
+     public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(() -> new TelaLogin().setVisible(true));
+    }
 }
