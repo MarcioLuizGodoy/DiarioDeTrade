@@ -1,5 +1,7 @@
 package gui;
 
+import controller.LoginController;
+
 public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
@@ -34,18 +36,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelSenha.setForeground(new java.awt.Color(51, 0, 255));
         jLabelSenha.setText("Senha: ");
-
-        jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUsuarioActionPerformed(evt);
-            }
-        });
-
-        jTextFieldSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSenhaActionPerformed(evt);
-            }
-        });
 
         jButtonEntrar.setBackground(new java.awt.Color(102, 102, 102));
         jButtonEntrar.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -100,16 +90,14 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
-
-    private void jTextFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSenhaActionPerformed
-
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        // TODO add your handling code here:
+        String usuario = jTextFieldUsuario.getText();
+        String senha = jTextFieldSenha.getText();
+        LoginController c = new LoginController();
+        boolean sucesso =  c.validarUsuario(usuario,senha);
+                if (sucesso) {
+                this.dispose();
+                }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {
