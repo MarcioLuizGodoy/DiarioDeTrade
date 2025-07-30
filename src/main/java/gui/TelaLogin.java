@@ -1,8 +1,6 @@
 package gui;
 
 import controller.LoginController;
-import model.LoginDao;
-import model.Usuario;
 
 public class TelaLogin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")

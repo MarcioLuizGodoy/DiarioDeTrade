@@ -13,7 +13,7 @@ public class DB {
     private static Connection conn;
     
     private static Properties carregarProperties(){
-        try(InputStream is = DB.class.getClassLoader().getResourceAsStream("db.properties")){
+        try(InputStream is = DB.class.getClassLoader().getResourceAsStream("dbArquivos/db.properties")){
                 Properties props = new Properties();
                 props.load(is);
                 return props;
@@ -55,5 +55,10 @@ public class DB {
     }
     
     
-    
-}
+         public static void  main(String []args){
+                Connection testeConn = DB.pegarConnection();
+                     System.out.println("Conexão estabelecida com sucesso FDP FDP!");
+                 }
+
+    }
+  

@@ -1,59 +1,47 @@
 package model;
 
+import db.DB;
+import db.DbException;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LoginDao {
-    // Dados da conexão (ajuste para seu banco)
-    private final String URL = "jdbc:mysql://localhost:3306/seu_banco";
-    private final String USER = "seu_usuario";
-    private final String PASS = "sua_senha";
-
+    
+    Connection conn = null;
+    Statement st = null;
+    ResultSet rs = null;
+       
+    
     public LoginDao() {
-        // vazio ou inicializações se precisar
+        
     }
+    
+    public boolean validar(Usuario u){
+       boolean validado = false;
+       try {
+            conn = DB.pegarConnection();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM usuarios WHERE nome = '" + u.getNome() + "'");
 
-    public boolean validar(Usuario usuario) {
-        boolean validado = false;
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+       while(rs.next()){
 
-        try {
-            // Abrir conexão
-            conn = DriverManager.getConnection(URL, USER, PASS);
-
-            // Preparar consulta
-            String sql = "SELECT senha FROM usuarios WHERE nome = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, usuario.getNome());
-
-            // Executar consulta
-            rs = stmt.executeQuery();
-
-            // Validar senha
-            if (rs.next()) {
-                String senhaBanco = rs.getString("senha");
-                if (senhaBanco.equals(usuario.getSenha())) {
-                    validado = true;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Fechar recursos
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
+            String nome =  rs.getString("Nome");
+            String senha =  rs.getString("Senha");
+              if(nome.equals(u.getNome()) && senha.equals(u.getSenha())){
+                validado = true;
+                DB.fecharConnection();
+                break;
+              }
+       }
+    }
+    catch(SQLException e){
+        throw new DbException(e.getMessage());
+        }      
         return validado;
+        
     }
 }
+   
+    
