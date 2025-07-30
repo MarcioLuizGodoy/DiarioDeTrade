@@ -92,8 +92,8 @@ public class TelaMenu extends javax.swing.JFrame {
 public TelaMenu() {
         initComponents();
     }
-public static void main(String args[]) {
+/*public static void main(String args[]) {
       
         java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));
-    }
+    }*/
 }

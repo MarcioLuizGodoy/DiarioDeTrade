@@ -26,7 +26,7 @@ public class DB {
     
     
     
-    public static Connection pegarConnection() throws SQLException{
+    public static Connection pegarConnection(){
         if (conn == null ){
             try {
                 Properties propriedades = carregarProperties();

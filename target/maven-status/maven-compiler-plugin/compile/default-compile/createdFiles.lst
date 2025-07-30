@@ -1,7 +1,7 @@
+app\App.class
 model\LoginDao.class
 model\Usuario.class
 gui\testes.class
-app\Program.class
 gui\TelaMenu$3.class
 controller\LoginController.class
 gui\TelaLogin$1.class
