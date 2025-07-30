@@ -6,6 +6,7 @@ package controller;
 import model.Usuario;
 import model.LoginDao;
 import gui.TelaMenu;
+import javax.swing.JOptionPane;
 
 public class LoginController {
     
@@ -19,17 +20,15 @@ public class LoginController {
    
         u.setNome(nome);
         u.setSenha(senha);
-        
-        
         //INSTANCIANDO O LOGINDAO(MODELODAO)
         LoginDao ld = new LoginDao();
         boolean validado = ld.validar(u);
-        
-
         if(validado) {
             TelaMenu menu = new TelaMenu();
             menu.setVisible(true);
             return true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario ou Senha estão errado!!!!");
         }
         return false;
     }
