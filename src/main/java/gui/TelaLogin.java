@@ -14,6 +14,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelMensagemLogin = new javax.swing.JLabel();
         jButtonEntrar = new javax.swing.JButton();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jLabelNomeDoPrograma = new javax.swing.JLabel();
         jLabelImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,6 +91,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
         getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 840, 150));
 
+        jLabelNomeDoPrograma.setBackground(new java.awt.Color(0, 0, 255));
+        jLabelNomeDoPrograma.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabelNomeDoPrograma.setForeground(new java.awt.Color(0, 0, 255));
+        jLabelNomeDoPrograma.setText("Diario De Trade");
+        jLabelNomeDoPrograma.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabelNomeDoPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 80));
+
         jLabelImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/tabajara.png"))); // NOI18N
         getContentPane().add(jLabelImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 550));
 
@@ -120,6 +128,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabelImagem;
     private javax.swing.JLabel jLabelMensagemLogin;
+    private javax.swing.JLabel jLabelNomeDoPrograma;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelFundo;

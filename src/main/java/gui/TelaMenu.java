@@ -22,6 +22,9 @@ public class TelaMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(153, 153, 153));
 
+        jDesktopPaneContainerTelas.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPaneContainerTelas.setBorder(new javax.swing.border.MatteBorder(null));
+
         javax.swing.GroupLayout jDesktopPaneContainerTelasLayout = new javax.swing.GroupLayout(jDesktopPaneContainerTelas);
         jDesktopPaneContainerTelas.setLayout(jDesktopPaneContainerTelasLayout);
         jDesktopPaneContainerTelasLayout.setHorizontalGroup(
@@ -30,7 +33,7 @@ public class TelaMenu extends javax.swing.JFrame {
         );
         jDesktopPaneContainerTelasLayout.setVerticalGroup(
             jDesktopPaneContainerTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGap(0, 563, Short.MAX_VALUE)
         );
 
         jMenuOperacoes.setText("Operações");
@@ -65,9 +68,7 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPaneContainerTelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 319, Short.MAX_VALUE))
+            .addComponent(jDesktopPaneContainerTelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
