@@ -6,7 +6,6 @@ package controller;
 import model.Usuario;
 import model.LoginDao;
 import gui.TelaMenu;
-import javax.swing.JOptionPane;
 
 public class LoginController {
     
@@ -28,7 +27,6 @@ public class LoginController {
             menu.setVisible(true);
             return true;
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario ou Senha estão errado!!!!");
         }
         return false;
     }
