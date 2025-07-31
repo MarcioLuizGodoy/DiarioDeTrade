@@ -8,18 +8,12 @@ import model.LoginDao;
 import gui.TelaMenu;
 
 public class LoginController {
-    
-    //INST5ANCIANDO USUARIO(MODELO)
     private Usuario u = new Usuario();
-
     public LoginController(){
     }
-
     public boolean controllerValidarUsuario(String nome, String senha) {
-   
         u.setNome(nome);
         u.setSenha(senha);
-        //INSTANCIANDO O LOGINDAO(MODELODAO)
         LoginDao ld = new LoginDao();
         boolean validado = ld.validar(u);
         if(validado) {
@@ -28,6 +22,7 @@ public class LoginController {
             return true;
         }else{
         }
-        return false;
+        return false; 
+            // Se cair aqui o codigo da tela vai devolver a mensagem de senha ou login errados e mandar tentar de novo!
     }
 }

@@ -60,12 +60,12 @@
                           <Component id="jTextFieldUsuario" min="-2" pref="173" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldSenha" min="-2" pref="201" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="jPasswordFieldSenha" min="-2" pref="154" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jButtonEntrar" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="286" max="32767" attributes="0"/>
+                  <EmptySpace pref="296" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -84,7 +84,7 @@
                       <Component id="jLabelUsuario" alignment="3" max="32767" attributes="0"/>
                       <Component id="jTextFieldUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelSenha" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jTextFieldSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPasswordFieldSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Component id="jButtonEntrar" min="-2" max="-2" attributes="0"/>
@@ -131,8 +131,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldUsuario">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldSenha">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelMensagemLogin">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -159,6 +157,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEntrarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPasswordFieldSenha">
         </Component>
       </SubComponents>
     </Container>

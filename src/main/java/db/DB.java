@@ -55,10 +55,10 @@ public class DB {
     }
     
     
-         public static void  main(String []args){
+        /* public static void  main(String []args){
                 Connection testeConn = DB.pegarConnection();
                      System.out.println("Conexão estabelecida com sucesso FDP FDP!");
-                 }
+                 }*/
 
     }
   

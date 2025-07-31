@@ -1,8 +1,8 @@
 app\App.class
 model\LoginDao.class
 model\Usuario.class
-gui\testes.class
-gui\TelaMenu$3.class
+gui\TelaBuscarOperacoes.class
+gui\TelaRegistrarOperacao.class
 controller\LoginController.class
 gui\TelaLogin$1.class
 db\DbException.class
