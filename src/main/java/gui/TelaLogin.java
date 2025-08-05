@@ -111,7 +111,7 @@ public class TelaLogin extends javax.swing.JFrame {
         if (sucesso) {
             this.dispose();
         } else{
-            jLabelMensagemLogin.setText("Usuário ou Senha incorrettos, Tente novamente!!!");
+            jLabelMensagemLogin.setText("Usuário ou Senha incorretos, Tente novamente!!!");
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
@@ -119,6 +119,10 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
     initComponents();
     getRootPane().setDefaultButton(jButtonEntrar);
+    setResizable(false);
+    setLocationRelativeTo(null);
+
+
 
 }
     private  LoginController lc = new LoginController();
