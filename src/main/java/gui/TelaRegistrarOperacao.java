@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -190,7 +191,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonImagemGraficoOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,11 +259,13 @@ public class TelaRegistrarOperacao extends JInternalFrame {
                                 tipoPosicao, status, imagem
                                 );
         try {
-            controller.salvarRegistroController();
+            if(controller.salvarRegistroController()){
+                limparCampos();
+            }
         } catch (SQLException ex) {
            ex.getMessage();
         } catch (IOException ex) {
-           ex.getMessage() ;
+             ex.getMessage();
         }
     } catch (NumberFormatException e ) {
         JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + e.getMessage());
@@ -293,5 +296,18 @@ public class TelaRegistrarOperacao extends JInternalFrame {
     private javax.swing.JTextField jTextFieldPrecoSaida;
     private javax.swing.JTextField jTextFieldQuantidadeContratos;
     // End of variables declaration//GEN-END:variables
+
+    
+    private void limparCampos() {
+    jTextFieldAtivo.setText("");
+    jTextFieldPrecoEntrada.setText("");
+    jTextFieldPrecoSaida.setText("");
+    jTextFieldQuantidadeContratos.setText("");
+    jComboBoxTipoOperacao.setSelectedIndex(0);
+    jComboBoxTipoPosicao.setSelectedIndex(0);
+    jComboBoxStatusOperacao.setSelectedIndex(0);
+    jTextAreaDescricao.setText("");
+    imgg = null; // zera a imagem
+}
 
 }

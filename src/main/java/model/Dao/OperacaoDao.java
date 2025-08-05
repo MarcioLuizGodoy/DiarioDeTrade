@@ -40,7 +40,7 @@ public class OperacaoDao {
         }
 
         int linhasAfetadas = ps.executeUpdate();
-        return linhasAfetadas > 0;
+            return true;
 
     } catch (SQLException | IOException e) {
             DB.fecharConnection();
