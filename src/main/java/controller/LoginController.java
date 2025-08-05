@@ -4,7 +4,7 @@
 package controller;
 
 import model.Usuario;
-import model.LoginDao;
+import model.Dao.LoginDao;
 import gui.TelaMenu;
 
 public class LoginController {

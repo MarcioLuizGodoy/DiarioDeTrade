@@ -1,6 +1,5 @@
 app\App.class
 controller\OperacaoController.class
-model\LoginDao.class
 gui\TelaRegistrarOperacao$2.class
 model\Usuario.class
 gui\TelaBuscarOperacoes.class
@@ -10,7 +9,6 @@ controller\LoginController.class
 gui\TelaMenu$2.class
 gui\TelaMenu.class
 gui\TelaRegistrarOperacao$1.class
-model\OperacaoDao.class
 model\TipoOperacao.class
 model\TipoPosicao.class
 model\Operacao.class
@@ -18,5 +16,7 @@ gui\TelaMenu$3.class
 gui\TelaLogin$1.class
 db\DbException.class
 gui\TelaLogin.class
+model\Dao\OperacaoDao.class
 db\DB.class
 gui\TelaMenu$1.class
+model\Dao\LoginDao.class

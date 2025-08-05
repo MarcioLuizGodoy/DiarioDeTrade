@@ -4,8 +4,8 @@ import controller.OperacaoController;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.imageio.ImageIO;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -231,7 +231,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
             imgg =  c.receberImagemTela(imagemSelecionada);
             
         }catch( IOException e){
-            e.printStackTrace();
+            e.getMessage();
             }
             
         }
@@ -242,7 +242,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
     OperacaoController controller = new OperacaoController();
     try {
         String ativo = jTextFieldAtivo.getText();
-        Double precoEntrada = Double.parseDouble(jTextFieldPrecoEntrada.getText());
+        Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText());
         Double precoSaida = Double.parseDouble(jTextFieldPrecoSaida.getText());
         Integer qtdContratos = Integer.parseInt(jTextFieldQuantidadeContratos.getText());
         String status = (String) jComboBoxStatusOperacao.getSelectedItem();
@@ -257,7 +257,13 @@ public class TelaRegistrarOperacao extends JInternalFrame {
                                 qtdContratos, tipoOperacao,
                                 tipoPosicao, status, imagem
                                 );
-       controller.salvarRegistroController();
+        try {
+            controller.salvarRegistroController();
+        } catch (SQLException ex) {
+           ex.getMessage();
+        } catch (IOException ex) {
+           ex.getMessage() ;
+        }
     } catch (NumberFormatException e ) {
         JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + e.getMessage());
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
