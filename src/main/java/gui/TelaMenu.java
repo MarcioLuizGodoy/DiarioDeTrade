@@ -1,12 +1,7 @@
 
 package gui;
 
-import gui.TelaBuscarOperacoes;
-
-public class TelaMenu extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaMenu.class.getName());
-  
+public class TelaMenu extends javax.swing.JFrame {  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -163,9 +158,10 @@ public TelaMenu() {
         
 
 
-    }
-public static void main(String args[]) {
+    }}
+/*public static void main(String args[]) {
       
         java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));
     }
 }
+*/

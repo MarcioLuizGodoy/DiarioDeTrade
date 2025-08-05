@@ -26,23 +26,27 @@ public class DB {
     
     
     
-    public static Connection pegarConnection(){
-        if (conn == null ){
+    public static Connection pegarConnection() throws SQLException{
+        if (conn == null || conn.isClosed()){
             try {
+               {
+                    
                 Properties propriedades = carregarProperties();
                 String url = propriedades.getProperty("dburl");
                 conn = DriverManager.getConnection(url, propriedades);  
                 }
-            catch(SQLException e ){
+            }catch(SQLException e ){
                 throw new DbException(e.getMessage());
                 
             }
-        } return conn;
+        return conn;
+        } 
+        return null;
     }
     
     
     
-    public static void fecharConnection(){
+   public static void fecharConnection(){
         if( conn != null){
             try {
                conn.close();
@@ -57,7 +61,7 @@ public class DB {
     
         /* public static void  main(String []args){
                 Connection testeConn = DB.pegarConnection();
-                     System.out.println("Conexão estabelecida com sucesso FDP FDP!");
+                     
                  }*/
 
     }

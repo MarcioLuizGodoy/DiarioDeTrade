@@ -4,9 +4,7 @@ import controller.OperacaoController;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.imageio.ImageIO;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -17,8 +15,6 @@ public class TelaRegistrarOperacao extends JInternalFrame {
     public TelaRegistrarOperacao() {
         initComponents();
     }
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -102,6 +98,8 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         jComboBoxTipoOperacao.setForeground(new java.awt.Color(0, 51, 255));
         jComboBoxTipoOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SWING TRADE", "DAY TRADE", "POSITION", "" }));
 
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 255));
         jLabel1.setText("Descrição dos motivos que levaram a operação:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -139,7 +137,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
                                 .addGap(33, 33, 33)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(133, 133, 133)
+                                .addGap(162, 162, 162)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(465, 465, 465)
@@ -154,7 +152,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAtivo)
@@ -185,7 +183,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
                             .addComponent(jComboBoxStatusOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -216,62 +214,75 @@ public class TelaRegistrarOperacao extends JInternalFrame {
 
     
     
-    private OperacaoController c = new OperacaoController();
-    private BufferedImage imgg;
-   
+    
+    private  OperacaoController c = new OperacaoController();
+    public  BufferedImage imgg ;
+
+    
+    
+    
+    private void limparCampos() {
+    jTextFieldAtivo.setText("");
+    jTextFieldPrecoEntrada.setText("");
+    jTextFieldPrecoSaida.setText("");
+    jTextFieldQuantidadeContratos.setText("");
+    jComboBoxTipoOperacao.setSelectedIndex(0);
+    jComboBoxTipoPosicao.setSelectedIndex(0);
+    jComboBoxStatusOperacao.setSelectedIndex(0);
+    jTextAreaDescricao.setText("");
+    jButtonImagemGraficoOperacao.setText(null);
+}
+
+    
+    
+    
+    
+    
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+    try {
+        String ativo = jTextFieldAtivo.getText();
+        Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText());
+        Double precoSaida = Double.valueOf(jTextFieldPrecoSaida.getText());
+        Integer qtdContratos = Integer.valueOf(jTextFieldQuantidadeContratos.getText());
+        String status = (String) jComboBoxStatusOperacao.getSelectedItem();
+        String tipoOpStr = (String) jComboBoxTipoOperacao.getSelectedItem();
+        String tipoPosStr = (String) jComboBoxTipoPosicao.getSelectedItem();
+        TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr.replace(" ", "_").toUpperCase());
+        TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr.toUpperCase());
+           
+        c.receberDados(ativo, precoEntrada, precoSaida,
+                   qtdContratos, tipoOperacao,
+                   
+                   //LA EM BAIXO A IMG É SETADA NO CONTROLLER E PASSADA PRA imgg. FACILITANDO REUTILIZACAO NO CADASTRAR IMAGEM
+                   tipoPosicao, status, imgg);
+
+            if(c.salvarRegistroController() == true){
+                limparCampos();
+            }
+    } catch (NumberFormatException e ) {
+        JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + e.getMessage());
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+}
+    
+    
+    
     private void jButtonImagemGraficoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImagemGraficoOperacaoActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Escolha a imagem que quer enviar!");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int resultado = chooser.showOpenDialog(this);
-        if(resultado == JFileChooser.APPROVE_OPTION){
-        File arquivoSelecionado = chooser.getSelectedFile();  
-        
-        try{
-            BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
-            imgg =  c.receberImagemTela(imagemSelecionada);
-            
-        }catch( IOException e){
-            e.getMessage();
-            }
-            
-        }
-    }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
-
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-       
-    OperacaoController controller = new OperacaoController();
-    try {
-        String ativo = jTextFieldAtivo.getText();
-        Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText());
-        Double precoSaida = Double.parseDouble(jTextFieldPrecoSaida.getText());
-        Integer qtdContratos = Integer.parseInt(jTextFieldQuantidadeContratos.getText());
-        String status = (String) jComboBoxStatusOperacao.getSelectedItem();
-        String tipoOpStr = (String) jComboBoxTipoOperacao.getSelectedItem();
-        String tipoPosStr = (String) jComboBoxTipoPosicao.getSelectedItem();
-        BufferedImage imagem = imgg; 
-
-        TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr.replace(" ", "_").toUpperCase());
-        TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr.toUpperCase());
-
-        controller.receberDados(ativo, precoEntrada, precoSaida,
-                                qtdContratos, tipoOperacao,
-                                tipoPosicao, status, imagem
-                                );
-        try {
-            if(controller.salvarRegistroController()){
-                limparCampos();
-            }
-        } catch (SQLException ex) {
-           ex.getMessage();
-        } catch (IOException ex) {
-             ex.getMessage();
-        }
-    } catch (NumberFormatException e ) {
-        JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + e.getMessage());
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
-    }
+            if (resultado == JFileChooser.APPROVE_OPTION) {
+                File arquivoSelecionado = chooser.getSelectedFile();
+                    try {
+                        BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);  
+                        c.receberImagemTela(imagemSelecionada);   
+                        imgg=c.getImagem();
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(this, "Erro ao carregar a imagem.");
+                }
+        }    }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
     
+ 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtivo;
@@ -298,16 +309,11 @@ public class TelaRegistrarOperacao extends JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     
-    private void limparCampos() {
-    jTextFieldAtivo.setText("");
-    jTextFieldPrecoEntrada.setText("");
-    jTextFieldPrecoSaida.setText("");
-    jTextFieldQuantidadeContratos.setText("");
-    jComboBoxTipoOperacao.setSelectedIndex(0);
-    jComboBoxTipoPosicao.setSelectedIndex(0);
-    jComboBoxStatusOperacao.setSelectedIndex(0);
-    jTextAreaDescricao.setText("");
-    imgg = null; // zera a imagem
-}
+   
+   public static void main(String args[]) {
+      
+        java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));
+    }
+
 
 }

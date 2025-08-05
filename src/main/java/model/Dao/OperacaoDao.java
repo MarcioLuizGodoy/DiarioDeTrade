@@ -1,6 +1,7 @@
 package model.Dao;
 
 import db.DB;
+import db.DbException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -22,13 +23,13 @@ public class OperacaoDao {
             Connection conn = DB.pegarConnection();
             PreparedStatement ps = conn.prepareStatement(sql)){
           
-            ps.setString(1, operacao.getAtivo());
-            ps.setDouble(2, operacao.getPrecoEntrada());
-            ps.setDouble(3, operacao.getPrecoSaida());
-            ps.setInt(4, operacao.getQuantidadeContratos());
-            ps.setString(5, operacao.getTipoOperacao().toString());
-            ps.setString(6, operacao.getTipoPosicao().toString());
-            ps.setString(7, operacao.getStatusOperacao());
+                ps.setString(1, operacao.getAtivo());
+                ps.setDouble(2, operacao.getPrecoEntrada());
+                ps.setDouble(3, operacao.getPrecoSaida());
+                ps.setInt(4, operacao.getQuantidadeContratos());
+                ps.setString(5, operacao.getTipoOperacao().toString());
+                ps.setString(6, operacao.getTipoPosicao().toString());
+                ps.setString(7, operacao.getStatusOperacao());
 
         if (operacao.getImg() != null) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -38,11 +39,14 @@ public class OperacaoDao {
         } else {
             ps.setNull(8, Types.BLOB);
         }
-
-        int linhasAfetadas = ps.executeUpdate();
-            return true;
+            int linhasAfetadas = ps.executeUpdate();
+            return linhasAfetadas > 0;
 
     } catch (SQLException | IOException e) {
-            DB.fecharConnection();
-    }   return false;
-}}
+                    e.printStackTrace(); // Ou use um logger
+                       return false;
+        } finally{
+          DB.fecharConnection();
+      }
+    }
+}

@@ -1,9 +1,8 @@
 package controller;
 
 
+import db.DB;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.sql.SQLException;
 import model.Dao.OperacaoDao;
 import model.Operacao;
 import model.TipoOperacao;
@@ -17,18 +16,19 @@ public class OperacaoController {
     private TipoOperacao tipoOperacao;
     private TipoPosicao tipoPosicao;
     private String statusOperacao;
-    private BufferedImage img;
-
+    private BufferedImage imagem;
+    
     public OperacaoController() {}
 
-    public BufferedImage receberImagemTela(BufferedImage imagem) {
-       return imagem;
-    }
+    
+public void receberImagemTela(BufferedImage imagem) {
+    this.imagem = imagem;
+}
 
     public void receberDados(
         String ativo, Double precoEntrada, Double precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao,
-        TipoPosicao tipoPosicao, String statusOperacao, BufferedImage img
+        TipoPosicao tipoPosicao, String statusOperacao,BufferedImage image
     ) {
         this.ativo = ativo;
         this.precoEntrada = precoEntrada;
@@ -37,13 +37,21 @@ public class OperacaoController {
         this.tipoOperacao = tipoOperacao;
         this.tipoPosicao = tipoPosicao;
         this.statusOperacao = statusOperacao;
-        this.img = img;
+        this.imagem = image;
+        
     }
 
-    public boolean salvarRegistroController() throws SQLException, IOException {
+    public BufferedImage getImagem() {
+    return this.imagem;
+}
+    /**
+     *
+     * @return
+     */
+    public boolean salvarRegistroController()  {
         Operacao operacao = new Operacao(
             ativo, precoEntrada, precoSaida, quantidadeContratos,
-            tipoOperacao, tipoPosicao, statusOperacao, img
+            tipoOperacao, tipoPosicao, statusOperacao,this.imagem
         );
         OperacaoDao oD = new OperacaoDao();
         return oD.persistirRegistro(operacao);
