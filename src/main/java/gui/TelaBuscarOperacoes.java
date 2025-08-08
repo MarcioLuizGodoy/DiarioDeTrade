@@ -3,13 +3,12 @@ package gui;
 
 import controller.BuscarOperacaoController;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 import model.Operacao;
 
-public class TelaBuscarOperacoes extends JInternalFrame {    
-   
-    
+public class TelaBuscarOperacoes extends JInternalFrame {
     public TelaBuscarOperacoes() {
         initComponents(); 
     }
@@ -27,7 +26,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jButtonBuscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaDescricaoOperacao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -38,7 +37,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jLabelTitulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jTableTabelaOperacoes.setBackground(new java.awt.Color(204, 204, 204));
-        jTableTabelaOperacoes.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jTableTabelaOperacoes.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jTableTabelaOperacoes.setForeground(new java.awt.Color(0, 51, 204));
         jTableTabelaOperacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,18 +73,25 @@ public class TelaBuscarOperacoes extends JInternalFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Ativo", "Preco Entrada", "Preco Saida", "Qtd Contratos", "Tipo Operação", "Tipo Posição", "Status  Operação", "Img Grafico", "Descrição", "Evento Tec. Base"
+                "Id", "Ativo", "Preco Entrada", "Preco Saida", "Qtd Contratos", "Tipo Operação", "Tipo Posição", "Status  Operação", "Img Grafico", "Evento Tec. Base"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Byte.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTableTabelaOperacoes.setSelectionForeground(new java.awt.Color(0, 51, 255));
+        jTableTabelaOperacoes.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jTableTabelaOperacoes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableTabelaOperacoesMouseClicked(evt);
@@ -116,9 +122,9 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jButton2.setForeground(new java.awt.Color(0, 51, 255));
         jButton2.setText("Descricao da Operação: ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextAreaDescricaoOperacao.setColumns(20);
+        jTextAreaDescricaoOperacao.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaDescricaoOperacao);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,21 +187,19 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    //MINHAS VARIAVEIS GLOBAIS IMPORTANTES
+    private String escolhaFiltroTela;
     BuscarOperacaoController c = new BuscarOperacaoController();
-    private List<Operacao> operacoesVarGlobal; // ← isto guarda a lista preenchida
+    private List<Operacao> operacoesVarGlobal; 
 
     
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        
-         c.receberEscolhaFiltroTela(escolhaFiltroTela);
+        c.receberEscolhaFiltroTela(escolhaFiltroTela);
         List<Operacao> operacoes = c.buscarPorFiltro();
-        atualizarTabela(operacoes);
-        
-        
+        atualizarTabela(operacoes);   
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    
+        //RECEBER ESCOLHA DA TELA
     private void jComboBoxFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltrosActionPerformed
         escolhaFiltroTela =  (String) jComboBoxFiltros.getSelectedItem(); 
     }//GEN-LAST:event_jComboBoxFiltrosActionPerformed
@@ -205,19 +209,19 @@ public class TelaBuscarOperacoes extends JInternalFrame {
                     int row = jTableTabelaOperacoes.getSelectedRow();
                         if (row >= 0) {
                         Operacao opSelecionada = this.operacoesVarGlobal.get(row);
-                        jTextArea1.setText(opSelecionada.getDescricao());
+                        jTextAreaDescricaoOperacao.setText(opSelecionada.getDescricao());
         }
     }//GEN-LAST:event_jTableTabelaOperacoesMouseClicked
     
     
     private void atualizarTabela(List<Operacao> operacoes) {
-        this.operacoesVarGlobal = operacoes;
+    this.operacoesVarGlobal = operacoes;
     DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoes.getModel();
-    model.setRowCount(0); // limpa tabela
+    model.setRowCount(0); 
 
     for (Operacao op : operacoes) {
         model.addRow(new Object[]{
-           null, //op.getId(),
+            op.getId(),
             op.getAtivo(),
             op.getPrecoEntrada(),
             op.getPrecoSaida(),
@@ -225,10 +229,10 @@ public class TelaBuscarOperacoes extends JInternalFrame {
             op.getTipoOperacao(),
             op.getTipoPosicao(),
             op.getStatusOperacao(),
-            op.getDescricao(),
-            null, // imagem (pode implementar depois)
-            null, // data e hora - se tiver, coloque aqui
-            op.getEventoTecnicoBase()
+            new ImageIcon(op.getImg()),
+            op.getEventoTecnicoBase(),
+            //null, // data e hora - se tiver, coloque aqui
+            
         });
     }
 }
@@ -248,13 +252,12 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableTabelaOperacoes;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaDescricaoOperacao;
     // End of variables declaration//GEN-END:variables
 
     
 
 // ESSA VARIÁVEL RECEBE A ESCOLHA DE FILTRO DO USUARIO E PASSA AO CONTROLLER ADEQUADO.
-    private String escolhaFiltroTela;
         
     public static void main(String []args){
          java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));

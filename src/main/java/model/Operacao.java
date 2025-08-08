@@ -3,6 +3,7 @@ package model;
 import java.awt.image.BufferedImage;
 
 public class Operacao {
+    private Integer id;  // Usar Integer para permitir null (antes de inserir)
     private String ativo;
     private Double precoEntrada;
     private Double precoSaida;
@@ -35,6 +36,9 @@ public class Operacao {
     }
 
     // Getters
+    public Integer getId(){
+        return id;
+    }
     
     public String getEventoTecnicoBase(){
         return eventoTecnicoBase;
@@ -75,6 +79,10 @@ public class Operacao {
     }
 
     // Setters
+    public void setId(Integer id){
+        this.id = id;
+        
+    }
     
     public void setEventoTecnicoBase(String eventoTecnicoBase){
         this.eventoTecnicoBase = eventoTecnicoBase;

@@ -75,6 +75,7 @@ import model.TipoPosicao;
         while (rs.next()) {
             Operacao op = new Operacao();
             
+            op.setId(rs.getInt("id"));
             op.setAtivo(rs.getString("ativo"));
             op.setPrecoEntrada(rs.getDouble("preco_entrada"));
             op.setPrecoSaida(rs.getDouble("preco_saida"));
