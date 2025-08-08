@@ -112,7 +112,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         jButtonEventoTecnicoBase.setText("Evento Técnico Base: ");
 
         jComboBoxEventoTecnicoBase.setForeground(new java.awt.Color(0, 0, 255));
-        jComboBoxEventoTecnicoBase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Rompimento", "" }));
+        jComboBoxEventoTecnicoBase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rompimento", "Regressao media movel" }));
 
         jButtonAviso.setBackground(new java.awt.Color(204, 204, 204));
         jButtonAviso.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
