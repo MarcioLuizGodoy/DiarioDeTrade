@@ -11,6 +11,8 @@ public class Operacao {
     private TipoPosicao tipoPosicao;
     private String statusOperacao;
     private BufferedImage img;
+    private String descricao;
+    private String eventoTecnicoBase;
 
     // Construtor vazio
     public Operacao() {}
@@ -18,7 +20,7 @@ public class Operacao {
     // Construtor completo
     public Operacao(String ativo, Double precoEntrada, Double precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao, TipoPosicao tipoPosicao,
-        String statusOperacao, BufferedImage img) {
+        String statusOperacao, BufferedImage img, String descricao, String eventoTecnicoBase ) {
 
         this.ativo = ativo;
         this.precoEntrada = precoEntrada;
@@ -28,9 +30,18 @@ public class Operacao {
         this.tipoPosicao = tipoPosicao;
         this.statusOperacao = statusOperacao;
         this.img = img;
+        this.descricao = descricao;
+        this.eventoTecnicoBase = eventoTecnicoBase;
     }
 
     // Getters
+    
+    public String getEventoTecnicoBase(){
+        return eventoTecnicoBase;
+    }
+    public String getDescricao(){
+        return descricao;
+    }
     public String getAtivo() {
         return ativo;
     }
@@ -64,6 +75,14 @@ public class Operacao {
     }
 
     // Setters
+    
+    public void setEventoTecnicoBase(String eventoTecnicoBase){
+        this.eventoTecnicoBase = eventoTecnicoBase;
+    }
+    
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
+    }
     public void setAtivo(String ativo) {
         this.ativo = ativo;
     }

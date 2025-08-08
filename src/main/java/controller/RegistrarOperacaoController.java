@@ -8,7 +8,7 @@ import model.Operacao;
 import model.TipoOperacao;
 import model.TipoPosicao;
 
-public class OperacaoController {
+public class RegistrarOperacaoController {
     private String ativo;
     private Double precoEntrada;
     private Double precoSaida;
@@ -17,8 +17,10 @@ public class OperacaoController {
     private TipoPosicao tipoPosicao;
     private String statusOperacao;
     private BufferedImage imagem;
+    private String descricao;
+    private String eventoTecnicoBase;
     
-    public OperacaoController() {}
+    public RegistrarOperacaoController() {}
 
     
 public void receberImagemTela(BufferedImage imagem) {
@@ -28,8 +30,8 @@ public void receberImagemTela(BufferedImage imagem) {
     public void receberDados(
         String ativo, Double precoEntrada, Double precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao,
-        TipoPosicao tipoPosicao, String statusOperacao,BufferedImage image
-    ) {
+        TipoPosicao tipoPosicao, String statusOperacao,BufferedImage image,
+        String descricao, String eventoTecnicoBase ) {
         this.ativo = ativo;
         this.precoEntrada = precoEntrada;
         this.precoSaida = precoSaida;
@@ -38,6 +40,8 @@ public void receberImagemTela(BufferedImage imagem) {
         this.tipoPosicao = tipoPosicao;
         this.statusOperacao = statusOperacao;
         this.imagem = image;
+        this.descricao = descricao;
+        this.eventoTecnicoBase = eventoTecnicoBase;
         
     }
 
@@ -51,7 +55,7 @@ public void receberImagemTela(BufferedImage imagem) {
     public boolean salvarRegistroController()  {
         Operacao operacao = new Operacao(
             ativo, precoEntrada, precoSaida, quantidadeContratos,
-            tipoOperacao, tipoPosicao, statusOperacao,this.imagem
+            tipoOperacao, tipoPosicao, statusOperacao,this.imagem,descricao,eventoTecnicoBase
         );
         OperacaoDao oD = new OperacaoDao();
         return oD.persistirRegistro(operacao);
