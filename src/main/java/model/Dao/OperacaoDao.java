@@ -1,6 +1,7 @@
 package model.Dao;
 
 import db.DB;
+import db.DbException;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import javax.imageio.ImageIO;
 import model.Operacao;
@@ -54,7 +56,7 @@ import model.TipoPosicao;
             return linhasAfetadas > 0;
 
     } catch (SQLException | IOException e) {
-                    e.printStackTrace(); // Ou use um logger
+                    e.printStackTrace(); 
                        return false;
         } finally{
           DB.fecharConnection();
@@ -62,19 +64,18 @@ import model.TipoPosicao;
     }
  
     
-    
+    //METODO QUE CONSULTA O BANCO E DEVOLVE UMA LISTA DAS OPERACOES CONSULTADAS QUE ATENDAM AO CRITERIO TODAS AS ( OPERACOES COMO FILTRO DESEJADO).
     public List<Operacao> consultarTodasOperacoes() throws IOException {
     String sql = "SELECT * FROM operacoes";
     List<Operacao> lista = new ArrayList<>();
-
-    try {
-        Connection conn = DB.pegarConnection();
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
+        try {
+            Connection conn = DB.pegarConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Operacao op = new Operacao();
             
+            //PEGANDO DADOS DO BANCO E SETANDO NOS OBJETOS OPERACOES.
             op.setId(rs.getInt("id"));
             op.setAtivo(rs.getString("ativo"));
             op.setPrecoEntrada(rs.getDouble("preco_entrada"));
@@ -85,26 +86,33 @@ import model.TipoPosicao;
             op.setStatusOperacao(rs.getString("status_operacao"));
             op.setDescricao(rs.getString("descricao"));
             op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
-            
+            Timestamp timestamp = rs.getTimestamp("data_hora");
+                        if(timestamp != null){
+                        op.setDataHora(timestamp.toLocalDateTime());
+                        }
             byte[] bytes = rs.getBytes("imagem");
             if (bytes != null) {
                 ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
                 BufferedImage img = ImageIO.read(bais);
                 op.setImg(img);
             }
-
             lista.add(op);
         }
-        rs.close();
-        ps.close();
-        conn.close();
+            rs.close();
+            ps.close();
+            conn.close();
 
-    } catch (SQLException e) {
-        e.printStackTrace(); // ou tratamento mais robusto
-    }
-
+        } catch (SQLException e) {
+            e.printStackTrace(); // ou tratamento mais robusto
+        }
     return lista;
 }
+
+    
+    
+    
+
+   
 
     
   

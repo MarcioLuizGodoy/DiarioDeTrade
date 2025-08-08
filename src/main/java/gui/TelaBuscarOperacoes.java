@@ -13,6 +13,8 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         initComponents(); 
     }
 
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,51 +43,44 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jTableTabelaOperacoes.setForeground(new java.awt.Color(0, 51, 204));
         jTableTabelaOperacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Ativo", "Preco Entrada", "Preco Saida", "Qtd Contratos", "Tipo Operação", "Tipo Posição", "Status  Operação", "Img Grafico", "Evento Tec. Base"
+                "Id", "Ativo", "Preco Entrada", "Preco Saida", "Qtd Contratos", "Tipo Operação", "Tipo Posição", "Status  Operação", "Img Grafico", "Data Hora", "Evento Tec. Base"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Byte.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, true, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -103,7 +98,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jButton1.setText("Buscar por: ");
 
         jComboBoxFiltros.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas Operacoes", "Ativo", "Tipo Operacao", "Tipo Posicao", "Status Operacao", "Data e Hora", "" }));
+        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Todas Operacoes" }));
         jComboBoxFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFiltrosActionPerformed(evt);
@@ -187,25 +182,36 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     //MINHAS VARIAVEIS GLOBAIS IMPORTANTES
     private String escolhaFiltroTela;
     BuscarOperacaoController c = new BuscarOperacaoController();
     private List<Operacao> operacoesVarGlobal; 
-
     
+    
+    //passando a escolha do usuario coletada para o controller e seus metodos importantes.
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         c.receberEscolhaFiltroTela(escolhaFiltroTela);
-        List<Operacao> operacoes = c.buscarPorFiltro();
-        atualizarTabela(operacoes);   
+        List<Operacao> operacoes = c.buscarOperacoesController();
+        atualizarTabela(operacoes);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-        //RECEBER ESCOLHA DA TELA
+    
+    
+    
+    
+    //Coletando escolha do usuario e passando para variavel de escopo global.
     private void jComboBoxFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltrosActionPerformed
         escolhaFiltroTela =  (String) jComboBoxFiltros.getSelectedItem(); 
     }//GEN-LAST:event_jComboBoxFiltrosActionPerformed
 
+    
+    
+    
+    //Coletando a descrição dos objetos devolvido na lista e setando no textArea responsavel por mostrar a descricao da operacao
     private void jTableTabelaOperacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTabelaOperacoesMouseClicked
-                
                     int row = jTableTabelaOperacoes.getSelectedRow();
                         if (row >= 0) {
                         Operacao opSelecionada = this.operacoesVarGlobal.get(row);
@@ -214,6 +220,11 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     }//GEN-LAST:event_jTableTabelaOperacoesMouseClicked
     
     
+    
+    //Colocando cada atributo dos objetos da lista na tabela pela ordem da tabela.
+    //Tentei fazer a tela pela ordem do banco de dados.
+    //Contudo a tela é mais importante nesse metodo, ela dita a ordem de 'set'.
+                                                                                            //METODO VAI SER REUTILIZADO PARA OUTROS FILTROS???
     private void atualizarTabela(List<Operacao> operacoes) {
     this.operacoesVarGlobal = operacoes;
     DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoes.getModel();
@@ -230,15 +241,15 @@ public class TelaBuscarOperacoes extends JInternalFrame {
             op.getTipoPosicao(),
             op.getStatusOperacao(),
             new ImageIcon(op.getImg()),
+            op.getDataHora(),
             op.getEventoTecnicoBase(),
-            //null, // data e hora - se tiver, coloque aqui
+           
             
         });
     }
 }
     
     
-
     
     
     
@@ -255,21 +266,6 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     private javax.swing.JTextArea jTextAreaDescricaoOperacao;
     // End of variables declaration//GEN-END:variables
 
-    
-
-// ESSA VARIÁVEL RECEBE A ESCOLHA DE FILTRO DO USUARIO E PASSA AO CONTROLLER ADEQUADO.
-        
-    public static void main(String []args){
-         java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));
-               
-
-    }
-        
-
-
-
-
-
-
+           
 
 }

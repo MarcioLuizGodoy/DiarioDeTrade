@@ -8,54 +8,30 @@ import model.Operacao;
 
 public class BuscarOperacaoController {
     
+    // Variavel global recebida da tela pelo metodo do controller
     String escolhaFiltroUsuario;
-  //---------------------------------
-
+    
+    //Recebendo escolha do usuario e  setando como variavel global no ambiente controller!
     public void receberEscolhaFiltroTela(String valorEscolha) {
-        
             if(valorEscolha != null){
-            this.escolhaFiltroUsuario = valorEscolha;
-            }else{
-                System.out.println("Variavel vazia!!!");
+                this.escolhaFiltroUsuario = valorEscolha;
             }
     }
     
-    
-    
-    
-    public List<Operacao> buscarPorFiltro(){
+    //Metodo que busca todas as operacoes
+    public List<Operacao> buscarOperacoesController(){
         OperacaoDao oD = new OperacaoDao();
-        
         try{
-            
-        if(escolhaFiltroUsuario.equals("Todas Operacoes")){
-            
-            List<Operacao> lista =  oD.consultarTodasOperacoes();
-            return lista;
-            
-        }
-        else if(escolhaFiltroUsuario.equals("Ativo")){
-            
-            //oD.consultarOperacaoAtivo();
-        }
-        else if(escolhaFiltroUsuario.equals("Tipo Operação")){
-            
-        }
-        else if(escolhaFiltroUsuario.equals("Tipo Posição")){
-            
-        }
-        else if(escolhaFiltroUsuario.equals("Status Operação")){
-            
-        }
-        else if(escolhaFiltroUsuario.equals("Data e Hora")){
-            
-        }
-        
-       
-        
+            if(escolhaFiltroUsuario.equals("Todas Operacoes")){
+                List<Operacao> lista =  oD.consultarTodasOperacoes();
+                return lista;                                               //IMPLEMENTADO COM SUCESSO!
+            }
         }catch(IOException e ){
-    }
+            }
         return null;
     
     }
+    
+    
+    
 }
