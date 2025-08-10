@@ -7,6 +7,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPaneContainerTelas = new javax.swing.JDesktopPane();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuInicioLimpo = new javax.swing.JMenu();
         jMenuItemInicio = new javax.swing.JMenuItem();
@@ -17,6 +18,11 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItemBuscarOperacoes = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuFinanceiro = new javax.swing.JMenu();
+        jMenuItemEvolucaoCapital = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -26,15 +32,24 @@ public class TelaMenu extends javax.swing.JFrame {
         jDesktopPaneContainerTelas.setBorder(new javax.swing.border.MatteBorder(null));
         jDesktopPaneContainerTelas.setForeground(new java.awt.Color(204, 204, 204));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/tabajara.png"))); // NOI18N
+        jButton1.setText("TESTE");
+
+        jDesktopPaneContainerTelas.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPaneContainerTelasLayout = new javax.swing.GroupLayout(jDesktopPaneContainerTelas);
         jDesktopPaneContainerTelas.setLayout(jDesktopPaneContainerTelasLayout);
         jDesktopPaneContainerTelasLayout.setHorizontalGroup(
             jDesktopPaneContainerTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1241, Short.MAX_VALUE)
+            .addGroup(jDesktopPaneContainerTelasLayout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1235, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jDesktopPaneContainerTelasLayout.setVerticalGroup(
             jDesktopPaneContainerTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 691, Short.MAX_VALUE)
+            .addGroup(jDesktopPaneContainerTelasLayout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 59, Short.MAX_VALUE))
         );
 
         jMenuInicioLimpo.setText("Inicio");
@@ -78,7 +93,28 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuOperacoes);
 
-        jMenuFinanceiro.setText("Financeiro");
+        jMenuFinanceiro.setText("Estatisticas e Financeiro");
+
+        jMenuItemEvolucaoCapital.setText("Evolucao Capital");
+        jMenuItemEvolucaoCapital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEvolucaoCapitalActionPerformed(evt);
+            }
+        });
+        jMenuFinanceiro.add(jMenuItemEvolucaoCapital);
+
+        jMenuItem5.setText("Buscar por Ativo");
+        jMenuFinanceiro.add(jMenuItem5);
+
+        jMenuItem6.setText("Buscar por Tipo Operacao");
+        jMenuFinanceiro.add(jMenuItem6);
+
+        jMenuItem7.setText("Buscar  por Tipo Posicao");
+        jMenuFinanceiro.add(jMenuItem7);
+
+        jMenuItem8.setText("Buscar por Evento Tecnico Base");
+        jMenuFinanceiro.add(jMenuItem8);
+
         jMenuBar1.add(jMenuFinanceiro);
 
         jMenuSobre.setText("Sobre");
@@ -103,7 +139,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemRegistrarOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarOperacaoActionPerformed
-           
+
         for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
             frame.dispose();
         }
@@ -132,8 +168,20 @@ public class TelaMenu extends javax.swing.JFrame {
             telaLimpa.setSize(jDesktopPaneContainerTelas.getSize());
             jDesktopPaneContainerTelas.add(telaLimpa).setVisible(true);    }//GEN-LAST:event_jMenuItemInicioActionPerformed
 
+    private void jMenuItemEvolucaoCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEvolucaoCapitalActionPerformed
+        
+        for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+            frame.dispose();
+        }
+            TelaEvolucaoCapital telaEvolucao = new TelaEvolucaoCapital();
+            telaEvolucao.setSize(jDesktopPaneContainerTelas.getSize());
+            jDesktopPaneContainerTelas.add(telaEvolucao).setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItemEvolucaoCapitalActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPaneContainerTelas;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuFinanceiro;
@@ -141,7 +189,12 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemBuscarOperacoes;
+    private javax.swing.JMenuItem jMenuItemEvolucaoCapital;
     private javax.swing.JMenuItem jMenuItemInicio;
     private javax.swing.JMenuItem jMenuItemRegistrarOperacao;
     private javax.swing.JMenu jMenuOperacoes;

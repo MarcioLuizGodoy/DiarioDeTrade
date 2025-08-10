@@ -79,7 +79,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -117,7 +117,9 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jButton2.setForeground(new java.awt.Color(0, 51, 255));
         jButton2.setText("Descricao da Operação: ");
 
+        jTextAreaDescricaoOperacao.setEditable(false);
         jTextAreaDescricaoOperacao.setColumns(20);
+        jTextAreaDescricaoOperacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextAreaDescricaoOperacao.setRows(5);
         jScrollPane2.setViewportView(jTextAreaDescricaoOperacao);
 
@@ -131,21 +133,19 @@ public class TelaBuscarOperacoes extends JInternalFrame {
                     .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(37, 37, 37)
-                                .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(789, 789, 789)
-                                .addComponent(jButtonBuscar)
-                                .addGap(29, 29, 29))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(789, 789, 789)
+                                    .addComponent(jButtonBuscar)
+                                    .addGap(29, 29, 29))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,9 +154,9 @@ public class TelaBuscarOperacoes extends JInternalFrame {
                 .addComponent(jLabelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,23 +230,23 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoes.getModel();
     model.setRowCount(0); 
 
-    for (Operacao op : operacoes) {
-        model.addRow(new Object[]{
-            op.getId(),
-            op.getAtivo(),
-            op.getPrecoEntrada(),
-            op.getPrecoSaida(),
-            op.getQuantidadeContratos(),
-            op.getTipoOperacao(),
-            op.getTipoPosicao(),
-            op.getStatusOperacao(),
-            new ImageIcon(op.getImg()),
-            op.getDataHora(),
-            op.getEventoTecnicoBase(),
-           
-            
-        });
-    }
+        for (Operacao op : operacoes) {
+            model.addRow(new Object[]{
+                op.getId(),
+                op.getAtivo(),
+                op.getPrecoEntrada(),
+                op.getPrecoSaida(),
+                op.getQuantidadeContratos(),
+                op.getTipoOperacao(),
+                op.getTipoPosicao(),
+                op.getStatusOperacao(),
+                new ImageIcon(op.getImg()),
+                op.getDataHora(),
+                op.getEventoTecnicoBase(),
+
+
+            });
+        }
 }
     
     
