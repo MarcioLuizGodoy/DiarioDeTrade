@@ -58,7 +58,7 @@ public void exibirGraficoEvolucao() {
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     dataset.addValue(totalGain, "Ganhos", "GAIN");
     dataset.addValue(totalLoss, "Prejuízos", "LOSS");
-    dataset.addValue(saldo, "Capital","SALDO");
+    dataset.addValue(saldo, "Capital","BALANCE");
 
     JFreeChart chart = ChartFactory.createBarChart(
     "Evolução do Capital", "Status Operacoes", "Valor",
