@@ -15,6 +15,7 @@ public class EstatisticasPorAtivoController {
     Double auxGain;
     Double auxLoss;
     Double auxSaldo;
+    Integer totalOperacoes;
 
     
     public EstatisticasPorAtivoController(){
@@ -48,11 +49,6 @@ public class EstatisticasPorAtivoController {
         auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(listaOperacoes);
         return auxSaldo;
     }
-    
-    
-
-    
-    
     
     
     

@@ -1,12 +1,16 @@
 package gui;
 import controller.EstatisticasPorAtivoController;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import model.Operacao;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 public class TelaEstatisticaPorAtivo extends javax.swing.JInternalFrame {
@@ -121,19 +125,32 @@ public class TelaEstatisticaPorAtivo extends javax.swing.JInternalFrame {
 public void exibirGraficoEstatisticaAtivo() {
     
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    
+    dataset.addValue(operacoesPorAtivo.size(), "TOTAL OPERACOES", "TOTAL OPERACOES");
     dataset.addValue(totalGain, "GAIN", "GAIN");
     dataset.addValue(totalLoss,"LOSS" , "LOSS");
     dataset.addValue(saldo, "BALANCE", "BALANCE");
 
     JFreeChart jfc = ChartFactory.createBarChart(
     "Estatísticas do Ativo",
-    "Tipo",
-    "Valor (R$)",
+    " ",
+    "Estatística",
     dataset,
     PlotOrientation.VERTICAL,
     true, true, false
 );
+    jfc.setBackgroundPaint(java.awt.Color.WHITE);
+    jfc.getTitle().setFont(new Font("Arial Black", Font.BOLD,30));
+    jfc.getTitle().setPaint(Color.BLUE);
+    
+    CategoryPlot plot = jfc.getCategoryPlot();
+    BarRenderer renderer = (BarRenderer) plot.getRenderer();
+    renderer.setSeriesPaint(0, Color.BLACK);
+    renderer.setSeriesPaint(1, Color.GREEN);
+    renderer.setSeriesPaint(2, Color.RED);
+    renderer.setSeriesPaint(3, Color.BLUE);
 
+    
     ChartPanel chartPanel = new ChartPanel(jfc);
     //chartPanel.setSize(jDesktopPane1.getSize());
    jDesktopPane1.setLayout(new java.awt.BorderLayout());
