@@ -40,3 +40,36 @@ public class   CalculadoraEstatisticasResultados {
 
 
 }
+
+
+
+
+
+//========================================================================
+    
+    //QUANDO ESSE METODO ESTIVER PRONTO, SETAR ELE NAS DE BAIXO PRA QUE O CALCULO SEJA FEITO CORRETAMENTE!!!
+    
+   /* public  static Double PegarTipoAtivo(Operacao operacao){
+        Double padraoMovimentacao;
+        
+        if(operacao.getTipoAtivo.equals("WIN"){
+            tipoAtivo.parseDouble(tipoAtivoTela);
+            padraoMovimentacao = 0.20;
+            return padraoMovimentacao;
+        }
+        else if(operacao.getTipoAtivo.equals("WDO"){
+            tipoAtivo.parseDouble(tipoAtivoTela);
+            padraoMovimentacao = 0.50;
+            return padraoMovimentacao;
+        }
+    else if( operacao.getTipoAtivo.equals(ACAO"){
+            tipoAtivo.parseDouble(tipoAtivoTela);
+            padraoMovimentacao = 0.01;
+        }    
+                return padraoMovimentacao;
+
+    }
+    
+    */
+    
+//============================================================================

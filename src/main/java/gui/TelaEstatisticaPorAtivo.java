@@ -50,7 +50,7 @@ public class TelaEstatisticaPorAtivo extends javax.swing.JInternalFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabelTitulo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabelTitulo.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(0, 51, 255));
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Estatísticas Por Ativo");
