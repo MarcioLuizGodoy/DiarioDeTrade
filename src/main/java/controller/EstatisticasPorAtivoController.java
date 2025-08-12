@@ -8,52 +8,53 @@ import java.util.List;
 import model.Dao.OperacaoDao;
 import model.Operacao;
 
-public class EvolucaoCapitalController {
-    
+
+public class EstatisticasPorAtivoController {
     List<Operacao> listaOperacoes = new ArrayList<>();
+    String ativo; //CASO NO FUTURO PRECISE, JÁ ESTA AQUI.
     Double auxGain;
     Double auxLoss;
     Double auxSaldo;
- 
-    public EvolucaoCapitalController(){
+
+    
+    public EstatisticasPorAtivoController(){
     }
     
-    public List<Operacao> consutarOperacoesController() {
+    
+    public List<Operacao> consultarOperacoesController(String ativo){
+        this.ativo = ativo;
         OperacaoDao oD = new OperacaoDao();
-            try {
-               this.listaOperacoes =  oD.consultarTodasOperacoes();
-            } catch (DbException | IOException e) {
-                e.printStackTrace(); 
-                return new ArrayList<>();
-
+            try{
+                this.listaOperacoes = oD.consultarOperacoesPorAtivo(ativo); 
             }
-         return this.listaOperacoes;
-         
+            catch(DbException e){
+                e.printStackTrace();
+                return new ArrayList<>();
+            }
+        return listaOperacoes;
     }
     
     public double coletarOsGains(){
-       auxGain =  CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoes);
-       return auxGain;
+        auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoes);
+        return auxGain;
     }
     
     public double coletarOsLoss(){
         auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(listaOperacoes);
         return auxLoss;
     }
-    public double coletarSaldoFinalCapital(){
+    
+    public double coletarOsSaldos(){
         auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(listaOperacoes);
         return auxSaldo;
     }
     
-  
-    
-    
-    
-    
-    
-    
-    
-    
     
 
+    
+    
+    
+    
+    
+    
 }

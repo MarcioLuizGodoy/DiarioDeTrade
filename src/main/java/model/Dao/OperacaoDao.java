@@ -110,14 +110,46 @@ import model.TipoPosicao;
 
     
     
-    
+   public List<Operacao> consultarOperacoesPorAtivo(String ativo) {
+    List<Operacao> listaOperacoes = new ArrayList<>();
+    try {
+        String sql = "SELECT * FROM operacoes WHERE UPPER(ativo) = UPPER(?)";
+        Connection conn = DB.pegarConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, ativo);
+        ResultSet rs = ps.executeQuery();
 
-   
+        while (rs.next()) {
+            Operacao op = new Operacao();
+            op.setId(rs.getInt("id"));
+            op.setAtivo(rs.getString("ativo"));
+            op.setPrecoEntrada(rs.getDouble("preco_entrada"));
+            op.setPrecoSaida(rs.getDouble("preco_saida"));
+            op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
+            op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
+            op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
+            op.setStatusOperacao(rs.getString("status_operacao"));
+            Timestamp timestamp = rs.getTimestamp("data_hora");
+            if (timestamp != null) {
+                op.setDataHora(timestamp.toLocalDateTime());
+            }
+            op.setDescricao(rs.getString("descricao"));
+            op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
+            byte[] bytes = rs.getBytes("imagem");
+            if (bytes != null) {
+                ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                BufferedImage img = ImageIO.read(bais);
+                op.setImg(img);
+            }
 
-    
-  
+            listaOperacoes.add(op);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
 
-   
- 
- 
-}
+    } catch (DbException | SQLException|IOException e) {
+        e.printStackTrace();
+    }
+    return listaOperacoes;
+}}

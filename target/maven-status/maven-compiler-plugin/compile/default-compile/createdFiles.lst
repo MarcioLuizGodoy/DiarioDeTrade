@@ -1,4 +1,5 @@
 app\App.class
+gui\TelaEstatisticaPorAtivo$1.class
 gui\TelaRegistrarOperacao$2.class
 controller\EvolucaoCapitalController.class
 model\Usuario.class
@@ -14,6 +15,7 @@ gui\TelaMenu$2.class
 gui\TelaMenu.class
 gui\TelaBuscarOperacoes$2.class
 gui\TelaBuscarOperacoes$1.class
+controller\EstatisticasPorAtivoController.class
 gui\TelaRegistrarOperacao$1.class
 model\TipoOperacao.class
 model\TipoPosicao.class
@@ -24,6 +26,7 @@ gui\TelaMenu$4.class
 gui\TelaLogin$1.class
 db\DbException.class
 gui\TelaLogin.class
+gui\TelaEstatisticaPorAtivo.class
 model\Dao\OperacaoDao.class
 db\DB.class
 gui\TelaBuscarOperacoes$3.class

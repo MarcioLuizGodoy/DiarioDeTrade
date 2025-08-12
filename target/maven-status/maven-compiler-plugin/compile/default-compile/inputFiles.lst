@@ -10,10 +10,12 @@ C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\app\App.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaInicio.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\LoginController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\TipoPosicao.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorAtivo.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaLogin.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Dao\LoginDao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Usuario.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEvolucaoCapital.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticasPorAtivoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\RegistrarOperacaoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\BuscarOperacaoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaRegistrarOperacao.java
