@@ -2,7 +2,6 @@ package controller;
 
 import auxiliaresEstatisticas.CalculadoraEstatisticasResultados;
 import db.DbException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Dao.OperacaoDao;
@@ -21,7 +20,6 @@ public class EstatisticasPorAtivoController {
     public EstatisticasPorAtivoController(){
     }
     
-    
     public List<Operacao> consultarOperacoesController(String ativo){
         this.ativo = ativo;
         OperacaoDao oD = new OperacaoDao();
@@ -29,11 +27,11 @@ public class EstatisticasPorAtivoController {
                 this.listaOperacoes = oD.consultarOperacoesPorAtivo(ativo); 
             }
             catch(DbException e){
-                e.printStackTrace();
-                return new ArrayList<>();
-            }
+                e.printStackTrace();            }
         return listaOperacoes;
     }
+    
+    
     
     public double coletarOsGains(){
         auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoes);

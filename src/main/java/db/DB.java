@@ -39,9 +39,8 @@ public class DB {
                 throw new DbException(e.getMessage());
                 
             }
-        return conn;
         } 
-        return null;
+        return conn;
     }
     
     

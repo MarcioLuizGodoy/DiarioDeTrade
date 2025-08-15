@@ -19,19 +19,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,22 +43,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelTitulo" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="jButtonImagemGraficoOperacao" min="-2" pref="183" max="-2" attributes="0"/>
-                  <EmptySpace pref="234" max="32767" attributes="0"/>
-                  <Component id="jButtonAviso" min="-2" pref="453" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="465" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jButtonPrecoEntrada" min="-2" pref="126" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jTextFieldPrecoEntrada" min="-2" pref="148" max="-2" attributes="0"/>
@@ -68,36 +57,48 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jTextFieldPrecoSaida" min="-2" pref="148" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jButtonTipoOperacao" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBoxTipoOperacao" min="-2" pref="148" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jButtonTipoPosicao" min="-2" pref="126" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBoxTipoPosicao" min="-2" pref="148" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jButtonAtivo" max="32767" attributes="0"/>
+                                      <Component id="jButtonTipoAtivo" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextFieldAtivo" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxTipoAtivo" pref="148" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButtonStatusOperacao" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButtonQuantidadeContratos" max="32767" attributes="0"/>
+                                      <Component id="jButtonTipoOperacao" pref="126" max="32767" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBoxStatusOperacao" min="-2" pref="148" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jTextFieldQuantidadeContratos" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxTipoOperacao" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButtonEventoTecnicoBase" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxEventoTecnicoBase" min="-2" pref="148" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonAtivo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextFieldAtivo" min="-2" pref="148" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jButtonQuantidadeContratos" min="-2" pref="126" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextFieldQuantidadeContratos" min="-2" pref="148" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jButtonStatusOperacao" pref="126" max="32767" attributes="0"/>
+                                              <Component id="jButtonTipoPosicao" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="46" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jButtonEventoTecnicoBase" min="-2" pref="154" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jComboBoxTipoPosicao" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxStatusOperacao" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxEventoTecnicoBase" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -112,11 +113,18 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                          <Component id="jButtonCadastrar" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="jButtonImagemGraficoOperacao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="jButtonCadastrar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="jButtonAviso" min="-2" pref="453" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="jLabelTitulo" min="-2" pref="1409" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -125,22 +133,27 @@
               <Group type="102" attributes="0">
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelTitulo" min="-2" pref="59" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="jButtonAtivo" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldAtivo" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="22" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="373" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonPrecoEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonTipoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxTipoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextFieldPrecoEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonPrecoEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -149,8 +162,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonQuantidadeContratos" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextFieldQuantidadeContratos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonQuantidadeContratos" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -159,35 +172,28 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonTipoPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxTipoPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonTipoPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButtonStatusOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxStatusOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonEventoTecnicoBase" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxEventoTecnicoBase" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEventoTecnicoBase" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="308" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonAviso" alignment="3" pref="63" max="32767" attributes="0"/>
-                      <Component id="jButtonImagemGraficoOperacao" alignment="3" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="jButtonImagemGraficoOperacao" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jButtonCadastrar" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jButtonAviso" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButtonCadastrar" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -307,7 +313,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="33" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registrar Imagem"/>
+            <Property name="text" type="java.lang.String" value="Enviar Imagem"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonImagemGraficoOperacaoActionPerformed"/>
@@ -398,9 +404,10 @@
               <Color blue="ff" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Rompimento"/>
-                <StringItem index="1" value="Regressao media movel"/>
+              <StringArray count="3">
+                <StringItem index="0" value=""/>
+                <StringItem index="1" value="Rompimento"/>
+                <StringItem index="2" value="Regressao media movel"/>
               </StringArray>
             </Property>
           </Properties>
@@ -417,11 +424,38 @@
               <Font name="Arial Black" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="33" type="rgb"/>
+              <Color blue="ff" green="33" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aten&#xe7;&#xe3;o ao Registrar a sua Opera&#xe7;&#xe3;o!!"/>
+            <Property name="text" type="java.lang.String" value="TradeOffs"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonTipoAtivo">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tipo Ativo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxTipoAtivo">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="0" type="rgb"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value=""/>
+                <StringItem index="1" value="WIN"/>
+                <StringItem index="2" value="WDO"/>
+                <StringItem index="3" value="ACOES"/>
+                <StringItem index="4" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

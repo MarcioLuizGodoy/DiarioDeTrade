@@ -1,5 +1,6 @@
 app\App.class
 gui\TelaEstatisticaPorAtivo$1.class
+controller\EstatisticaPorTipoAtivoController.class
 gui\TelaRegistrarOperacao$2.class
 controller\EvolucaoCapitalController.class
 model\Usuario.class
@@ -8,16 +9,19 @@ auxiliaresEstatisticas\CalculadoraEstatisticasResultados.class
 controller\BuscarOperacaoController.class
 gui\TelaEvolucaoCapital.class
 gui\TelaInicio.class
+gui\TelaEstatisticaPorTipoAtivo$1.class
 gui\TelaRegistrarOperacao.class
 gui\TelaBuscarOperacoes$4.class
 controller\LoginController.class
 gui\TelaMenu$2.class
+gui\TelaMenu$5.class
 gui\TelaMenu.class
 gui\TelaBuscarOperacoes$2.class
 gui\TelaBuscarOperacoes$1.class
 controller\EstatisticasPorAtivoController.class
 gui\TelaRegistrarOperacao$1.class
 model\TipoOperacao.class
+gui\TelaEstatisticaPorTipoAtivo.class
 model\TipoPosicao.class
 model\Operacao.class
 controller\RegistrarOperacaoController.class

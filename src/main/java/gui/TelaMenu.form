@@ -32,6 +32,14 @@
             <Property name="text" type="java.lang.String" value="Estatisticas e Financeiro"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEstatisticaPorTipoAtivo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Estatistica por Tipo Ativo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEstatisticaPorTipoAtivoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEvolucaoCapital">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Evolucao Capital"/>
@@ -40,12 +48,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEvolucaoCapitalActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBuscarPorAtivo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar por Ativo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBuscarPorAtivoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
@@ -130,31 +138,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jButton1" pref="1235" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="1241" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jButton1" min="-2" pref="637" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="691" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgs/tabajara.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="TESTE"/>
-          </Properties>
-        </Component>
-      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

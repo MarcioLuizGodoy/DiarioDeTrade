@@ -11,18 +11,18 @@ public class   CalculadoraEstatisticasResultados {
         Double ganhoOperacao = 0.0;
         for( Operacao op : operacoes){
             if( op.getStatusOperacao().equals("GAIN")){
-                ganhoOperacao = ganhoOperacao +((op.getPrecoSaida() - op.getPrecoEntrada()) * op.getQuantidadeContratos() * 0.20);
+                ganhoOperacao = ganhoOperacao +((op.getPrecoSaida() - op.getPrecoEntrada()) * op.getQuantidadeContratos() * setarPadraoMovimentacaoTipoAtivo(op));
             } 
         }
         return + Math.abs(ganhoOperacao);
     }
     //=====================================================================================================================
-
+ 
       public static Double calcularResultadoOperacaoLoss(List<Operacao> operacoes){
         Double perdaOperacao = 0.0;
         for( Operacao op : operacoes){
             if( op.getStatusOperacao().equals("LOSS")){
-            perdaOperacao += -1 * ((op.getPrecoEntrada() - op.getPrecoSaida()) * op.getQuantidadeContratos() * 0.20);
+            perdaOperacao += -1 * ((op.getPrecoEntrada() - op.getPrecoSaida()) * op.getQuantidadeContratos() * setarPadraoMovimentacaoTipoAtivo(op));
             }
             
         }
@@ -37,39 +37,28 @@ public class   CalculadoraEstatisticasResultados {
    
     //=========================================================================================================================
      
-
-
-}
-
-
-
-
-
-//========================================================================
     
     //QUANDO ESSE METODO ESTIVER PRONTO, SETAR ELE NAS DE BAIXO PRA QUE O CALCULO SEJA FEITO CORRETAMENTE!!!
     
-   /* public  static Double PegarTipoAtivo(Operacao operacao){
-        Double padraoMovimentacao;
-        
-        if(operacao.getTipoAtivo.equals("WIN"){
-            tipoAtivo.parseDouble(tipoAtivoTela);
-            padraoMovimentacao = 0.20;
-            return padraoMovimentacao;
-        }
-        else if(operacao.getTipoAtivo.equals("WDO"){
-            tipoAtivo.parseDouble(tipoAtivoTela);
-            padraoMovimentacao = 0.50;
-            return padraoMovimentacao;
-        }
-    else if( operacao.getTipoAtivo.equals(ACAO"){
-            tipoAtivo.parseDouble(tipoAtivoTela);
-            padraoMovimentacao = 0.01;
-        }    
-                return padraoMovimentacao;
+  public static Double setarPadraoMovimentacaoTipoAtivo(Operacao operacao) {
+    String tipoAtivo = operacao.getTipoAtivo();
 
+    
+    if (tipoAtivo == null) {
+        return 0.0; // Ou lance uma exceção, dependendo da lógica do app
     }
-    
-    */
-    
-//============================================================================
+
+    switch (tipoAtivo.toUpperCase()) {
+        case "WIN":
+            return 0.20;
+        case "WDO":
+            return 0.50;
+        case "ACOES":
+            return 0.01;
+        default:
+            return 0.0; // Valor padrão se o tipo não for reconhecido
+    }
+}
+
+   
+}

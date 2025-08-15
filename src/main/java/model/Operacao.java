@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 public class Operacao {
     private Integer id;  // Usar Integer para permitir null (antes de inserir)
+    private String tipoAtivo;
     private String ativo;
     private Double precoEntrada;
     private Double precoSaida;
@@ -24,9 +25,11 @@ public class Operacao {
     
     // Construtor completo, ID E HORA. SAO AUTOINCREMENTADOS PELO BANCO DE DADOS.
     // DEPOIS É SÓ CHAMÁ-LOS COM GETTERS E SETTERS.
-    public Operacao(String ativo, Double precoEntrada, Double precoSaida,
+    public Operacao(String tipoAtivo,String ativo, Double precoEntrada, Double precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao, TipoPosicao tipoPosicao,
-        String statusOperacao, BufferedImage img, String descricao, String eventoTecnicoBase ) {
+        String statusOperacao, BufferedImage img, String descricao, String eventoTecnicoBase ) {    
+        
+            this.tipoAtivo = tipoAtivo;
             this.ativo = ativo;
             this.precoEntrada = precoEntrada;
             this.precoSaida = precoSaida;
@@ -42,6 +45,9 @@ public class Operacao {
     
     
     // Getters
+    public String getTipoAtivo(){
+        return tipoAtivo;
+    }        
     public LocalDateTime getDataHora() {
     return dataHora;
 }
@@ -80,7 +86,9 @@ public class Operacao {
     }
 
     // Setters
-    
+    public void setTipoAtivo(String tipoAtivo){
+        this.tipoAtivo = tipoAtivo;
+    }
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }

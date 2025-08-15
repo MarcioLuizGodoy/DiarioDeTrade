@@ -9,6 +9,7 @@ import model.TipoOperacao;
 import model.TipoPosicao;
 
 public class RegistrarOperacaoController {
+    private String tipoAtivo;
     private String ativo;
     private Double precoEntrada;
     private Double precoSaida;
@@ -28,10 +29,13 @@ public void receberImagemTela(BufferedImage imagem) {
 }
 
     public void receberDados(
+        String tipoAtivo,
         String ativo, Double precoEntrada, Double precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao,
         TipoPosicao tipoPosicao, String statusOperacao,BufferedImage image,
         String descricao, String eventoTecnicoBase ) {
+        
+        this.tipoAtivo = tipoAtivo;
         this.ativo = ativo;
         this.precoEntrada = precoEntrada;
         this.precoSaida = precoSaida;
@@ -54,7 +58,7 @@ public void receberImagemTela(BufferedImage imagem) {
      */
     public boolean salvarRegistroController()  {
         Operacao operacao = new Operacao(
-            ativo, precoEntrada, precoSaida, quantidadeContratos,
+            tipoAtivo,ativo, precoEntrada, precoSaida, quantidadeContratos,
             tipoOperacao, tipoPosicao, statusOperacao,this.imagem,descricao,eventoTecnicoBase
         );
         OperacaoDao oD = new OperacaoDao();
