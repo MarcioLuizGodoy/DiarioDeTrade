@@ -1,3 +1,10 @@
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticaPorTipoOperacaoController.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\TipoOperacao.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\app\App.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\LoginController.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaLogin.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Operacao.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorTipoOperacao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticaPorTipoAtivoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\db\DB.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaMenu.java
@@ -5,15 +12,11 @@ C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaBuscarOperacoes.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Dao\OperacaoDao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorTipoAtivo.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\db\DbException.java
-C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\TipoOperacao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\auxiliaresEstatisticas\CalculadoraEstatisticasResultados.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EvolucaoCapitalController.java
-C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\app\App.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaInicio.java
-C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\LoginController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\TipoPosicao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorAtivo.java
-C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaLogin.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Dao\LoginDao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Usuario.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEvolucaoCapital.java
@@ -21,4 +24,3 @@ C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticasPorAt
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\RegistrarOperacaoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\BuscarOperacaoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaRegistrarOperacao.java
-C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Operacao.java

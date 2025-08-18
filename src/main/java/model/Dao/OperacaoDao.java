@@ -21,12 +21,13 @@ import model.TipoPosicao;
 
 
     public class OperacaoDao {
-    public OperacaoDao(){
+    
+        public OperacaoDao(){
     }
     
     
     
-    public boolean persistirRegistro(Operacao operacao) {
+        public boolean persistirRegistro(Operacao operacao) {
       String sql = "INSERT INTO Operacoes (tipo_ativo, ativo, preco_entrada, preco_saida, quantidade_contratos, tipo_operacao, tipo_posicao, status_operacao, imagem, descricao, evento_tecnico_base)" +
                          "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       try (
@@ -67,7 +68,7 @@ import model.TipoPosicao;
  
     
     //METODO QUE CONSULTA O BANCO E DEVOLVE UMA LISTA DAS OPERACOES CONSULTADAS QUE ATENDAM AO CRITERIO TODAS AS ( OPERACOES COMO FILTRO DESEJADO).
-    public List<Operacao> consultarTodasOperacoes() throws IOException {
+        public List<Operacao> consultarTodasOperacoes() throws IOException {
     String sql = "SELECT * FROM operacoes";
     List<Operacao> lista = new ArrayList<>();
         try {
@@ -111,7 +112,7 @@ import model.TipoPosicao;
 
     
     
-   public List<Operacao> consultarOperacoesPorAtivo(String ativo) {
+        public List<Operacao> consultarOperacoesPorAtivo(String ativo) {
     List<Operacao> listaOperacoes = new ArrayList<>();
     try {
         String sql = "SELECT * FROM operacoes WHERE UPPER(ativo) = UPPER(?)";
@@ -149,10 +150,12 @@ import model.TipoPosicao;
 
             listaOperacoes.add(op);
         }
-        DB.fecharConnection();
 
     } catch (DbException | SQLException|IOException e) {
         e.printStackTrace();
+    }finally{
+                DB.fecharConnection();
+
     }
     return listaOperacoes;
 }
@@ -162,7 +165,7 @@ import model.TipoPosicao;
    
    
    
-   public List<Operacao> consultarOperacoesPorTipoAtivo(String tipoAtivo){
+        public List<Operacao> consultarOperacoesPorTipoAtivo(String tipoAtivo){
        
     List<Operacao> operacoes = new ArrayList<>();
     try{
@@ -198,9 +201,7 @@ import model.TipoPosicao;
             }
 
             operacoes.add(op);
-            return operacoes;
         }
-        DB.fecharConnection();
 
     }
     catch(DbException | SQLException e ){
@@ -208,9 +209,62 @@ import model.TipoPosicao;
     }
     catch (IOException ex) {
         ex.printStackTrace();
-        }
-        return new ArrayList<>();
+        }finally{
+                DB.fecharConnection();
+
+    }
+            return operacoes;
     }
     
+        
+        public List<Operacao> consultarOperacaoPorTipoOperacao(String escolha){
+            List<Operacao> listaOperacoes = new ArrayList<>();
+            
+            try{
+                Connection conn = DB.pegarConnection();
+                String sql = " SELECT * FROM Operacoes where tipo_operacao = ?";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, escolha);
+                ResultSet rs = ps.executeQuery();
+                
+            while(rs.next()){
+                Operacao op = new Operacao();
+
+                op.setId(rs.getInt("id"));
+                op.setTipoAtivo(rs.getString("tipo_ativo"));
+                op.setAtivo(rs.getString("ativo"));
+                op.setPrecoEntrada(rs.getDouble("preco_entrada"));
+                op.setPrecoSaida(rs.getDouble("preco_saida"));
+                op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
+                op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
+                op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
+                op.setStatusOperacao(rs.getString("status_operacao"));
+                Timestamp timestamp = rs.getTimestamp("data_hora");
+                if (timestamp != null) {
+                op.setDataHora(timestamp.toLocalDateTime());
+                    }
+                op.setDescricao(rs.getString("descricao"));
+                op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
+                byte[] bytes = rs.getBytes("imagem");
+                if (bytes != null) {
+                    ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                    BufferedImage img = ImageIO.read(bais);
+                    op.setImg(img);
+            }
+
+            listaOperacoes.add(op);
+        }
+            }catch(DbException |SQLException|IOException e ){
+                e.printStackTrace();
+            }       
+            finally{
+                DB.fecharConnection();
+            }
+            return listaOperacoes;
+
+        }
+        
 }
+
+   
 

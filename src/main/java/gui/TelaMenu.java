@@ -1,5 +1,9 @@
 package gui;
 
+import javax.swing.JInternalFrame;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 public class TelaMenu extends javax.swing.JFrame {  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -14,7 +18,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItemEstatisticaPorTipoAtivo = new javax.swing.JMenuItem();
         jMenuItemEvolucaoCapital = new javax.swing.JMenuItem();
         jMenuItemBuscarPorAtivo = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItemEstatiticaPorTipoOperacao = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
@@ -83,8 +87,13 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemBuscarPorAtivo);
 
-        jMenuItem6.setText("Buscar por Tipo Operacao");
-        jMenuFinanceiro.add(jMenuItem6);
+        jMenuItemEstatiticaPorTipoOperacao.setText("Estatistica Por Tipo Operacao");
+        jMenuItemEstatiticaPorTipoOperacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEstatiticaPorTipoOperacaoActionPerformed(evt);
+            }
+        });
+        jMenuFinanceiro.add(jMenuItemEstatiticaPorTipoOperacao);
 
         jMenuItem7.setText("Buscar  por Tipo Posicao");
         jMenuFinanceiro.add(jMenuItem7);
@@ -178,17 +187,27 @@ public class TelaMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemEstatisticaPorTipoAtivoActionPerformed
 
+    private void jMenuItemEstatiticaPorTipoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstatiticaPorTipoOperacaoActionPerformed
+                        for(JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
+                            frame.dispose();
+                        }
+                        TelaEstatisticaPorTipoOperacao tela = new TelaEstatisticaPorTipoOperacao();
+                        tela.setSize(jDesktopPaneContainerTelas.getSize());
+                        ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                        jDesktopPaneContainerTelas.add(tela).setVisible(true);
+    }//GEN-LAST:event_jMenuItemEstatiticaPorTipoOperacaoActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPaneContainerTelas;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuFinanceiro;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemBuscarOperacoes;
     private javax.swing.JMenuItem jMenuItemBuscarPorAtivo;
     private javax.swing.JMenuItem jMenuItemEstatisticaPorTipoAtivo;
+    private javax.swing.JMenuItem jMenuItemEstatiticaPorTipoOperacao;
     private javax.swing.JMenuItem jMenuItemEvolucaoCapital;
     private javax.swing.JMenuItem jMenuItemRegistrarOperacao;
     private javax.swing.JMenu jMenuOperacoes;

@@ -4,6 +4,7 @@ import controller.EstatisticaPorTipoAtivoController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 import model.Operacao;
 import org.jfree.chart.ChartFactory;
@@ -19,7 +20,8 @@ public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
     Double totalGain;
     Double totalLoss;
     Double saldo;
-    List<Operacao> operacoes;
+      
+    List<Operacao> operacoes= new ArrayList<>();
     EstatisticaPorTipoAtivoController c = new EstatisticaPorTipoAtivoController();
 
     
@@ -115,11 +117,12 @@ public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
     private void jButtonBuscarEstatisticaPorTipoAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarEstatisticaPorTipoAtivoActionPerformed
             escolha = (String) jComboBoxTipoAtivo.getSelectedItem();
             c.receberEscolhaPorAtivoController(escolha);
-            operacoes = c.buscarOperacaoPorTipoAtivoController();
+            this.operacoes = c.buscarOperacaoPorTipoAtivoController();
             totalGain = c.coletarOsGains();
             totalLoss =  c.coletarOsLoss();
             saldo = c.coletarOsSaldos();
             exibirGraficoEstatisticaAtivo();
+            System.out.println("Total operações   : " + this.operacoes.size());
 
     }//GEN-LAST:event_jButtonBuscarEstatisticaPorTipoAtivoActionPerformed
 
@@ -127,15 +130,17 @@ public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
     public void exibirGraficoEstatisticaAtivo() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     
-    dataset.addValue(operacoes.size(), "TOTAL OPERACOES", "TOTAL OPERACOES");
-    dataset.addValue(totalGain, "GAIN", "GAIN");
-    dataset.addValue(totalLoss,"LOSS" , "LOSS");
-    dataset.addValue(saldo, "BALANCE", "BALANCE");
+
+dataset.addValue(totalGain, "GAIN", "Ganhos");
+dataset.addValue(totalLoss, "LOSS", "Perdas");
+dataset.addValue(saldo, "BALANCE", "Saldo");
+dataset.addValue(this.operacoes.size(), "TOTAL TRADEs", "totalidades");
+
 
     JFreeChart jfc = ChartFactory.createBarChart(
     "Estatísticas do Ativo",
     " ",
-    "Estatística",
+    "Estatisticas",
     dataset,
     PlotOrientation.VERTICAL,
     true, true, false
@@ -146,15 +151,17 @@ public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
     
     CategoryPlot plot = jfc.getCategoryPlot();
     BarRenderer renderer = (BarRenderer) plot.getRenderer();
-    renderer.setSeriesPaint(0, Color.BLACK);
-    renderer.setSeriesPaint(1, Color.GREEN);
-    renderer.setSeriesPaint(2, Color.RED);
-    renderer.setSeriesPaint(3, Color.BLUE);
+    renderer.setSeriesPaint(0, Color.GREEN);
+    renderer.setSeriesPaint(1, Color.RED);
+    renderer.setSeriesPaint(2, Color.BLUE);
+    renderer.setSeriesPaint(3,Color.BLACK);
 
     
     ChartPanel chartPanel = new ChartPanel(jfc);
     //chartPanel.setSize(jDesktopPane1.getSize());
-    chartPanel.setPreferredSize(new Dimension(350, 650));
+   // chartPanel.setPreferredSize(new Dimension(350, 650));
+   chartPanel.setPreferredSize(jDesktopPane1.getSize());
+
 
     jDesktopPane1.setLayout(new java.awt.BorderLayout());
     jDesktopPane1.removeAll();
