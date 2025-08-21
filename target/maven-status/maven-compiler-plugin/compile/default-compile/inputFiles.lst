@@ -7,9 +7,11 @@ C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Operacao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorTipoOperacao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticaPorTipoAtivoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\db\DB.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorTipoPosicao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaMenu.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaBuscarOperacoes.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Dao\OperacaoDao.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticaPorTipoPosicaoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorTipoAtivo.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\db\DbException.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\auxiliaresEstatisticas\CalculadoraEstatisticasResultados.java

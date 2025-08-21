@@ -18,12 +18,12 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
     
-    Double totalGain;
-    Double totalLoss;
-    Double saldo;    
-    String escolha;
-    EstatisticaPorTipoOperacaoController c = new EstatisticaPorTipoOperacaoController();
-    List<Operacao> operacoesFiltradasDevolvidas = new ArrayList<>();
+        Double totalGain;
+        Double totalLoss;
+        Double saldo;    
+        String escolha;
+        EstatisticaPorTipoOperacaoController c = new EstatisticaPorTipoOperacaoController();
+        List<Operacao> operacoesFiltradasDevolvidas = new ArrayList<>();
     
     
     
@@ -135,10 +135,10 @@ public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 
-dataset.addValue(operacoesFiltradasDevolvidas.size(), "TOTAL OPERACOES", "Totalidades");
-dataset.addValue(totalGain, "GAIN", "Ganhos");
-dataset.addValue(totalLoss, "LOSS", "Perdas");
-dataset.addValue(saldo, "BALANCE", "Saldos");
+        dataset.addValue(operacoesFiltradasDevolvidas.size(), "TOTAL OPERACOES", "Totalidades");
+        dataset.addValue(totalGain, "GAIN", "Ganhos");
+        dataset.addValue(totalLoss, "LOSS", "Perdas");
+        dataset.addValue(saldo, "BALANCE", "Saldos");
 
        JFreeChart jfc = ChartFactory.createBarChart(
        "Estatísticas do Ativo",
@@ -169,16 +169,8 @@ dataset.addValue(saldo, "BALANCE", "Saldos");
        jDesktopPane1.add(chartPanel);
        jDesktopPane1.revalidate();
        jDesktopPane1.repaint();
-       }    
+       }
     
-    
-    
-    
-    
-    public static void main(String args[]) {
-      
-        java.awt.EventQueue.invokeLater(() -> new TelaEstatisticaPorTipoOperacao().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

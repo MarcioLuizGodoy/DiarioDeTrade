@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.JInternalFrame;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class TelaMenu extends javax.swing.JFrame {  
@@ -14,6 +13,8 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuOperacoes = new javax.swing.JMenu();
         jMenuItemRegistrarOperacao = new javax.swing.JMenuItem();
         jMenuItemBuscarOperacoes = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuFinanceiro = new javax.swing.JMenu();
         jMenuItemEstatisticaPorTipoAtivo = new javax.swing.JMenuItem();
         jMenuItemEvolucaoCapital = new javax.swing.JMenuItem();
@@ -21,6 +22,12 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItemEstatiticaPorTipoOperacao = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -28,7 +35,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jDesktopPaneContainerTelas.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPaneContainerTelas.setBorder(new javax.swing.border.MatteBorder(null));
-        jDesktopPaneContainerTelas.setForeground(new java.awt.Color(204, 204, 204));
+        jDesktopPaneContainerTelas.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jDesktopPaneContainerTelasLayout = new javax.swing.GroupLayout(jDesktopPaneContainerTelas);
         jDesktopPaneContainerTelas.setLayout(jDesktopPaneContainerTelasLayout);
@@ -41,8 +48,12 @@ public class TelaMenu extends javax.swing.JFrame {
             .addGap(0, 691, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 255));
+        jMenuBar1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+
         jMenuOperacoes.setText("Operações");
 
+        jMenuItemRegistrarOperacao.setForeground(new java.awt.Color(0, 0, 255));
         jMenuItemRegistrarOperacao.setText("Registrar Operação");
         jMenuItemRegistrarOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +62,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItemRegistrarOperacao);
 
+        jMenuItemBuscarOperacoes.setForeground(new java.awt.Color(0, 51, 255));
         jMenuItemBuscarOperacoes.setText("Buscar Operações");
         jMenuItemBuscarOperacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,10 +71,19 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItemBuscarOperacoes);
 
+        jMenuItem1.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem1.setText("Editar Operação");
+        jMenuOperacoes.add(jMenuItem1);
+
+        jMenuItem2.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem2.setText("Excluir Operação");
+        jMenuOperacoes.add(jMenuItem2);
+
         jMenuBar1.add(jMenuOperacoes);
 
         jMenuFinanceiro.setText("Estatisticas e Financeiro");
 
+        jMenuItemEstatisticaPorTipoAtivo.setForeground(new java.awt.Color(51, 51, 255));
         jMenuItemEstatisticaPorTipoAtivo.setText("Estatistica por Tipo Ativo");
         jMenuItemEstatisticaPorTipoAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +92,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemEstatisticaPorTipoAtivo);
 
+        jMenuItemEvolucaoCapital.setForeground(new java.awt.Color(0, 51, 255));
         jMenuItemEvolucaoCapital.setText("Evolucao Capital");
         jMenuItemEvolucaoCapital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +101,8 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemEvolucaoCapital);
 
-        jMenuItemBuscarPorAtivo.setText("Buscar por Ativo");
+        jMenuItemBuscarPorAtivo.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItemBuscarPorAtivo.setText("Estatistica Por Ativo");
         jMenuItemBuscarPorAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemBuscarPorAtivoActionPerformed(evt);
@@ -87,6 +110,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemBuscarPorAtivo);
 
+        jMenuItemEstatiticaPorTipoOperacao.setForeground(new java.awt.Color(0, 51, 255));
         jMenuItemEstatiticaPorTipoOperacao.setText("Estatistica Por Tipo Operacao");
         jMenuItemEstatiticaPorTipoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,13 +119,40 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemEstatiticaPorTipoOperacao);
 
-        jMenuItem7.setText("Buscar  por Tipo Posicao");
+        jMenuItem7.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem7.setText("Estatistica Por Tipo Posicao");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenuFinanceiro.add(jMenuItem7);
 
+        jMenuItem8.setForeground(new java.awt.Color(0, 51, 255));
         jMenuItem8.setText("Buscar por Evento Tecnico Base");
         jMenuFinanceiro.add(jMenuItem8);
 
         jMenuBar1.add(jMenuFinanceiro);
+
+        jMenu1.setText("Usuario(a)");
+
+        jMenuItem3.setText("Cadastrar Usuario");
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Trocar Senha");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Ver Usuarios");
+        jMenu1.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("PDF Relatórios");
+
+        jMenuItem6.setText("Imprimir Relatórios Mensal");
+        jMenu2.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu2);
 
         jMenuSobre.setText("Sobre");
         jMenuBar1.add(jMenuSobre);
@@ -197,11 +248,29 @@ public class TelaMenu extends javax.swing.JFrame {
                         jDesktopPaneContainerTelas.add(tela).setVisible(true);
     }//GEN-LAST:event_jMenuItemEstatiticaPorTipoOperacaoActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+                          for( JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()){
+                                 frame.dispose();
+                                }
+                          TelaEstatisticaPorTipoPosicao tela = new TelaEstatisticaPorTipoPosicao();
+                          tela.setSize(jDesktopPaneContainerTelas.getSize());
+                          ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                          jDesktopPaneContainerTelas.add(tela).setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPaneContainerTelas;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuFinanceiro;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemBuscarOperacoes;
@@ -214,11 +283,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuSobre;
     // End of variables declaration//GEN-END:variables
 
-    
 
-/*public static void main(String args[]) {
-      
-        java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));
-    }*/
 }
 

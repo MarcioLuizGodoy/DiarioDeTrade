@@ -28,7 +28,7 @@ import model.TipoPosicao;
     
     
         public boolean persistirRegistro(Operacao operacao) {
-      String sql = "INSERT INTO Operacoes (tipo_ativo, ativo, preco_entrada, preco_saida, quantidade_contratos, tipo_operacao, tipo_posicao, status_operacao, imagem, descricao, evento_tecnico_base)" +
+        String sql = "INSERT INTO Operacoes (tipo_ativo, ativo, preco_entrada, preco_saida, quantidade_contratos, tipo_operacao, tipo_posicao, status_operacao, imagem, descricao, evento_tecnico_base)" +
                          "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       try (
               
@@ -109,8 +109,7 @@ import model.TipoPosicao;
         }
     return lista;
 }
-
-    
+        
     
         public List<Operacao> consultarOperacoesPorAtivo(String ativo) {
     List<Operacao> listaOperacoes = new ArrayList<>();
@@ -159,12 +158,9 @@ import model.TipoPosicao;
     }
     return listaOperacoes;
 }
-    
-
-   
-   
-   
-   
+        
+        
+        
         public List<Operacao> consultarOperacoesPorTipoAtivo(String tipoAtivo){
        
     List<Operacao> operacoes = new ArrayList<>();
@@ -217,6 +213,7 @@ import model.TipoPosicao;
     }
     
         
+        
         public List<Operacao> consultarOperacaoPorTipoOperacao(String escolha){
             List<Operacao> listaOperacoes = new ArrayList<>();
             
@@ -264,7 +261,55 @@ import model.TipoPosicao;
 
         }
         
-}
+        
+        
+        
+        public List<Operacao> consultarOperacaoPorTipoPosicao( String escolha) {
+                 List<Operacao> listaOperacoes = new ArrayList<>();
+                 try {
+                  Connection conn = DB.pegarConnection();
+                  String sql = "SELECT * FROM operacoes WHERE tipo_posicao = ?";
+                  PreparedStatement ps = conn.prepareStatement(sql);
+                  ps.setString(1, escolha);
+                  ResultSet rs = ps.executeQuery();
+                  
+                           while(rs.next()) {
+                                       Operacao op = new Operacao();
 
-   
+                                      op.setId(rs.getInt("id"));
+                                      op.setTipoAtivo(rs.getString("tipo_ativo"));
+                                      op.setAtivo(rs.getString("ativo"));
+                                      op.setPrecoEntrada(rs.getDouble("preco_entrada"));
+                                      op.setPrecoSaida(rs.getDouble("preco_saida"));
+                                      op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
+                                      op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
+                                      op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
+                                      op.setStatusOperacao(rs.getString("status_operacao"));
+                                      Timestamp timestamp = rs.getTimestamp("data_hora");
+                                      if (timestamp != null) {
+                                      op.setDataHora(timestamp.toLocalDateTime());
+                                          }
+                                      op.setDescricao(rs.getString("descricao"));
+                                      op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
+                                      byte[] bytes = rs.getBytes("imagem");
+                                      if (bytes != null) {
+                                          ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                                          BufferedImage img = ImageIO.read(bais);
+                                          op.setImg(img);
+                                              }
+                                   listaOperacoes.add(op);
+                           }
+                  } catch(DbException | SQLException | IOException e ) {
+                 } finally {
+                                   DB.fecharConnection();
+                 }
+                           return listaOperacoes;
+
+        }
+
+        
+        
+        
+        
+    }
 
