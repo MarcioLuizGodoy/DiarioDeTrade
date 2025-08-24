@@ -73,6 +73,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem1.setForeground(new java.awt.Color(0, 51, 255));
         jMenuItem1.setText("Editar Operação");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditarOperacao(evt);
+            }
+        });
         jMenuOperacoes.add(jMenuItem1);
 
         jMenuItem2.setForeground(new java.awt.Color(0, 51, 255));
@@ -123,7 +128,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem7.setText("Estatistica Por Tipo Posicao");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jMenuItemEstatisticaPorTipoPosicao(evt);
             }
         });
         jMenuFinanceiro.add(jMenuItem7);
@@ -134,7 +139,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuFinanceiro);
 
-        jMenu1.setText("Usuario(a)");
+        jMenu1.setText("Usuario(a)s");
 
         jMenuItem3.setText("Cadastrar Usuario");
         jMenu1.add(jMenuItem3);
@@ -150,6 +155,11 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenu2.setText("PDF Relatórios");
 
         jMenuItem6.setText("Imprimir Relatórios Mensal");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemimprimirRelatorioPDF(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -176,87 +186,110 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public TelaMenu(){
-        initComponents();
-                setContentPane(jDesktopPaneContainerTelas); // Define o DesktopPane como o conteúdo principal da janela
-                setResizable(false);
-                            setLocationRelativeTo(null);
-    }
+                    initComponents();
+                    setContentPane(jDesktopPaneContainerTelas); // Define o DesktopPane como o conteúdo principal da janela
+                    setResizable(false);
+                    setLocationRelativeTo(null);
+         }
     private void jMenuItemRegistrarOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarOperacaoActionPerformed
 
-        for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
-            frame.dispose();
-        }
-            TelaRegistrarOperacao tela = new TelaRegistrarOperacao();
-            tela.setSize(jDesktopPaneContainerTelas.getSize());
-            ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
-            jDesktopPaneContainerTelas.add(tela).setVisible(true);
+                            for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+                            frame.dispose();
+                                   }
+                            TelaRegistrarOperacao tela = new TelaRegistrarOperacao();
+                            tela.setSize(jDesktopPaneContainerTelas.getSize());
+                            ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                            jDesktopPaneContainerTelas.add(tela).setVisible(true);
           
     }//GEN-LAST:event_jMenuItemRegistrarOperacaoActionPerformed
 
     private void jMenuItemBuscarOperacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarOperacoesActionPerformed
-    for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
-            frame.dispose();
-        }
-            TelaBuscarOperacoes tela = new TelaBuscarOperacoes();
-            tela.setSize(jDesktopPaneContainerTelas.getSize());
-            ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
-            jDesktopPaneContainerTelas.add(tela).setVisible(true);
+                            for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+                            frame.dispose();
+                                   }
+                            TelaBuscarOperacoes tela = new TelaBuscarOperacoes();
+                            tela.setSize(jDesktopPaneContainerTelas.getSize());
+                            ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                            jDesktopPaneContainerTelas.add(tela).setVisible(true);
             
     }//GEN-LAST:event_jMenuItemBuscarOperacoesActionPerformed
 
     private void jMenuItemEvolucaoCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEvolucaoCapitalActionPerformed
         
-        for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
-            frame.dispose();
-        }
-            TelaEvolucaoCapital telaEvolucao = new TelaEvolucaoCapital();
-            telaEvolucao.setSize(jDesktopPaneContainerTelas.getSize());
-            ((javax.swing.plaf.basic.BasicInternalFrameUI) telaEvolucao.getUI()).setNorthPane(null);
+                        for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+                            frame.dispose();
+                                   }
+                            TelaEvolucaoCapital telaEvolucao = new TelaEvolucaoCapital();
+                            telaEvolucao.setSize(jDesktopPaneContainerTelas.getSize());
+                            ((javax.swing.plaf.basic.BasicInternalFrameUI) telaEvolucao.getUI()).setNorthPane(null);
 
-            jDesktopPaneContainerTelas.add(telaEvolucao).setVisible(true);
+                            jDesktopPaneContainerTelas.add(telaEvolucao).setVisible(true);
         
     }//GEN-LAST:event_jMenuItemEvolucaoCapitalActionPerformed
 
     private void jMenuItemBuscarPorAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarPorAtivoActionPerformed
-            for(javax.swing.JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
-            frame.dispose();
-        }
-            TelaEstatisticaPorAtivo telaEstatistivaPorAtivo = new TelaEstatisticaPorAtivo();
-            telaEstatistivaPorAtivo.setSize(jDesktopPaneContainerTelas.getSize());
-            ((javax.swing.plaf.basic.BasicInternalFrameUI) telaEstatistivaPorAtivo.getUI()).setNorthPane(null);
-            jDesktopPaneContainerTelas.add(telaEstatistivaPorAtivo).setVisible(true);
+                        for(javax.swing.JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
+                        frame.dispose();
+                                   }
+                        TelaEstatisticaPorAtivo telaEstatistivaPorAtivo = new TelaEstatisticaPorAtivo();
+                        telaEstatistivaPorAtivo.setSize(jDesktopPaneContainerTelas.getSize());
+                        ((javax.swing.plaf.basic.BasicInternalFrameUI) telaEstatistivaPorAtivo.getUI()).setNorthPane(null);
+                        jDesktopPaneContainerTelas.add(telaEstatistivaPorAtivo).setVisible(true);
     }//GEN-LAST:event_jMenuItemBuscarPorAtivoActionPerformed
 
     private void jMenuItemEstatisticaPorTipoAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstatisticaPorTipoAtivoActionPerformed
-         for(javax.swing.JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
-            frame.dispose();
-        }
-            TelaEstatisticaPorTipoAtivo tela = new TelaEstatisticaPorTipoAtivo();
-            tela.setSize(jDesktopPaneContainerTelas.getSize());
-            ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
-            jDesktopPaneContainerTelas.add(tela).setVisible(true);
+                        for(javax.swing.JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
+                           frame.dispose();
+                                    }
+                           TelaEstatisticaPorTipoAtivo tela = new TelaEstatisticaPorTipoAtivo();
+                           tela.setSize(jDesktopPaneContainerTelas.getSize());
+                           ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                           jDesktopPaneContainerTelas.add(tela).setVisible(true);
         
     }//GEN-LAST:event_jMenuItemEstatisticaPorTipoAtivoActionPerformed
 
     private void jMenuItemEstatiticaPorTipoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstatiticaPorTipoOperacaoActionPerformed
                         for(JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
                             frame.dispose();
-                        }
+                                 }
                         TelaEstatisticaPorTipoOperacao tela = new TelaEstatisticaPorTipoOperacao();
                         tela.setSize(jDesktopPaneContainerTelas.getSize());
                         ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
                         jDesktopPaneContainerTelas.add(tela).setVisible(true);
     }//GEN-LAST:event_jMenuItemEstatiticaPorTipoOperacaoActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jMenuItemEstatisticaPorTipoPosicao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstatisticaPorTipoPosicao
                           for( JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()){
                                  frame.dispose();
                                 }
                           TelaEstatisticaPorTipoPosicao tela = new TelaEstatisticaPorTipoPosicao();
                           tela.setSize(jDesktopPaneContainerTelas.getSize());
-                          ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                          ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
                           jDesktopPaneContainerTelas.add(tela).setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_jMenuItemEstatisticaPorTipoPosicao
+
+    private void jMenuItemEditarOperacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarOperacao
+                        for(  JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
+                            frame.dispose();
+                                    }
+                        TelaEditarOperacoes tela = new TelaEditarOperacoes();
+                        // ISSO AQUI SÓ FUNCIONA SE A TELA QUE ESTA SENDO SETADA NO DESKTOP PANE EXTENDER INTERNAL FRAME
+                        tela.setSize(jDesktopPaneContainerTelas.getSize());
+                        ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                        jDesktopPaneContainerTelas.add(tela).setVisible(true);
+            
+    }//GEN-LAST:event_jMenuItemEditarOperacao
+
+    private void jMenuItemimprimirRelatorioPDF(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemimprimirRelatorioPDF
+                        for( JInternalFrame frame: jDesktopPaneContainerTelas.getAllFrames()){
+                            frame.dispose();
+                                    }
+                        TelaImprimirRelatorioPDF tela = new TelaImprimirRelatorioPDF();
+                        tela.setSize(jDesktopPaneContainerTelas.getSize());
+                        ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                         jDesktopPaneContainerTelas.add(tela).setVisible(true);
+                        
+    }//GEN-LAST:event_jMenuItemimprimirRelatorioPDF
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

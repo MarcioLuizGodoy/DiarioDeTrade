@@ -44,6 +44,14 @@
     <artifactId>jfreechart</artifactId>
     <version>1.0.13</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/com.github.librepdf/openpdf -->
+<dependency>
+    <groupId>com.github.librepdf</groupId>
+    <artifactId>openpdf</artifactId>
+    <version>3.0.0</version>
+</dependency>
+
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,9 +1,11 @@
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticaPorTipoOperacaoController.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaImprimirRelatorioPDF.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\TipoOperacao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\app\App.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\LoginController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaLogin.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\model\Operacao.java
+C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEditarOperacoes.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\gui\TelaEstatisticaPorTipoOperacao.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\controller\EstatisticaPorTipoAtivoController.java
 C:\Users\Godoy\Desktop\DiarioDeTradee\src\main\java\db\DB.java
