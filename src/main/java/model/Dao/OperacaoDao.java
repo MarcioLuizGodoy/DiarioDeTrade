@@ -308,7 +308,56 @@ import model.TipoPosicao;
         }
 
         
-        
+        public void editarOperacao(Integer id,Operacao operacao){
+            String sql  = "UPDATE operacoes SET \"\n" +
+"               + \"tipo_ativo = ?, ativo = ?, preco_entrada = ?, preco_saida = ?, \"\n" +
+"               + \"quantidade_contratos = ?, tipo_operacao = ?, tipo_posicao = ?, \"\n" +
+"               + \"status_operacao = ?, descricao = ?, evento_tecnico_base = ?, \"\n" +
+"               + \"data_registro = ?, img = ? \"\n" +
+"               + \"WHERE id = ?\"; ";
+            try{
+                
+            Connection conn = DB.pegarConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            
+        ps.setString(1, operacao.getTipoAtivo());
+        ps.setString(2, operacao.getAtivo());
+        ps.setDouble(3, operacao.getPrecoEntrada());
+        ps.setDouble(4, operacao.getPrecoSaida());
+        ps.setInt(5, operacao.getQuantidadeContratos());
+        ps.setString(6, operacao.getTipoOperacao().name());
+        ps.setString(7, operacao.getTipoPosicao().name());
+        ps.setString(8, operacao.getStatusOperacao());
+        ps.setString(9, operacao.getDescricao());
+        ps.setString(10, operacao.getEventoTecnicoBase());
+
+        ps.setTimestamp(11, java.sql.Timestamp.valueOf(operacao.getDataHora()));
+
+        BufferedImage imagem = operacao.getImg();
+        byte[] imgBytes = null;
+        try{
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(imagem, "png", baos);
+            baos.flush();
+            imgBytes = baos.toByteArray();
+            baos.close();
+        }catch(IOException e ){
+            e.printStackTrace();
+            
+        }
+        ps.setBytes(12, imgBytes);
+
+        ps.setInt(13, id); 
+
+            
+            }
+            catch(DbException | SQLException e){
+                e.printStackTrace();
+            } finally{
+                DB.fecharConnection();
+            }
+        }
         
         
     }

@@ -12,6 +12,13 @@ public class EditarOperacoesController {
 
     public EditarOperacoesController(){}
     
+    public void editarOperacaoController(Integer id, Operacao operacao){
+      
+        OperacaoDao oD = new OperacaoDao();
+        oD.editarOperacao(id, operacao);
+        
+    }
+    
     public void receberEscolhaFiltroTela(String valorEscolha) {
             if(valorEscolha != null){
                 this.escolhaFiltroUsuario = valorEscolha;

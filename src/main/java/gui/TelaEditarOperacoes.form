@@ -28,65 +28,71 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelTitulo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="jLabelatencao" pref="572" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="628" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton7" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
+                          <Component id="jButtonID" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton1" max="32767" attributes="0"/>
-                                  <Component id="jButtonPrecoEntrada" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jButtonAtivo" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jButtonPRECOSAIDA" max="32767" attributes="0"/>
+                                  <Component id="jButtonPRECOENTRADA" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jButtonATIVO" alignment="1" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jButtonTipoAtivo" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="jButtonTIPOATIVO" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldPrecoEntrada" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPRECOENTRADA" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jTextField1" min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldPRECOSAIDA" min="-2" pref="96" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldAtivo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldATIVO" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jTextField2" max="32767" attributes="0"/>
-                              <Component id="jComboBoxTipoAtivo" pref="96" max="32767" attributes="0"/>
+                              <Component id="jTextFieldID" max="32767" attributes="0"/>
+                              <Component id="jComboBoxTIPOATIVO" pref="96" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton3" max="32767" attributes="0"/>
-                          <Component id="jButton2" max="32767" attributes="0"/>
-                          <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton5" max="32767" attributes="0"/>
-                          <Component id="jButton6" max="32767" attributes="0"/>
+                          <Component id="jButtonTIPOOPERACAO" max="32767" attributes="0"/>
+                          <Component id="jButtonQTDCONTRATOS" max="32767" attributes="0"/>
+                          <Component id="jButtonTIPOPOSICAO" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButtonSTATUSOPERACAO" max="32767" attributes="0"/>
+                          <Component id="jButtonEVENTOTECNICO" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldQuantidadeContratos" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="jTextFieldQTDCONTRATOS" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBoxStatusOperacao" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxTipoOperacao" alignment="0" pref="112" max="32767" attributes="0"/>
-                              <Component id="jComboBoxTipoPosicao" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxEventoTecnicoBase" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxSTATUSOPERACAO" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxTIPOOPERACAO" alignment="0" pref="112" max="32767" attributes="0"/>
+                              <Component id="jComboBoxTIPOPOSICAO" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxEVENTOTECNICO" alignment="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="521" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="460" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonImagemGraficoOperacao" min="-2" pref="157" max="-2" attributes="0"/>
-                          <Component id="jButtonSalvarEdicao1" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="jButtonImagemGraficoOperacao" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="jButtonEDITARSALVAR" min="-2" pref="156" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -108,59 +114,61 @@
                   <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
                   <Component id="jButtonbuscarOperacoes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="239" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="45" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="jLabelatencao" alignment="3" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldQuantidadeContratos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonQTDCONTRATOS" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldQTDCONTRATOS" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxTipoOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxTipoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonTipoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonTIPOOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxTIPOOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxTIPOATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonTIPOATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxTipoPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonTIPOPOSICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxTIPOPOSICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxStatusOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldPrecoEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonPrecoEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSTATUSOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxSTATUSOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldPRECOENTRADA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonPRECOENTRADA" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxEventoTecnicoBase" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonPRECOSAIDA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldPRECOSAIDA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonEVENTOTECNICO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxEVENTOTECNICO" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jButtonImagemGraficoOperacao" min="-2" pref="53" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonSalvarEdicao1" min="-2" pref="52" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButtonEDITARSALVAR" min="-2" pref="52" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane2" min="-2" pref="188" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -237,7 +245,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarOperacoes"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonSalvarEdicao1">
+    <Component class="javax.swing.JButton" name="jButtonEDITARSALVAR">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="14" style="1"/>
@@ -248,7 +256,7 @@
         <Property name="text" type="java.lang.String" value="Editar e Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditarSalvarOperacao"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEDITARSALVARActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -266,7 +274,7 @@
         <Property name="text" type="java.lang.String" value="#Insira os valores abaixo para Editar e Salvar#"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonTipoAtivo">
+    <Component class="javax.swing.JButton" name="jButtonTIPOATIVO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -274,7 +282,7 @@
         <Property name="text" type="java.lang.String" value="Tipo Ativo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxTipoAtivo">
+    <Component class="javax.swing.JComboBox" name="jComboBoxTIPOATIVO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -293,7 +301,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonAtivo">
+    <Component class="javax.swing.JButton" name="jButtonATIVO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -301,9 +309,9 @@
         <Property name="text" type="java.lang.String" value="Ativo: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldAtivo">
+    <Component class="javax.swing.JTextField" name="jTextFieldATIVO">
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonPrecoEntrada">
+    <Component class="javax.swing.JButton" name="jButtonPRECOENTRADA">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -312,41 +320,41 @@
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldPrecoEntrada">
+    <Component class="javax.swing.JTextField" name="jTextFieldPRECOENTRADA">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonPRECOSAIDA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Preco Saida:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="jTextFieldPRECOSAIDA">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonQTDCONTRATOS">
       <Properties>
         <Property name="text" type="java.lang.String" value="Qtd Contratos:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButtonTIPOOPERACAO">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tipo Operacao:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="jButtonTIPOPOSICAO">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tipo Posicao:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jButtonSTATUSOPERACAO">
       <Properties>
         <Property name="text" type="java.lang.String" value="Status Operacao:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="jButtonEVENTOTECNICO">
       <Properties>
         <Property name="text" type="java.lang.String" value="Evento Tecnico:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxEventoTecnicoBase">
+    <Component class="javax.swing.JComboBox" name="jComboBoxEVENTOTECNICO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="0" red="0" type="rgb"/>
@@ -363,7 +371,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxStatusOperacao">
+    <Component class="javax.swing.JComboBox" name="jComboBoxSTATUSOPERACAO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -382,7 +390,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxTipoPosicao">
+    <Component class="javax.swing.JComboBox" name="jComboBoxTIPOPOSICAO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -400,7 +408,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxTipoOperacao">
+    <Component class="javax.swing.JComboBox" name="jComboBoxTIPOOPERACAO">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -419,7 +427,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldQuantidadeContratos">
+    <Component class="javax.swing.JTextField" name="jTextFieldQTDCONTRATOS">
     </Component>
     <Component class="javax.swing.JButton" name="jButtonImagemGraficoOperacao">
       <Properties>
@@ -442,7 +450,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextAreaDescricao">
+        <Component class="javax.swing.JTextArea" name="jTextAreaDESCRICAO">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -461,12 +469,23 @@
         <Property name="text" type="java.lang.String" value="Clique para buscar opera&#xe7;&#xf5;es:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="jButtonID">
       <Properties>
         <Property name="text" type="java.lang.String" value="Id:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="jTextFieldID">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelatencao">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PR&#xc9;-REQUISITO: CLICAR DUAS VEZES NA OPERA&#xc7;&#xc3;O QUE DESEJA EDITAR!!"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
