@@ -178,8 +178,9 @@ public class TelaMenu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jDesktopPaneContainerTelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,7 +276,7 @@ public class TelaMenu extends javax.swing.JFrame {
                         TelaEditarOperacoes tela = new TelaEditarOperacoes();
                         // ISSO AQUI SÓ FUNCIONA SE A TELA QUE ESTA SENDO SETADA NO DESKTOP PANE EXTENDER INTERNAL FRAME
                         tela.setSize(jDesktopPaneContainerTelas.getSize());
-                        ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+                          ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
                         jDesktopPaneContainerTelas.add(tela).setVisible(true);
             
     }//GEN-LAST:event_jMenuItemEditarOperacao

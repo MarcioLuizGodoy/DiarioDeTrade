@@ -71,7 +71,7 @@
                                   <Component id="jTextFieldQTDCONTRATOS" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jComboBoxSTATUSOPERACAO" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxTIPOOPERACAO" alignment="0" pref="112" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxTIPOOPERACAO" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxTIPOPOSICAO" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxEVENTOTECNICO" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -264,12 +264,10 @@
           <Color blue="ff" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value=""/>
-            <StringItem index="1" value="WIN"/>
-            <StringItem index="2" value="WDO"/>
-            <StringItem index="3" value="ACOES"/>
-            <StringItem index="4" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="WIN"/>
+            <StringItem index="1" value="WDO"/>
+            <StringItem index="2" value="ACOES"/>
           </StringArray>
         </Property>
       </Properties>
@@ -390,12 +388,11 @@
           <Color blue="ff" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value=""/>
-            <StringItem index="1" value="SWING TRADE"/>
-            <StringItem index="2" value="DAY TRADE"/>
-            <StringItem index="3" value="POSITION"/>
-            <StringItem index="4" value=""/>
+          <StringArray count="4">
+            <StringItem index="0" value="SWING_TRADE"/>
+            <StringItem index="1" value="DAY_TRADE"/>
+            <StringItem index="2" value="POSITION"/>
+            <StringItem index="3" value=""/>
           </StringArray>
         </Property>
       </Properties>

@@ -4,8 +4,9 @@ import java.util.List;
 import model.Operacao;
 
 //chamar esse metodo dentro de todos os metodos pra validar o padrao de movimentacao do ativo
-public class   CalculadoraEstatisticasResultados {
+public  final  class   CalculadoraEstatisticasResultados {
    
+    private CalculadoraEstatisticasResultados(){}
    
     public static Double calcularResultadoOperacaoGain(List<Operacao> operacoes){
     Double ganhoOperacao = 0.0;

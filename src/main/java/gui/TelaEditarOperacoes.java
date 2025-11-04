@@ -153,7 +153,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonTIPOATIVO.setText("Tipo Ativo");
 
         jComboBoxTIPOATIVO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "WIN", "WDO", "ACOES", "Item 4" }));
+        jComboBoxTIPOATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "WIN", "WDO", "ACOES" }));
 
         jButtonATIVO.setForeground(new java.awt.Color(0, 51, 255));
         jButtonATIVO.setText("Ativo: ");
@@ -184,7 +184,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jComboBoxTIPOPOSICAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SELL", "BUY", "" }));
 
         jComboBoxTIPOOPERACAO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SWING TRADE", "DAY TRADE", "POSITION", "" }));
+        jComboBoxTIPOOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SWING_TRADE", "DAY_TRADE", "POSITION", "" }));
 
         jButtonImagemGraficoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonImagemGraficoOperacao.setForeground(new java.awt.Color(0, 51, 255));
@@ -254,7 +254,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
                                     .addComponent(jTextFieldQTDCONTRATOS, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jComboBoxSTATUSOPERACAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxTIPOOPERACAO, 0, 112, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxTIPOOPERACAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jComboBoxTIPOPOSICAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jComboBoxEVENTOTECNICO, 0, 1, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
@@ -362,8 +362,6 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 new ImageIcon(op.getImg()),
                 op.getDataHora(),
                 op.getEventoTecnicoBase(),
-
-
             });
         }
 }
@@ -383,34 +381,49 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Erro ao carregar a imagem.");
             }
         }
-        
     }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
 
+    
     private void jButtonEDITARSALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEDITARSALVARActionPerformed
            if(jTextFieldID == null){
                 jLabelatencao.setForeground(Color.red);
             } else {
         
-             operacao = new Operacao();
-             
-             operacao.setId(Integer.valueOf(jTextFieldID.getText()));
-             operacao.setTipoAtivo((String)jComboBoxTIPOATIVO.getSelectedItem());
-             operacao.setAtivo(jTextFieldATIVO.getText());
-             operacao.setPrecoEntrada(Double.valueOf(jTextFieldPRECOENTRADA.getText()));
-             operacao.setPrecoSaida(Double.valueOf(jTextFieldPRECOSAIDA.getText()));
-             operacao.setQuantidadeContratos(Integer.valueOf(jTextFieldQTDCONTRATOS.getText()));
-             operacao.setTipoOperacao(TipoOperacao.valueOf((String) jComboBoxTIPOOPERACAO.getSelectedItem()));
-             operacao.setTipoPosicao(TipoPosicao.valueOf((String) jComboBoxTIPOPOSICAO.getSelectedItem()));
-             operacao.setStatusOperacao((String)jComboBoxSTATUSOPERACAO.getSelectedItem());
-             operacao.setImg(this.imagemEDITAR);
-             operacao.setDescricao(jTextAreaDESCRICAO.getText());
-             operacao.setEventoTecnicoBase((String)jComboBoxEVENTOTECNICO.getSelectedItem());
-             operacao.setDataHora(LocalDateTime.now());
-            controller.editarOperacaoController(Integer.valueOf(jTextFieldID.getText()), operacao);
-               boolean add = listaopercoes.add(operacao);
+                        operacao = new Operacao();
 
+                        operacao.setId(Integer.valueOf(jTextFieldID.getText()));
+                        operacao.setTipoAtivo((String)jComboBoxTIPOATIVO.getSelectedItem());
+                        operacao.setAtivo(jTextFieldATIVO.getText());
+                        operacao.setPrecoEntrada(Double.valueOf(jTextFieldPRECOENTRADA.getText()));
+                        operacao.setPrecoSaida(Double.valueOf(jTextFieldPRECOSAIDA.getText()));
+                        operacao.setQuantidadeContratos(Integer.valueOf(jTextFieldQTDCONTRATOS.getText()));
+                        operacao.setTipoOperacao(TipoOperacao.valueOf((String) jComboBoxTIPOOPERACAO.getSelectedItem()));
+                        operacao.setTipoPosicao(TipoPosicao.valueOf((String) jComboBoxTIPOPOSICAO.getSelectedItem()));
+                        operacao.setStatusOperacao((String)jComboBoxSTATUSOPERACAO.getSelectedItem());
+                        operacao.setImg(this.imagemEDITAR);
+                        operacao.setDescricao(jTextAreaDESCRICAO.getText());
+                        operacao.setEventoTecnicoBase((String)jComboBoxEVENTOTECNICO.getSelectedItem());
+                        operacao.setDataHora(LocalDateTime.now());
+                        controller.editarOperacaoController(Integer.valueOf(jTextFieldID.getText()), operacao);
+                          boolean add = listaopercoes.add(operacao);
+                          limparCampos();
+}
     }//GEN-LAST:event_jButtonEDITARSALVARActionPerformed
-    }
+    
+    
+    public void limparCampos(){
+       jTextFieldID.setText("");
+    jTextFieldATIVO.setText("");
+    jTextFieldPRECOENTRADA.setText("");
+    jTextFieldPRECOSAIDA.setText("");
+    jTextFieldQTDCONTRATOS.setText("");
+    jComboBoxTIPOOPERACAO.setSelectedIndex(0); 
+    jComboBoxTIPOPOSICAO.setSelectedIndex(0);
+    jTextAreaDESCRICAO.setText("");
+    jComboBoxEVENTOTECNICO.setSelectedIndex(0);
+    jButtonImagemGraficoOperacao.setIcon(null);
+}
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonATIVO;
