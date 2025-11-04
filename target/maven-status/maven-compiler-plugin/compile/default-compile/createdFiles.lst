@@ -8,6 +8,8 @@ gui\TelaEstatisticaPorTipoAtivo$1.class
 gui\TelaBuscarOperacoes$4.class
 gui\TelaEditarOperacoes$4.class
 gui\TelaEstatisticaPorTipoPosicao.class
+gui\TelaMenu$10.class
+gui\TelaImprimirRelatorioPDF$2.class
 gui\TelaImprimirRelatorioPDF.class
 gui\TelaMenu$2.class
 gui\TelaMenu.class
@@ -23,6 +25,7 @@ controller\RegistrarOperacaoController.class
 gui\TelaMenu$3.class
 gui\TelaLogin$1.class
 gui\TelaMenu$9.class
+gui\TelaImprimirRelatorioPDF$1.class
 gui\TelaEditarOperacoes$5.class
 gui\TelaMenu$6.class
 app\App.class
@@ -44,6 +47,7 @@ gui\TelaMenu$7.class
 gui\TelaEstatisticaPorTipoAtivo.class
 gui\TelaEditarOperacoes$3.class
 model\TipoPosicao.class
+gui\TelaImprimirRelatorioPDF$3.class
 gui\TelaEditarOperacoes.class
 gui\TelaMenu$4.class
 db\DbException.class
