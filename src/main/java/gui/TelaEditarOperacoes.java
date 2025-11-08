@@ -209,7 +209,7 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
 
         jButtonImagemGraficoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonImagemGraficoOperacao.setForeground(new java.awt.Color(0, 51, 255));
-        jButtonImagemGraficoOperacao.setText("Enviar Img");
+        jButtonImagemGraficoOperacao.setText("Enviar Im");
         jButtonImagemGraficoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonImagemGraficoOperacaoActionPerformed(evt);
