@@ -1,19 +1,25 @@
 package gui;
 
-import controller.BuscarOperacaoController;
 import controller.EditarOperacoesController;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Frame;
+import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Operacao;
 import model.TipoOperacao;
@@ -26,11 +32,25 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 int linhaSelecionada;
                 EditarOperacoesController controller = new EditarOperacoesController(); //unico controller usado na tela.
                 Operacao operacao;
-                BufferedImage imagemEDITAR;
+                BufferedImage imagemEDITAR = null;
 
-    public TelaEditarOperacoes() {
-        initComponents();
+ public TelaEditarOperacoes() {
+    initComponents();
+
+    // Renderer para pintar a linha clicada duas vezes
+  DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        c.setBackground(row == linhaSelecionada ? new Color(200, 200, 200) : Color.WHITE);
+        c.setForeground(row == linhaSelecionada ? Color.RED : Color.BLUE);
+        return c;
     }
+};
+jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
+
+}
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -65,7 +85,8 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jButtonID = new javax.swing.JButton();
         jTextFieldID = new javax.swing.JTextField();
-        jLabelatencao = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -142,7 +163,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
 
         jButtonEDITARSALVAR.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonEDITARSALVAR.setForeground(new java.awt.Color(0, 51, 255));
-        jButtonEDITARSALVAR.setText("Editar e Salvar");
+        jButtonEDITARSALVAR.setText("Edit e Salvar");
         jButtonEDITARSALVAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEDITARSALVARActionPerformed(evt);
@@ -153,7 +174,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonTIPOATIVO.setText("Tipo Ativo");
 
         jComboBoxTIPOATIVO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "WIN", "WDO", "ACOES" }));
+        jComboBoxTIPOATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "WIN", "WDO", "ACOES" }));
 
         jButtonATIVO.setForeground(new java.awt.Color(0, 51, 255));
         jButtonATIVO.setText("Ativo: ");
@@ -184,11 +205,11 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jComboBoxTIPOPOSICAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SELL", "BUY", "" }));
 
         jComboBoxTIPOOPERACAO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SWING_TRADE", "DAY_TRADE", "POSITION", "" }));
+        jComboBoxTIPOOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SWING_TRADE", "DAY_TRADE", "POSITION", "" }));
 
         jButtonImagemGraficoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonImagemGraficoOperacao.setForeground(new java.awt.Color(0, 51, 255));
-        jButtonImagemGraficoOperacao.setText("Enviar Imagem");
+        jButtonImagemGraficoOperacao.setText("Enviar Img");
         jButtonImagemGraficoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonImagemGraficoOperacaoActionPerformed(evt);
@@ -205,9 +226,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
 
         jButtonID.setText("Id:");
 
-        jLabelatencao.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabelatencao.setForeground(new java.awt.Color(255, 153, 51));
-        jLabelatencao.setText("#Insira os valores abaixo para Editar e Salvar#  || PRÉ-REQUISITO: Preencher o ID da Operação corretamente. Este campo não pode ser nulo!!");
+        jScrollPane4.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,76 +236,87 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelatencao, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButtonPRECOSAIDA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonPRECOENTRADA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonATIVO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(jButtonTIPOATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextFieldPRECOENTRADA)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jTextFieldPRECOSAIDA, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(jTextFieldATIVO))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextFieldID)
-                                        .addComponent(jComboBoxTIPOATIVO, 0, 96, Short.MAX_VALUE)))
-                                .addGap(27, 27, 27)
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonTIPOOPERACAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonQTDCONTRATOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonTIPOPOSICAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonSTATUSOPERACAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonEVENTOTECNICO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldQTDCONTRATOS, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jComboBoxSTATUSOPERACAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxTIPOOPERACAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxTIPOPOSICAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxEVENTOTECNICO, 0, 1, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonImagemGraficoOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonEDITARSALVAR, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 251, Short.MAX_VALUE)))
+                                    .addComponent(jButtonPRECOSAIDA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonPRECOENTRADA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonATIVO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButtonTIPOATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldPRECOENTRADA)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jTextFieldPRECOSAIDA, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jTextFieldATIVO))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldID)
+                                .addComponent(jComboBoxTIPOATIVO, 0, 96, Short.MAX_VALUE)))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonTIPOOPERACAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonQTDCONTRATOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonTIPOPOSICAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonSTATUSOPERACAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEVENTOTECNICO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldQTDCONTRATOS, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jComboBoxSTATUSOPERACAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxTIPOOPERACAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxTIPOPOSICAO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxEVENTOTECNICO, 0, 1, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonImagemGraficoOperacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEDITARSALVAR, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGap(46, 46, 46)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonbuscarOperacoes)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonbuscarOperacoes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelatencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonbuscarOperacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonImagemGraficoOperacao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonEDITARSALVAR)
+                                .addGap(10, 10, 10))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonQTDCONTRATOS)
                             .addComponent(jTextFieldQTDCONTRATOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,13 +345,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
                             .addComponent(jButtonPRECOSAIDA)
                             .addComponent(jTextFieldPRECOSAIDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonEVENTOTECNICO)
-                            .addComponent(jComboBoxEVENTOTECNICO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonImagemGraficoOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEDITARSALVAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jComboBoxEVENTOTECNICO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -331,9 +355,15 @@ public class TelaEditarOperacoes extends JInternalFrame {
     private void jTableTabelaOperacoesEventoDuploClique(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTabelaOperacoesEventoDuploClique
             
         if (evt.getClickCount()== 2) {
-            linhaSelecionada = jTableTabelaOperacoesEDITAROPERACOES.getSelectedRow();                
+            linhaSelecionada = jTableTabelaOperacoesEDITAROPERACOES.getSelectedRow();   
+                jTableTabelaOperacoesEDITAROPERACOES.repaint();
                 if (linhaSelecionada != -1) {
-                     valorId = (Integer) jTableTabelaOperacoesEDITAROPERACOES.getValueAt(linhaSelecionada, 0);  //cast
+                     valorId = (Integer) jTableTabelaOperacoesEDITAROPERACOES.getValueAt(linhaSelecionada, 0); 
+                     
+                     jTextFieldID.setForeground(Color.red);
+                     jTextFieldID.setText(String.valueOf(valorId));
+                   //  jTextFieldATIVO.setText()  |TENHO QUE DECIDIR SE FACO O MESMO PARA TODOS OS CAMPOS
+                     
             }}
     }//GEN-LAST:event_jTableTabelaOperacoesEventoDuploClique
 
@@ -344,7 +374,8 @@ public class TelaEditarOperacoes extends JInternalFrame {
     }//GEN-LAST:event_jButtonBuscarOperacoes
 
     
-    private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) {
+    private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) 
+    {
     DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoesEDITAROPERACOES.getModel();
     model.setRowCount(0); 
 
@@ -376,7 +407,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
             File arquivoSelecionado = chooser.getSelectedFile();
             try {
                 BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
-                  imagemEDITAR = imagemSelecionada;
+                  this.imagemEDITAR = imagemSelecionada;
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "Erro ao carregar a imagem.");
             }
@@ -385,15 +416,47 @@ public class TelaEditarOperacoes extends JInternalFrame {
 
     
     private void jButtonEDITARSALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEDITARSALVARActionPerformed
-           if(jTextFieldID == null){
-                jLabelatencao.setForeground(Color.red);
-            } else {
-        
-                        operacao = new Operacao();
-
+       
+        try{
+                if(jTextFieldID == null ){
+                    JOptionPane.showMessageDialog(this, "Clique duas vezes na operacao que deseja editar ou digite o Id dela manualmente!.");
+                        return; 
+                    } 
+                else{
+                }
+                
+                if (imagemEDITAR == null){
+                    boolean querEscolher = perguntarEscolherImagemComJDialog(); 
+                        if (querEscolher == true) {
+                            JFileChooser chooser = new JFileChooser();
+                            chooser.setDialogTitle("Escolha a imagem que quer enviar!");
+                            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                            int resultado = chooser.showOpenDialog(this);
+                            if (resultado == JFileChooser.APPROVE_OPTION) {
+                                File arquivoSelecionado = chooser.getSelectedFile();
+                                    BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
+                                      imagemEDITAR = imagemSelecionada;         
+                            }else{
+                                return;
+                            }
+                        }else{
+                                   JOptionPane.showMessageDialog(null, "Adicione uma imagem do grafico, isso é imprescindível.!");
+                            return;
+                                    }
+                        }     else{
+                    
+                                        operacao = new Operacao();
                         operacao.setId(Integer.valueOf(jTextFieldID.getText()));
                         operacao.setTipoAtivo((String)jComboBoxTIPOATIVO.getSelectedItem());
-                        operacao.setAtivo(jTextFieldATIVO.getText());
+                        String ativo = jTextFieldATIVO.getText();
+                        if (ativo.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]+$")) {
+                            operacao.setAtivo(jTextFieldATIVO.getText());                        
+                        } else {
+                            JOptionPane.showMessageDialog(this,
+                                "O campo Ativo deve ser uma combinação de  letras e números. Ajuste para continuarmos!");
+                            return; 
+                        }
+                        
                         operacao.setPrecoEntrada(Double.valueOf(jTextFieldPRECOENTRADA.getText()));
                         operacao.setPrecoSaida(Double.valueOf(jTextFieldPRECOSAIDA.getText()));
                         operacao.setQuantidadeContratos(Integer.valueOf(jTextFieldQTDCONTRATOS.getText()));
@@ -404,12 +467,61 @@ public class TelaEditarOperacoes extends JInternalFrame {
                         operacao.setDescricao(jTextAreaDESCRICAO.getText());
                         operacao.setEventoTecnicoBase((String)jComboBoxEVENTOTECNICO.getSelectedItem());
                         operacao.setDataHora(LocalDateTime.now());
+                        
                         controller.editarOperacaoController(Integer.valueOf(jTextFieldID.getText()), operacao);
                           boolean add = listaopercoes.add(operacao);
                           limparCampos();
-}
+                }         
+          }catch(HeadlessException e ){
+                    JOptionPane.showMessageDialog(this, "Não deixe de digitar dados ou digita-los corretamente!.");
+                }catch(NumberFormatException e ){
+                    JOptionPane.showMessageDialog(this, " Não deixe de digitar dados ou digita-los corretamente.");
+                }catch( IOException e ){
+                    
+                }catch(AbstractMethodError e ){
+                    JOptionPane.showMessageDialog(this, "Erro.");  
+                }catch(Exception e ){
+                                        JOptionPane.showMessageDialog(this, "Erro na hora de Editar Operacao.");  
+
+                }
     }//GEN-LAST:event_jButtonEDITARSALVARActionPerformed
     
+    private boolean perguntarEscolherImagemComJDialog() {
+          Frame   framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+    JDialog dialog = new JDialog(framePai, "EscolherImagem", true);
+    dialog.setSize(350, 150);
+    dialog.setLayout(null);
+    dialog.setLocationRelativeTo(this);
+
+    javax.swing.JLabel lbl = new javax.swing.JLabel("Você não escolheu uma imagem. Deseja escolher agora?");
+    lbl.setBounds(20, 20, 310, 25);
+    dialog.add(lbl);
+
+    javax.swing.JButton btnSim = new javax.swing.JButton("Sim");
+    javax.swing.JButton btnNao = new javax.swing.JButton("Não");
+
+    btnSim.setBounds(70, 70, 80, 30);
+    btnNao.setBounds(180, 70, 80, 30);
+    dialog.add(btnSim);
+    dialog.add(btnNao);
+
+    final boolean[] resposta = {false};
+
+    btnSim.addActionListener(e -> {
+        resposta[0] = true;
+        dialog.dispose();
+    });
+
+    btnNao.addActionListener(e -> {
+        resposta[0] = false;
+        dialog.dispose();
+    });
+
+    dialog.setVisible(true);
+    return resposta[0];
+}
+
     
     public void limparCampos(){
        jTextFieldID.setText("");
@@ -446,9 +558,9 @@ public class TelaEditarOperacoes extends JInternalFrame {
     private javax.swing.JComboBox<String> jComboBoxTIPOPOSICAO;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelTitulo;
-    private javax.swing.JLabel jLabelatencao;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableTabelaOperacoesEDITAROPERACOES;
     private javax.swing.JTextArea jTextAreaDESCRICAO;
     private javax.swing.JTextField jTextFieldATIVO;
@@ -456,5 +568,6 @@ public class TelaEditarOperacoes extends JInternalFrame {
     private javax.swing.JTextField jTextFieldPRECOENTRADA;
     private javax.swing.JTextField jTextFieldPRECOSAIDA;
     private javax.swing.JTextField jTextFieldQTDCONTRATOS;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

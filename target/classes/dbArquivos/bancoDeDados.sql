@@ -11,6 +11,7 @@ CREATE TABLE Usuarios (
 );
 CREATE TABLE Operacoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_ativo VARCHAR(200) NOT NULL,
     ativo VARCHAR(200) NOT NULL,
     preco_entrada DOUBLE NOT NULL,
     preco_saida DOUBLE NOT NULL,
@@ -18,8 +19,8 @@ CREATE TABLE Operacoes (
     tipo_operacao VARCHAR(200) NOT NULL,
     tipo_posicao VARCHAR(100) NOT NULL,
     status_operacao VARCHAR(150) NOT NULL,
-    imagem_grafico LONGBLOB,
-    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    imagem LONGBLOB,
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     descricao TEXT,
     evento_tecnico_base VARCHAR (100)
 );

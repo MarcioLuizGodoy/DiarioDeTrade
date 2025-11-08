@@ -1,20 +1,25 @@
 package gui;
 
-import com.toedter.calendar.JDateChooser;
-import java.awt.Frame;
-import java.awt.GridLayout;
+import com.itextpdf.text.Document;
+import java.awt.BorderLayout;
 import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
+import com.toedter.calendar.JCalendar;
+import controller.ImprimirRelatorioController;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.Operacao;
 
 public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
-
+    
     public TelaImprimirRelatorioPDF() {
         initComponents();
+        jTextField1.setEditable(false);
     }
-
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,8 +30,8 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         jDialog1 = new javax.swing.JDialog();
         jLabelTitulo = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -62,6 +67,7 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelTitulo.setFont(new java.awt.Font("Arial Black", 1, 48)); // NOI18N
@@ -79,49 +85,45 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 204));
-        jButton3.setText("Abrir Calendario");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 204));
+        jButton1.setText("Clique e selecione o período");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirCalendar(evt);
+                jButtonSelecionarPeriodo(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 204));
-        jButton1.setText("Selecionar Período:");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/pdfpreto.png"))); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 153, 0));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("#Aqui, você se informará a cerca das totalidades por período escolhido!");
         jTextField1.setToolTipText("");
         jTextField1.setBorder(new javax.swing.border.MatteBorder(null));
+        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jButton3))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 948, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 330, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextField1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 636, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,71 +131,81 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(10, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     JFrame framePai;
+     Date dataSelecionadaInicio;
+     Date dataSelecionadaFim;
+     Document document = new Document();
+     private List<Operacao> opLista; 
+    
     private void gerarPDF(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDF
 
-
+            //Essas duas linhas abaixo vão ser a ponte para as classes modelo e banco, retornando uma lista de operacoes nesse periodo de data especificado pelo usuario.
+           ImprimirRelatorioController lc = new ImprimirRelatorioController();
+           lc.pegarDataEFiltrarPorData(dataSelecionadaInicio, dataSelecionadaFim);
     }//GEN-LAST:event_gerarPDF
 
-    
-    JLabel lblInicio;
-    JLabel lblFim ;
-    Date dataInicio;
-    Date dataFim;
-    JDateChooser inicioChooser;
-    JDateChooser fimChooser;
-    
-    
-    private void abrirCalendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCalendar
-                         
-    JDialog dialog = new JDialog((Frame) null, "Selecione o Período", true);
-    dialog.setSize(400, 350);
-    dialog.setLayout(new GridLayout(4, 2, 10, 10));
-    
-     lblInicio = new JLabel("Data Início:");
-     inicioChooser = new JDateChooser();
-     lblFim = new JLabel("Data Fim:");
-     fimChooser = new JDateChooser();
-    
-    JButton btnConfirmar = new JButton("Confirmar");
-    
-    btnConfirmar.addActionListener(new java.awt.event.ActionListener() {        
-    @Override
-    public void actionPerformed(java.awt.event.ActionEvent e) {
-        dataInicio = inicioChooser.getDate();
-        dataFim = fimChooser.getDate();
-        dialog.dispose();
-        }
-    });
-    
-        if (dataInicio != null && dataFim != null) {
-            jTextField1.setText("Período selecionado: " + dataInicio + "   até    " + dataFim);
-        }
-        dialog.dispose();
-        dialog.add(lblInicio);
-        dialog.add(inicioChooser);
-        dialog.add(lblFim);
-        dialog.add(fimChooser);
-        dialog.add(new JLabel()); 
-        dialog.add(btnConfirmar);
-        dialog.setLocationRelativeTo(this);
-        dialog.setVisible(true);
+  
+  
+    private void jButtonSelecionarPeriodo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarPeriodo
 
-    }//GEN-LAST:event_abrirCalendar
+     framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
+    JDialog dialogInicio = new JDialog(framePai, "Selecionar Período", true); 
+    dialogInicio.setSize(400, 350);
+    dialogInicio.setLocationRelativeTo(framePai);
+    JCalendar calendarInicio = new JCalendar();
+    dialogInicio.add(calendarInicio);
+    JButton okInicio = new JButton("OK");
+    dialogInicio.add(okInicio, BorderLayout.SOUTH);
+    Date[] dataInicioSelecionada = {null}; 
+    
+    okInicio.addActionListener(e -> {
+        dataInicioSelecionada[0] = calendarInicio.getDate();
+        dialogInicio.dispose();
+        });
+        dialogInicio.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialogInicio.setVisible(true);
+        dataSelecionadaInicio = dataInicioSelecionada[0];
+                
+            //===========================================
+       
+    JDialog dialogFim = new JDialog(framePai, "Selecionar Data Final", true);
+    dialogFim.setSize(400, 350);
+    dialogFim.setLocationRelativeTo(framePai);
+    JCalendar calendarFim = new JCalendar();
+    dialogFim.add(calendarFim);
+    JButton okFim = new JButton("OK");
+    dialogFim.add(okFim, BorderLayout.SOUTH);Date[] dataFimSelecionada = {null};
+    
+    okFim.addActionListener(e -> {
+        dataFimSelecionada[0] = calendarFim.getDate();
+        dialogFim.dispose();
+        });
+        dialogFim.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialogFim.setVisible(true);
+        dataSelecionadaFim = dataFimSelecionada[0];
+        
+    }//GEN-LAST:event_jButtonSelecionarPeriodo
 
+   
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

@@ -20,11 +20,10 @@ public class Operacao {
 
     // Construtor vazio
     public Operacao() {}
-
-    
     
     // Construtor completo, ID E HORA. SAO AUTOINCREMENTADOS PELO BANCO DE DADOS.
     // DEPOIS É SÓ CHAMÁ-LOS COM GETTERS E SETTERS.
+    
     public Operacao(String tipoAtivo,String ativo, Double precoEntrada, Double precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao, TipoPosicao tipoPosicao,
         String statusOperacao, BufferedImage img, String descricao, String eventoTecnicoBase ) {    

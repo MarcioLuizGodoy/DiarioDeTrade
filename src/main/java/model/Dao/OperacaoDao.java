@@ -68,7 +68,7 @@ import model.TipoPosicao;
  
     
     //METODO QUE CONSULTA O BANCO E DEVOLVE UMA LISTA DAS OPERACOES CONSULTADAS QUE ATENDAM AO CRITERIO TODAS AS ( OPERACOES COMO FILTRO DESEJADO).
-        public List<Operacao> consultarTodasOperacoes() throws IOException {
+        public List<Operacao> consultarTodasOperacoes() throws IOException{
     String sql = "SELECT * FROM operacoes";
     List<Operacao> lista = new ArrayList<>();
         try {
