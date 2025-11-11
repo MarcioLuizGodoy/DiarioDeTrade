@@ -189,13 +189,11 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     
     
     
-    //MINHAS VARIAVEIS GLOBAIS IMPORTANTES
     private String escolhaFiltroTela;
     BuscarOperacaoController c = new BuscarOperacaoController();
     private List<Operacao> operacoesVarGlobal; 
     
     
-    //passando a escolha do usuario coletada para o controller e seus metodos importantes.
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         c.receberEscolhaFiltroTela(escolhaFiltroTela);
         List<Operacao> operacoes = c.buscarOperacoesController();
@@ -206,7 +204,6 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     
     
     
-    //Coletando escolha do usuario e passando para variavel de escopo global.
     private void jComboBoxFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltrosActionPerformed
         escolhaFiltroTela =  (String) jComboBoxFiltros.getSelectedItem(); 
     }//GEN-LAST:event_jComboBoxFiltrosActionPerformed
@@ -214,7 +211,6 @@ public class TelaBuscarOperacoes extends JInternalFrame {
     
     
     
-    //Coletando a descrição dos objetos devolvido na lista e setando no textArea responsavel por mostrar a descricao da operacao
     private void jTableTabelaOperacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTabelaOperacoesMouseClicked
                     int row = jTableTabelaOperacoes.getSelectedRow();
                         if (row >= 0) {
@@ -223,12 +219,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         }
     }//GEN-LAST:event_jTableTabelaOperacoesMouseClicked
     
-    
-    
-    //Colocando cada atributo dos objetos da lista na tabela pela ordem da tabela.
-    //Tentei fazer a tela pela ordem do banco de dados.
-    //Contudo a tela é mais importante nesse metodo, ela dita a ordem de 'set'.
-                                                                                            //METODO VAI SER REUTILIZADO PARA OUTROS FILTROS???
+  
     private void atualizarTabela(List<Operacao> operacoes) {
     this.operacoesVarGlobal = operacoes;
     DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoes.getModel();

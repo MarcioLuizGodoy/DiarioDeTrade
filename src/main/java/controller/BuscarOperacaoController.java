@@ -3,33 +3,39 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Dao.OperacaoDao;
 import model.Operacao;
 
 public class BuscarOperacaoController {
     
-    // Variavel global recebida da tela pelo metodo do controller
     String escolhaFiltroUsuario;
     
-    //Recebendo escolha do usuario e  setando como variavel global no ambiente controller!
+    
+    
     public void receberEscolhaFiltroTela(String valorEscolha) {
-            if(valorEscolha != null){
-                this.escolhaFiltroUsuario = valorEscolha;
+            if(valorEscolha == null && valorEscolha.isEmpty()){
+                 JOptionPane.showMessageDialog(null, "Escolha do Usuario  nula/incorreta!");
+                 return;
+            }else{
+                               this.escolhaFiltroUsuario = valorEscolha;
+
             }
     }
     
-    //Metodo que busca todas as operacoes
+    
+    
     public List<Operacao> buscarOperacoesController(){
         OperacaoDao oD = new OperacaoDao();
         try{
             if(escolhaFiltroUsuario.equals("Todas Operacoes")){
                 List<Operacao> lista =  oD.consultarTodasOperacoes();
-                return lista;                                               //IMPLEMENTADO COM SUCESSO!
+                return lista;                                               
             }
         }catch(IOException e ){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro na hora de buscar Todas Operações");
             }
-        return null;
-    
+            return null;
     }
     
     

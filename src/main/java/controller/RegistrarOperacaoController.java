@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 import model.Dao.OperacaoDao;
@@ -9,6 +8,7 @@ import model.TipoOperacao;
 import model.TipoPosicao;
 
 public class RegistrarOperacaoController {
+
     private String tipoAtivo;
     private String ativo;
     private Double precoEntrada;
@@ -20,78 +20,76 @@ public class RegistrarOperacaoController {
     private BufferedImage imagem;
     private String descricao;
     private String eventoTecnicoBase;
-    
-    public RegistrarOperacaoController() {}
-    
-    public void receberDados    (
-        String tipoAtivo, String ativo, Double precoEntrada, Double precoSaida, Integer quantidadeContratos, TipoOperacao tipoOperacao, 
-        TipoPosicao tipoPosicao, String statusOperacao,BufferedImage image,
-        String descricao, String eventoTecnicoBase )    {
-            
+
+    public RegistrarOperacaoController() {
+    }
+
+    @SuppressWarnings("empty-statement")
+    public boolean receberDados(
+            String tipoAtivo, String ativo, Double precoEntrada, Double precoSaida, Integer quantidadeContratos, TipoOperacao tipoOperacao,
+            TipoPosicao tipoPosicao, String statusOperacao, BufferedImage image,
+            String descricao, String eventoTecnicoBase) {
+
         this.tipoAtivo = tipoAtivo;
-        
-        
-        if(ativo != null && ativo.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]+$")){
-                    this.ativo = ativo;
-        }else{
-            JOptionPane.showMessageDialog(null,"Erro no padrão de escrita de nomes ativos financeiros, existe um padrão como: BBAS3, BBAS4, WINV25.");
-            return;
-        }
-        
-        
-        
-            String aux = precoEntrada.toString().trim();
 
-            if (aux.matches("^(\\d{3})\\.(.+)$")) {
-                this.precoEntrada = Double.valueOf(aux);
-            } else {
-                JOptionPane.showMessageDialog(null, "Para o Preço de Entrada: Digite um número válido, por exemplo: 150.500");
-                return;
-            }
-            
-             String auxx = precoSaida.toString().trim();
-            if (auxx.matches("^(\\d{3})\\.(.+)$")) {
-                this.precoSaida = Double.valueOf(auxx);
-            } else {
-                JOptionPane.showMessageDialog(null, "Para o Preço de Saída: Digite um número válido, por exemplo: 150.500");
-                return;
-            }
-            
-            if(quantidadeContratos != null && quantidadeContratos >0){
-                        this.quantidadeContratos = quantidadeContratos;
-            }else{
-                                        JOptionPane.showMessageDialog(null, "A quantidade de contratos tem que ser no minimo 1 contrato por ativo financeiro!");
-
-            }
-                                this.tipoOperacao = tipoOperacao;
-                                this.tipoPosicao = tipoPosicao;
-                                this.statusOperacao = statusOperacao;
-        
-        if(image != null){
-                    this.imagem = image;
+        if (ativo == null || ativo.isBlank() || !ativo.matches("^[A-Z]{4}\\d+$")) {
+            JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de nomes ativos financeiros, exemplo: BBAS3, BBAS4, WINV25.");
+            return false;
         } else {
-                        JOptionPane.showMessageDialog(null, "Escolha uma imagem, é inegociavél");
-                        return;
+            this.ativo = ativo;
         }
-        
-       if (descricao != null && !descricao.trim().isEmpty()) {
 
-             this.descricao = descricao;
-        } else{
-             JOptionPane.showMessageDialog(null, "Visando ter um bom material de estudo e de avaliações de desempenho, coloque uma descrição adequada para que possa chegar a boas conclusões depois.");
-                        return;
+        String aux = String.valueOf(precoEntrada);
+        if (aux != null && aux.matches("\\d{3}\\.\\d+")) {
+            this.precoEntrada = Double.valueOf(aux);
+        } else {
+            JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145.123");
+            return false;
         }
-       
+
+        String auxx = String.valueOf(precoSaida);
+        if (auxx != null && auxx.matches("\\d{3}\\.\\d+")) {
+            this.precoSaida = Double.valueOf(auxx);
+        } else {
+            JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145.123");
+            return false;
+        }
+
+        if (quantidadeContratos != null && quantidadeContratos > 0) {
+            this.quantidadeContratos = quantidadeContratos;
+        } else {
+            JOptionPane.showMessageDialog(null, "A quantidade de contratos tem que ser no minimo 1 contrato por ativo financeiro!");
+            return false;
+        }
+
+        this.tipoOperacao = tipoOperacao;
+        this.tipoPosicao = tipoPosicao;
+        this.statusOperacao = statusOperacao;
+
+        if (image == null || image.getWidth() <= 0 || image.getHeight() <= 0) {
+            JOptionPane.showMessageDialog(null, "Escolha uma imagem, é inegociável");
+            return false;
+        } else {
+            this.imagem = image;
+        }
+
+        if (descricao != null && !descricao.trim().isEmpty()) {
+            this.descricao = descricao.trim(); // remove espaços extras no começo/fim
+            System.out.print(this.descricao);
+        } else {
+            JOptionPane.showMessageDialog(null, "Visando ter boas informações pra estudo e analise posterior, não deixe de forma alguma esse campo em branco.");
+            return false;
+        }
+
         this.eventoTecnicoBase = eventoTecnicoBase;
-        
+
+        return true;
     }
 
- 
-    
-    public boolean salvarRegistroController()  {
+    public boolean salvarRegistroController() {
         OperacaoDao oD = new OperacaoDao();
-        Operacao operacao = new Operacao(tipoAtivo,ativo, precoEntrada, precoSaida, quantidadeContratos,tipoOperacao, tipoPosicao, statusOperacao,imagem,descricao,eventoTecnicoBase);
-      
-        return oD.persistirRegistro(operacao); // esse metodo retorna um boolean
+        Operacao operacao = new Operacao(tipoAtivo, ativo, precoEntrada, precoSaida, quantidadeContratos, tipoOperacao, tipoPosicao, statusOperacao, imagem, descricao, eventoTecnicoBase);
+        return oD.persistirRegistro(operacao);
     }
+
 }

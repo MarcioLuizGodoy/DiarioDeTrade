@@ -12,9 +12,11 @@ import model.TipoOperacao;
 import model.TipoPosicao;
 
 public class TelaRegistrarOperacao extends JInternalFrame {
+
     public TelaRegistrarOperacao() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -56,7 +58,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         jButtonQuantidadeContratos.setText("Qtd Contratos: ");
 
         jComboBoxStatusOperacao.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxStatusOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "GAIN", "LOSS", "BREAKEVEN", "" }));
+        jComboBoxStatusOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GAIN", "LOSS", "BREAKEVEN", "" }));
 
         jButtonStatusOperacao.setForeground(new java.awt.Color(0, 51, 255));
         jButtonStatusOperacao.setText("Status operação:");
@@ -65,7 +67,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         jButtonTipoPosicao.setText("Tipo de posição:");
 
         jComboBoxTipoPosicao.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTipoPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SELL", "BUY", "" }));
+        jComboBoxTipoPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELL", "BUY", "" }));
 
         jButtonAtivo.setForeground(new java.awt.Color(0, 51, 255));
         jButtonAtivo.setText("Ativo: ");
@@ -102,7 +104,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         jButtonTipoOperacao.setText("Tipo de operação:");
 
         jComboBoxTipoOperacao.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTipoOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SWING TRADE", "DAY TRADE", "POSITION", "" }));
+        jComboBoxTipoOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SWING_TRADE", "DAY_TRADE", "POSITION", "" }));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
@@ -114,7 +116,7 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         jButtonEventoTecnicoBase.setText("Evento Técnico Base: ");
 
         jComboBoxEventoTecnicoBase.setForeground(new java.awt.Color(0, 0, 255));
-        jComboBoxEventoTecnicoBase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Rompimento", "Regressao media movel" }));
+        jComboBoxEventoTecnicoBase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rompimento", "Regressao media movel" }));
 
         jButtonAviso.setBackground(new java.awt.Color(204, 204, 204));
         jButtonAviso.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -269,69 +271,85 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private  RegistrarOperacaoController c = new RegistrarOperacaoController();
-    public  BufferedImage imggg ;
+    private RegistrarOperacaoController c = new RegistrarOperacaoController();
+    public BufferedImage imggg;
+
     private void limparCampos() {
         jComboBoxTipoAtivo.setSelectedIndex(0);
-    jTextFieldAtivo.setText("");
-    jTextFieldPrecoEntrada.setText("");
-    jTextFieldPrecoSaida.setText("");
-    jTextFieldQuantidadeContratos.setText("");
-    jComboBoxTipoOperacao.setSelectedIndex(0);
-    jComboBoxTipoPosicao.setSelectedIndex(0);
-    jComboBoxStatusOperacao.setSelectedIndex(0);
-    jTextAreaDescricao.setText("");
-    jButtonImagemGraficoOperacao.setText(null);
-    jComboBoxEventoTecnicoBase.setSelectedIndex(0);
-}
-    
-    
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-    try {
-            String tipoAtivo = ( String )jComboBoxTipoAtivo.getSelectedItem();
-            String ativo = jTextFieldAtivo.getText();
+        jTextFieldAtivo.setText("");
+        jTextFieldPrecoEntrada.setText("");
+        jTextFieldPrecoSaida.setText("");
+        jTextFieldQuantidadeContratos.setText("");
+        jComboBoxTipoOperacao.setSelectedIndex(0);
+        jComboBoxTipoPosicao.setSelectedIndex(0);
+        jComboBoxStatusOperacao.setSelectedIndex(0);
+        jTextAreaDescricao.setText("");
+        jButtonImagemGraficoOperacao.setText(null);
+        jComboBoxEventoTecnicoBase.setSelectedIndex(0);
+    }
 
-            Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText());
-            Double precoSaida = Double.valueOf(jTextFieldPrecoSaida.getText());
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        try {
+
+            String tipoAtivo = (String) jComboBoxTipoAtivo.getSelectedItem();
+            String ativo = jTextFieldAtivo.getText().trim();
+            Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText().trim());
+            Double precoSaida = Double.valueOf(jTextFieldPrecoSaida.getText().trim());
             Integer qtdContratos = Integer.valueOf(jTextFieldQuantidadeContratos.getText());
             String status = (String) jComboBoxStatusOperacao.getSelectedItem();
             String tipoOpStr = (String) jComboBoxTipoOperacao.getSelectedItem();
             String tipoPosStr = (String) jComboBoxTipoPosicao.getSelectedItem();
-            TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr.replace(" ", "_").toUpperCase());
-            TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr.toUpperCase());
+            TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr);
+            TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr);
             String descricao = jTextAreaDescricao.getText();
-            String eventoTecnicoBase = (String)jComboBoxEventoTecnicoBase.getSelectedItem();
-            
-            c.receberDados(tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOperacao,tipoPosicao, status, imggg,descricao, eventoTecnicoBase);
-            
-            } catch (NumberFormatException |NullPointerException e ) {
-            JOptionPane.showMessageDialog(this, "Erro ao cadastrar, não podem haver campos em branco!: " );
+            String eventoTecnicoBase = (String) jComboBoxEventoTecnicoBase.getSelectedItem();
+
+            boolean dadosValidos = c.receberDados(tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOperacao, tipoPosicao, status, imggg, descricao, eventoTecnicoBase);
+            if (dadosValidos == false) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar, não podem haver campos em branco 1!: ");
+            e.getMessage();
+            return;
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar, não podem haver campos em branco ou faltando dados!: ");
+            e.getMessage();
+            return;
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar, não podem haver campos em branco 3!: ");
+            e.getMessage();
+            e.printStackTrace();
+            return;
+
         }
-    if(c.salvarRegistroController() == true){
-        limparCampos();
-    }
+
+        if (c.salvarRegistroController() == true) {
+            limparCampos();
+        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    
+
     private void jButtonImagemGraficoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImagemGraficoOperacaoActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Escolha a imagem que quer enviar!");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.showOpenDialog(this);
-                    try {
-                            File arquivoSelecionado = chooser.getSelectedFile();
-                        BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
-                        
-                        if(imagemSelecionada != null){
-                        imggg = imagemSelecionada;
-                    }}
-                    catch (IOException e) {
-                                   JOptionPane.showMessageDialog(this, "Você não selecionou uma imagem. Faça isso!." + e.getMessage());
-                    
+        try {
+            File arquivoSelecionado = chooser.getSelectedFile();
+            BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
+
+            if (imagemSelecionada != null) {
+                imggg = imagemSelecionada;
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Você não selecionou uma imagem. Faça isso!." + e.getMessage());
+
         }    }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
-    
- 
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtivo;
     private javax.swing.JButton jButtonAviso;
@@ -360,13 +378,5 @@ public class TelaRegistrarOperacao extends JInternalFrame {
     private javax.swing.JTextField jTextFieldPrecoSaida;
     private javax.swing.JTextField jTextFieldQuantidadeContratos;
     // End of variables declaration//GEN-END:variables
-
-    
-   
-  /* public static void main(String args[]) {
-      
-        java.awt.EventQueue.invokeLater(() -> new TelaMenu().setVisible(true));
-    }
-*/
 
 }
