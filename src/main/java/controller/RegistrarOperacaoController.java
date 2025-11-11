@@ -74,7 +74,7 @@ public class RegistrarOperacaoController {
         }
 
         if (descricao != null && !descricao.trim().isEmpty()) {
-            this.descricao = descricao.trim(); // remove espaços extras no começo/fim
+            this.descricao = descricao.trim(); 
             System.out.print(this.descricao);
         } else {
             JOptionPane.showMessageDialog(null, "Visando ter boas informações pra estudo e analise posterior, não deixe de forma alguma esse campo em branco.");
