@@ -269,15 +269,8 @@ public class TelaRegistrarOperacao extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
     private  RegistrarOperacaoController c = new RegistrarOperacaoController();
-    public  BufferedImage imgg ;
-
-    
-    
-    
+    public  BufferedImage imggg ;
     private void limparCampos() {
         jComboBoxTipoAtivo.setSelectedIndex(0);
     jTextFieldAtivo.setText("");
@@ -291,56 +284,50 @@ public class TelaRegistrarOperacao extends JInternalFrame {
     jButtonImagemGraficoOperacao.setText(null);
     jComboBoxEventoTecnicoBase.setSelectedIndex(0);
 }
-
-    
-    
-    
     
     
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
     try {
-        String tipoAtivo = ( String )jComboBoxTipoAtivo.getSelectedItem();
-        String ativo = jTextFieldAtivo.getText();
-        Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText());
-        Double precoSaida = Double.valueOf(jTextFieldPrecoSaida.getText());
-        Integer qtdContratos = Integer.valueOf(jTextFieldQuantidadeContratos.getText());
-        String status = (String) jComboBoxStatusOperacao.getSelectedItem();
-        String tipoOpStr = (String) jComboBoxTipoOperacao.getSelectedItem();
-        String tipoPosStr = (String) jComboBoxTipoPosicao.getSelectedItem();
-        TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr.replace(" ", "_").toUpperCase());
-        TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr.toUpperCase());
-        String descricao = jTextAreaDescricao.getText();
-        String eventoTecnicoBase = (String)jComboBoxEventoTecnicoBase.getSelectedItem();
-           
-        c.receberDados(tipoAtivo, ativo, precoEntrada, precoSaida,
-                   qtdContratos, tipoOperacao,tipoPosicao, status, imgg,descricao, eventoTecnicoBase);
-                           //LA EM BAIXO A IMG É SETADA NO CONTROLLER E PASSADA PRA imgg. FACILITANDO REUTILIZACAO NO CADASTRAR IMAGEM
+            String tipoAtivo = ( String )jComboBoxTipoAtivo.getSelectedItem();
+            String ativo = jTextFieldAtivo.getText();
 
-
-            if(c.salvarRegistroController() == true){
-                limparCampos();
-            }
-    } catch (NumberFormatException e ) {
-        JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + e.getMessage());
+            Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText());
+            Double precoSaida = Double.valueOf(jTextFieldPrecoSaida.getText());
+            Integer qtdContratos = Integer.valueOf(jTextFieldQuantidadeContratos.getText());
+            String status = (String) jComboBoxStatusOperacao.getSelectedItem();
+            String tipoOpStr = (String) jComboBoxTipoOperacao.getSelectedItem();
+            String tipoPosStr = (String) jComboBoxTipoPosicao.getSelectedItem();
+            TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr.replace(" ", "_").toUpperCase());
+            TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr.toUpperCase());
+            String descricao = jTextAreaDescricao.getText();
+            String eventoTecnicoBase = (String)jComboBoxEventoTecnicoBase.getSelectedItem();
+            
+            c.receberDados(tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOperacao,tipoPosicao, status, imggg,descricao, eventoTecnicoBase);
+            
+            } catch (NumberFormatException |NullPointerException e ) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar, não podem haver campos em branco!: " );
+        }
+    if(c.salvarRegistroController() == true){
+        limparCampos();
+    }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
-}
-    
-    
+
     
     private void jButtonImagemGraficoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImagemGraficoOperacaoActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Escolha a imagem que quer enviar!");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int resultado = chooser.showOpenDialog(this);
-            if (resultado == JFileChooser.APPROVE_OPTION) {
-                File arquivoSelecionado = chooser.getSelectedFile();
+        chooser.showOpenDialog(this);
                     try {
-                        BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);  
-                        c.receberImagemTela(imagemSelecionada);   
-                        imgg=c.getImagem();
-                    } catch (IOException e) {
-                        JOptionPane.showMessageDialog(this, "Erro ao carregar a imagem.");
-                }
+                            File arquivoSelecionado = chooser.getSelectedFile();
+                        BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
+                        
+                        if(imagemSelecionada != null){
+                        imggg = imagemSelecionada;
+                    }}
+                    catch (IOException e) {
+                                   JOptionPane.showMessageDialog(this, "Você não selecionou uma imagem. Faça isso!." + e.getMessage());
+                    
         }    }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
     
  

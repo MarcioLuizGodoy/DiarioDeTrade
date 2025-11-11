@@ -1,10 +1,12 @@
 package auxiliaresEstatisticas;
 
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -12,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Operacao;
@@ -30,7 +33,7 @@ public final class GerarPdfs {
         Document dc = new Document(PageSize.A4,72,72,72,72);                                           
         try{
                 String diretorio = System.getProperty("user.home") + File.separator + "Desktop"; 
-                String nomeArquivo =  "Relatorio_Monetario.pdf";                                                  
+                String nomeArquivo =  "Relatorio_Monetario.pdf " ;                                                  
                 File caminhoEnomeArquivo = new File(diretorio, nomeArquivo);
                 
                     PdfWriter w =PdfWriter.getInstance(dc, new FileOutputStream(caminhoEnomeArquivo)); 
@@ -42,16 +45,23 @@ public final class GerarPdfs {
                            titulo.setSpacingAfter(25);
                            
                          for (Operacao op : listaOperacoes) {
-                                Paragraph linha = new Paragraph();
-                                linha.add("Ativo: " + op.getAtivo() + " ");
-                                linha.add("Preço de Entrada: R$ " + op.getPrecoEntrada() );
-                                linha.add("Preço de Saída: R$ " + op.getPrecoSaida());
-                                linha.add("Data/Hora: " + op.getDataHora());
-                                linha.add("Descrição: " + op.getDescricao()) ;
+                                Paragraph linha = new Paragraph("\n");
+                                
+                                linha.add("Ativo: " + op.getAtivo() + "\n");
+                                linha.add("Preço de Entrada: R$ " + op.getPrecoEntrada() + "\n");
+                                linha.add("Preço de Saída: R$ " + op.getPrecoSaida()+"\n");
+                                linha.add("Data/Hora: " + op.getDataHora()+"\n");
+                                linha.add("Descrição: " + op.getDescricao()+"\n") ;
                               //  linha.add;
                                 linha.setSpacingAfter(10);
                                 dc.add(linha);
                                     }           
+                                 PdfPTable table = new PdfPTable(8);
+                                      for(int aw = 0; aw < listaOperacoes.size(); aw++){
+                                         table.addCell("hi");
+                                            }
+                                                dc.add(table);
+                                    
                            dc.close();      
                            w.close();
                 JOptionPane.showMessageDialog(null, "PDF gerado em AREA DE TRABALHO: " + caminhoEnomeArquivo.getAbsolutePath());

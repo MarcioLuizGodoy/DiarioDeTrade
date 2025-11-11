@@ -2,7 +2,7 @@
 CREATE DATABASE DiarioDeTrade;
 
 -- Usar o banco criado
-USE DiarioDeTrade;
+USE diariodetrade;
 
 -- Criar a tabela Usuario
 CREATE TABLE Usuarios (
@@ -27,6 +27,10 @@ CREATE TABLE Operacoes (
 
 
 -- Inserir um usuário
-INSERT INTO Usuarios (nome, senha) VALUES ('godoy', 'godoy');
+
+INSERT INTO Usuarios (nome, senha) VALUES ('user','user');
+-- INSERT INTO Usuarios (nome, senha) VALUES ('godoy', 'godoy');
+
+
 
 

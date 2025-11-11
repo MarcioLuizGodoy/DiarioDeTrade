@@ -1,2 +1,2 @@
 # DiarioDeTrade
-Estou tentando  criar um Diario de Trade para exercitar algumas ideias.
+Aqui seguem informações para instalação de qualquer versão do app que esteja no diretorio distribuição.
