@@ -4,11 +4,9 @@ import controller.EditarOperacoesController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
-import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,31 +24,31 @@ import model.TipoOperacao;
 import model.TipoPosicao;
 
 public class TelaEditarOperacoes extends JInternalFrame {
- 
-                List<Operacao> listaopercoes;
-                Integer valorId ;
-                int linhaSelecionada;
-                EditarOperacoesController controller = new EditarOperacoesController(); //unico controller usado na tela.
-                Operacao operacao;
-                BufferedImage imagemEDITAR = null;
 
- public TelaEditarOperacoes() {
-    initComponents();
+    List<Operacao> listaopercoes;
+    Integer valorId;
+    int linhaSelecionada;
+    EditarOperacoesController controller = new EditarOperacoesController(); 
+    // Operacao operacao;
+    BufferedImage imagemEDITAR = null;
 
-    // Renderer para pintar a linha clicada duas vezes
-  DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        c.setBackground(row == linhaSelecionada ? new Color(200, 200, 200) : Color.WHITE);
-        c.setForeground(row == linhaSelecionada ? Color.RED : Color.BLUE);
-        return c;
+    public TelaEditarOperacoes() {
+        initComponents();
+        jTextFieldID.setEditable(false);
+
+        // Renderer para pintar a linha clicada duas vezes
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                c.setBackground(row == linhaSelecionada ? new Color(200, 200, 200) : Color.WHITE);
+                c.setForeground(row == linhaSelecionada ? Color.RED : Color.BLUE);
+                return c;
+            }
+        };
+        jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
+
     }
-};
-jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
-
-}
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -86,7 +84,7 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
         jButtonID = new javax.swing.JButton();
         jTextFieldID = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        aviso = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -163,7 +161,7 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
 
         jButtonEDITARSALVAR.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonEDITARSALVAR.setForeground(new java.awt.Color(0, 51, 255));
-        jButtonEDITARSALVAR.setText("Edit e Salvar");
+        jButtonEDITARSALVAR.setText("Editar e Salvar");
         jButtonEDITARSALVAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEDITARSALVARActionPerformed(evt);
@@ -209,7 +207,7 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
 
         jButtonImagemGraficoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonImagemGraficoOperacao.setForeground(new java.awt.Color(0, 51, 255));
-        jButtonImagemGraficoOperacao.setText("Enviar Im");
+        jButtonImagemGraficoOperacao.setText("Enviar Imagem");
         jButtonImagemGraficoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonImagemGraficoOperacaoActionPerformed(evt);
@@ -226,7 +224,7 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
 
         jButtonID.setText("Id:");
 
-        jScrollPane4.setViewportView(jTextPane1);
+        jScrollPane4.setViewportView(aviso);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -274,10 +272,6 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
                                 .addComponent(jComboBoxEVENTOTECNICO, 0, 1, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonImagemGraficoOperacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEDITARSALVAR, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -290,33 +284,35 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButtonEDITARSALVAR, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonImagemGraficoOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonbuscarOperacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonbuscarOperacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonImagemGraficoOperacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEDITARSALVAR)
-                                .addGap(10, 10, 10))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonImagemGraficoOperacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEDITARSALVAR))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonQTDCONTRATOS)
                             .addComponent(jTextFieldQTDCONTRATOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,32 +349,37 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableTabelaOperacoesEventoDuploClique(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTabelaOperacoesEventoDuploClique
-            
-        if (evt.getClickCount()== 2) {
-            linhaSelecionada = jTableTabelaOperacoesEDITAROPERACOES.getSelectedRow();   
-                jTableTabelaOperacoesEDITAROPERACOES.repaint();
-                if (linhaSelecionada != -1) {
-                     valorId = (Integer) jTableTabelaOperacoesEDITAROPERACOES.getValueAt(linhaSelecionada, 0); 
-                     
-                     jTextFieldID.setForeground(Color.red);
-                     jTextFieldID.setText(String.valueOf(valorId));
-                   //  jTextFieldATIVO.setText()  |TENHO QUE DECIDIR SE FACO O MESMO PARA TODOS OS CAMPOS
-                     
-            }}
+
+        if (evt.getClickCount() == 2) {
+            linhaSelecionada = jTableTabelaOperacoesEDITAROPERACOES.getSelectedRow();
+            jTableTabelaOperacoesEDITAROPERACOES.repaint();
+
+            if (linhaSelecionada != -1) {
+                valorId = (Integer) jTableTabelaOperacoesEDITAROPERACOES.getValueAt(linhaSelecionada, 0);
+                jTextFieldID.setEditable(true);
+                jTextFieldID.setForeground(Color.red);
+                jTextFieldID.setText(String.valueOf(valorId));
+                jTextFieldID.setEditable(false);
+            }
+        }
     }//GEN-LAST:event_jTableTabelaOperacoesEventoDuploClique
 
-        
+
     private void jButtonBuscarOperacoes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarOperacoes
-                listaopercoes = controller.buscarParaEditarOperacoesController();
-                atualizarTabelaEditarOperacoes(listaopercoes);
+        listaopercoes = controller.buscarParaEditarOperacoesController();
+        atualizarTabelaEditarOperacoes(listaopercoes);
+        String avisoo = "Clique duas vezes na operação que deseja editar, ao clicar o Id é preenchido automaticamente visando te ajudar a minimizar erros! "
+                + "Após terminar, cheque se editou corretamente! ";
+        aviso.setForeground(Color.red);
+        aviso.setFocusable(false);
+        aviso.setEditable(false);
+        aviso.setBorder(null);
+        aviso.setText(avisoo);
     }//GEN-LAST:event_jButtonBuscarOperacoes
 
-    
-    private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) 
-    {
-    DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoesEDITAROPERACOES.getModel();
-    model.setRowCount(0); 
-
+    private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) {
+        DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoesEDITAROPERACOES.getModel();
+        model.setRowCount(0);
         for (Operacao op : operacoes) {
             model.addRow(new Object[]{
                 op.getId(),
@@ -392,13 +393,12 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
                 op.getStatusOperacao(),
                 new ImageIcon(op.getImg()),
                 op.getDataHora(),
-                op.getEventoTecnicoBase(),
-            });
+                op.getEventoTecnicoBase(),});
         }
-}
-    
+    }
+
     private void jButtonImagemGraficoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImagemGraficoOperacaoActionPerformed
-       
+
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Escolha a imagem que quer enviar!");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -407,137 +407,92 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
             File arquivoSelecionado = chooser.getSelectedFile();
             try {
                 BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
-                  this.imagemEDITAR = imagemSelecionada;
+                this.imagemEDITAR = imagemSelecionada;
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "Erro ao carregar a imagem.");
             }
         }
     }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
 
-    
+
     private void jButtonEDITARSALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEDITARSALVARActionPerformed
-       
-        try{
-                if(jTextFieldID == null ){
-                    JOptionPane.showMessageDialog(this, "Clique duas vezes na operacao que deseja editar ou digite o Id dela manualmente!.");
-                        return; 
-                    } 
-                else{
-                }
-                
-                if (imagemEDITAR == null){
-                    boolean querEscolher = perguntarEscolherImagemComJDialog(); 
-                        if (querEscolher == true) {
-                            JFileChooser chooser = new JFileChooser();
-                            chooser.setDialogTitle("Escolha a imagem que quer enviar!");
-                            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                            int resultado = chooser.showOpenDialog(this);
-                            if (resultado == JFileChooser.APPROVE_OPTION) {
-                                File arquivoSelecionado = chooser.getSelectedFile();
-                                    BufferedImage imagemSelecionada = ImageIO.read(arquivoSelecionado);
-                                      imagemEDITAR = imagemSelecionada;         
-                            }else{
-                                return;
-                            }
-                        }else{
-                                   JOptionPane.showMessageDialog(null, "Adicione uma imagem do grafico, isso é imprescindível.!");
-                            return;
-                                    }
-                        }     else{
-                    
-                                        operacao = new Operacao();
-                        operacao.setId(Integer.valueOf(jTextFieldID.getText()));
-                        operacao.setTipoAtivo((String)jComboBoxTIPOATIVO.getSelectedItem());
-                        String ativo = jTextFieldATIVO.getText();
-                        if (ativo.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]+$")) {
-                            operacao.setAtivo(jTextFieldATIVO.getText());                        
-                        } else {
-                            JOptionPane.showMessageDialog(this,
-                                "O campo Ativo deve ser uma combinação de  letras e números. Ajuste para continuarmos!");
-                            return; 
-                        }
-                        
-                        operacao.setPrecoEntrada(Double.valueOf(jTextFieldPRECOENTRADA.getText()));
-                        operacao.setPrecoSaida(Double.valueOf(jTextFieldPRECOSAIDA.getText()));
-                        operacao.setQuantidadeContratos(Integer.valueOf(jTextFieldQTDCONTRATOS.getText()));
-                        operacao.setTipoOperacao(TipoOperacao.valueOf((String) jComboBoxTIPOOPERACAO.getSelectedItem()));
-                        operacao.setTipoPosicao(TipoPosicao.valueOf((String) jComboBoxTIPOPOSICAO.getSelectedItem()));
-                        operacao.setStatusOperacao((String)jComboBoxSTATUSOPERACAO.getSelectedItem());
-                        operacao.setImg(this.imagemEDITAR);
-                        operacao.setDescricao(jTextAreaDESCRICAO.getText());
-                        operacao.setEventoTecnicoBase((String)jComboBoxEVENTOTECNICO.getSelectedItem());
-                        operacao.setDataHora(LocalDateTime.now());
-                        
-                        controller.editarOperacaoController(Integer.valueOf(jTextFieldID.getText()), operacao);
-                          boolean add = listaopercoes.add(operacao);
-                          limparCampos();
-                }         
-          }catch(HeadlessException e ){
-                    JOptionPane.showMessageDialog(this, "Não deixe de digitar dados ou digita-los corretamente!.");
-                }catch(NumberFormatException e ){
-                    JOptionPane.showMessageDialog(this, " Não deixe de digitar dados ou digita-los corretamente.");
-                }catch( IOException e ){
-                    
-                }catch(AbstractMethodError e ){
-                    JOptionPane.showMessageDialog(this, "Erro.");  
-                }catch(Exception e ){
-                                        JOptionPane.showMessageDialog(this, "Erro na hora de Editar Operacao.");  
 
-                }
+      Integer id = Integer.valueOf(jTextFieldID.getText());
+      String tipoAtivo = (String) jComboBoxTIPOATIVO.getSelectedItem().toString();
+      String ativo = (String) jTextFieldATIVO.getText();
+      double precoEntrada = Double.parseDouble(jTextFieldPRECOENTRADA.getText());
+      double precoSaida = Double.parseDouble(jTextFieldPRECOSAIDA.getText());
+      Integer qtdContratos = Integer.parseInt(jTextFieldQTDCONTRATOS.getText());
+      TipoOperacao tipoOp = TipoOperacao.valueOf(jComboBoxTIPOOPERACAO.getSelectedItem().toString());
+      TipoPosicao tipoPo = TipoPosicao.valueOf(jComboBoxTIPOPOSICAO.getSelectedItem().toString());
+      String statusOp =(String) jComboBoxSTATUSOPERACAO.getSelectedItem().toString();
+      String evTecBase = (String) jComboBoxEVENTOTECNICO.getSelectedItem().toString();
+      String descricao = (String) jTextAreaDESCRICAO.getText().toString();
+      BufferedImage img = imagemEDITAR;
+      
+      
+      boolean result = controller.validarDadosEdicao(id,tipoAtivo,ativo,precoEntrada,precoSaida,qtdContratos,tipoOp,tipoPo,statusOp,evTecBase,descricao,img);
+      if(result == true){
+          jTextFieldID.setEditable(true);
+          limparCampos();
+      }
+      
+              
+        
     }//GEN-LAST:event_jButtonEDITARSALVARActionPerformed
-    
+
     private boolean perguntarEscolherImagemComJDialog() {
-          Frame   framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
+        Frame framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-    JDialog dialog = new JDialog(framePai, "EscolherImagem", true);
-    dialog.setSize(350, 150);
-    dialog.setLayout(null);
-    dialog.setLocationRelativeTo(this);
+        JDialog dialog = new JDialog(framePai, "EscolherImagem", true);
+        dialog.setSize(350, 150);
+        dialog.setLayout(null);
+        dialog.setLocationRelativeTo(this);
 
-    javax.swing.JLabel lbl = new javax.swing.JLabel("Você não escolheu uma imagem. Deseja escolher agora?");
-    lbl.setBounds(20, 20, 310, 25);
-    dialog.add(lbl);
+        javax.swing.JLabel lbl = new javax.swing.JLabel("Você não escolheu uma imagem. Deseja escolher agora?");
+        lbl.setBounds(20, 20, 310, 25);
+        dialog.add(lbl);
 
-    javax.swing.JButton btnSim = new javax.swing.JButton("Sim");
-    javax.swing.JButton btnNao = new javax.swing.JButton("Não");
+        javax.swing.JButton btnSim = new javax.swing.JButton("Sim");
+        javax.swing.JButton btnNao = new javax.swing.JButton("Não");
 
-    btnSim.setBounds(70, 70, 80, 30);
-    btnNao.setBounds(180, 70, 80, 30);
-    dialog.add(btnSim);
-    dialog.add(btnNao);
+        btnSim.setBounds(70, 70, 80, 30);
+        btnNao.setBounds(180, 70, 80, 30);
+        dialog.add(btnSim);
+        dialog.add(btnNao);
 
-    final boolean[] resposta = {false};
+        final boolean[] resposta = {false};
 
-    btnSim.addActionListener(e -> {
-        resposta[0] = true;
-        dialog.dispose();
-    });
+        btnSim.addActionListener(e -> {
+            resposta[0] = true;
+            dialog.dispose();
+        });
 
-    btnNao.addActionListener(e -> {
-        resposta[0] = false;
-        dialog.dispose();
-    });
+        btnNao.addActionListener(e -> {
+            resposta[0] = false;
+            dialog.dispose();
+        });
 
-    dialog.setVisible(true);
-    return resposta[0];
-}
+        dialog.setVisible(true);
+        return resposta[0];
+    }
 
-    
-    public void limparCampos(){
-       jTextFieldID.setText("");
-    jTextFieldATIVO.setText("");
-    jTextFieldPRECOENTRADA.setText("");
-    jTextFieldPRECOSAIDA.setText("");
-    jTextFieldQTDCONTRATOS.setText("");
-    jComboBoxTIPOOPERACAO.setSelectedIndex(0); 
-    jComboBoxTIPOPOSICAO.setSelectedIndex(0);
-    jTextAreaDESCRICAO.setText("");
-    jComboBoxEVENTOTECNICO.setSelectedIndex(0);
-    jButtonImagemGraficoOperacao.setIcon(null);
-}
-    
+    public void limparCampos() {
+        jTextFieldID.setText("");
+        jTextFieldATIVO.setText("");
+        jTextFieldPRECOENTRADA.setText("");
+        jTextFieldPRECOSAIDA.setText("");
+        jTextFieldQTDCONTRATOS.setText("");
+        jComboBoxTIPOOPERACAO.setSelectedIndex(0);
+        jComboBoxTIPOPOSICAO.setSelectedIndex(0);
+        jTextAreaDESCRICAO.setText("");
+        jComboBoxEVENTOTECNICO.setSelectedIndex(0);
+        jButtonImagemGraficoOperacao.setIcon(null);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane aviso;
     private javax.swing.JButton jButtonATIVO;
     private javax.swing.JButton jButtonEDITARSALVAR;
     private javax.swing.JButton jButtonEVENTOTECNICO;
@@ -568,6 +523,5 @@ jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
     private javax.swing.JTextField jTextFieldPRECOENTRADA;
     private javax.swing.JTextField jTextFieldPRECOSAIDA;
     private javax.swing.JTextField jTextFieldQTDCONTRATOS;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
