@@ -61,7 +61,8 @@ public class RegistrarOperacaoController {
             JOptionPane.showMessageDialog(null, "A quantidade de contratos tem que ser no minimo 1 contrato por ativo financeiro!");
             return false;
         }
-
+            
+        //Criar as validação para esses enuns, só por garantia.
         this.tipoOperacao = tipoOperacao;
         this.tipoPosicao = tipoPosicao;
         this.statusOperacao = statusOperacao;

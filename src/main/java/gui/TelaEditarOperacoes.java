@@ -28,7 +28,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
     List<Operacao> listaopercoes;
     Integer valorId;
     int linhaSelecionada;
-    EditarOperacoesController controller = new EditarOperacoesController(); 
+    EditarOperacoesController controller = new EditarOperacoesController();
     // Operacao operacao;
     BufferedImage imagemEDITAR = null;
 
@@ -172,7 +172,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonTIPOATIVO.setText("Tipo Ativo");
 
         jComboBoxTIPOATIVO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "WIN", "WDO", "ACOES" }));
+        jComboBoxTIPOATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "WIN", "WDO", "ACOES" }));
 
         jButtonATIVO.setForeground(new java.awt.Color(0, 51, 255));
         jButtonATIVO.setText("Ativo: ");
@@ -194,16 +194,16 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonEVENTOTECNICO.setText("Evento Tecnico:");
 
         jComboBoxEVENTOTECNICO.setForeground(new java.awt.Color(0, 0, 255));
-        jComboBoxEVENTOTECNICO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Rompimento", "Regressao media movel" }));
+        jComboBoxEVENTOTECNICO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Rompimento", "Regressao media movel" }));
 
         jComboBoxSTATUSOPERACAO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxSTATUSOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "GAIN", "LOSS", "BREAKEVEN", "" }));
+        jComboBoxSTATUSOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "GAIN", "LOSS", "BREAKEVEN", "" }));
 
         jComboBoxTIPOPOSICAO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOPOSICAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SELL", "BUY", "" }));
+        jComboBoxTIPOPOSICAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "SELL", "BUY", "" }));
 
         jComboBoxTIPOOPERACAO.setForeground(new java.awt.Color(0, 51, 255));
-        jComboBoxTIPOOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SWING_TRADE", "DAY_TRADE", "POSITION", "" }));
+        jComboBoxTIPOOPERACAO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "SWING_TRADE", "DAY_TRADE", "POSITION", "" }));
 
         jButtonImagemGraficoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButtonImagemGraficoOperacao.setForeground(new java.awt.Color(0, 51, 255));
@@ -364,7 +364,6 @@ public class TelaEditarOperacoes extends JInternalFrame {
         }
     }//GEN-LAST:event_jTableTabelaOperacoesEventoDuploClique
 
-
     private void jButtonBuscarOperacoes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarOperacoes
         listaopercoes = controller.buscarParaEditarOperacoesController();
         atualizarTabelaEditarOperacoes(listaopercoes);
@@ -414,32 +413,30 @@ public class TelaEditarOperacoes extends JInternalFrame {
         }
     }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
 
-
     private void jButtonEDITARSALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEDITARSALVARActionPerformed
-
-      Integer id = Integer.valueOf(jTextFieldID.getText());
-      String tipoAtivo = (String) jComboBoxTIPOATIVO.getSelectedItem().toString();
-      String ativo = (String) jTextFieldATIVO.getText();
-      double precoEntrada = Double.parseDouble(jTextFieldPRECOENTRADA.getText());
-      double precoSaida = Double.parseDouble(jTextFieldPRECOSAIDA.getText());
-      Integer qtdContratos = Integer.parseInt(jTextFieldQTDCONTRATOS.getText());
-      TipoOperacao tipoOp = TipoOperacao.valueOf(jComboBoxTIPOOPERACAO.getSelectedItem().toString());
-      TipoPosicao tipoPo = TipoPosicao.valueOf(jComboBoxTIPOPOSICAO.getSelectedItem().toString());
-      String statusOp =(String) jComboBoxSTATUSOPERACAO.getSelectedItem().toString();
-      String evTecBase = (String) jComboBoxEVENTOTECNICO.getSelectedItem().toString();
-      String descricao = (String) jTextAreaDESCRICAO.getText().toString();
-      BufferedImage img = imagemEDITAR;
-      
-      
-      boolean result = controller.validarDadosEdicao(id,tipoAtivo,ativo,precoEntrada,precoSaida,qtdContratos,tipoOp,tipoPo,statusOp,evTecBase,descricao,img);
-      if(result == true){
-          jTextFieldID.setEditable(true);
-          limparCampos();
-      }
-      
-              
         
+            String id = (String) jTextFieldID.getText();
+            String tipoAtivo = (String) jComboBoxTIPOATIVO.getSelectedItem().toString();
+            String ativo = (String) jTextFieldATIVO.getText();
+            String precoEntrada = (String) jTextFieldPRECOENTRADA.getText();
+            String precoSaida = (String) jTextFieldPRECOSAIDA.getText();
+            String qtdContratos =(String) jTextFieldQTDCONTRATOS.getText();
+            String tipoOp = (String) jComboBoxTIPOOPERACAO.getSelectedItem().toString();
+            String  tipoPo = (String) jComboBoxTIPOPOSICAO.getSelectedItem().toString();
+            String statusOp = (String) jComboBoxSTATUSOPERACAO.getSelectedItem().toString();
+            String evTecBase = (String) jComboBoxEVENTOTECNICO.getSelectedItem().toString();
+            String descricao = (String) jTextAreaDESCRICAO.getText().toString();
+            BufferedImage img = imagemEDITAR;
+
+            boolean result = controller.validarDadosEdicao(id, tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOp, tipoPo, statusOp, evTecBase, descricao, img);
+            if (result == true) {
+                jTextFieldID.setEditable(true);
+                limparCampos();
+                
+            }
+  
     }//GEN-LAST:event_jButtonEDITARSALVARActionPerformed
+    //PASSAR ESSE METODO PARA O LADO DO CONTROLLER TBEM
 
     private boolean perguntarEscolherImagemComJDialog() {
         Frame framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -479,6 +476,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
 
     public void limparCampos() {
         jTextFieldID.setText("");
+        jComboBoxTIPOATIVO.setSelectedIndex(0);
         jTextFieldATIVO.setText("");
         jTextFieldPRECOENTRADA.setText("");
         jTextFieldPRECOSAIDA.setText("");
@@ -488,6 +486,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jTextAreaDESCRICAO.setText("");
         jComboBoxEVENTOTECNICO.setSelectedIndex(0);
         jButtonImagemGraficoOperacao.setIcon(null);
+        jComboBoxSTATUSOPERACAO.setSelectedIndex(0);
     }
 
 
