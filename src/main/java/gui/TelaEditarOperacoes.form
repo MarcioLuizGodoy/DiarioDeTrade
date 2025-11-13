@@ -65,15 +65,17 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextFieldQTDCONTRATOS" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBoxSTATUSOPERACAO" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxTIPOOPERACAO" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxTIPOPOSICAO" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxEVENTOTECNICO" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jComboBoxSTATUSOPERACAO" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxTIPOOPERACAO" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxTIPOPOSICAO" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxEVENTOTECNICO" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="415" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="419" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -90,13 +92,17 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="1200" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane4" min="-2" pref="229" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButtonEDITARSALVAR" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                              <Component id="jButtonImagemGraficoOperacao" min="-2" pref="207" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jButton1" min="-2" pref="381" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane4" min="-2" pref="229" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButtonEDITARSALVAR" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                  <Component id="jButtonImagemGraficoOperacao" min="-2" pref="207" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -117,53 +123,59 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="269" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane4" min="-2" pref="96" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonImagemGraficoOperacao" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonEDITARSALVAR" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jButton1" min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="131" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane2" min="-2" pref="180" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonQTDCONTRATOS" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldQTDCONTRATOS" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane4" min="-2" pref="96" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonImagemGraficoOperacao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonEDITARSALVAR" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonTIPOOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxTIPOOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxTIPOATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonTIPOATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonTIPOPOSICAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxTIPOPOSICAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonSTATUSOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxSTATUSOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldPRECOENTRADA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonPRECOENTRADA" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonPRECOSAIDA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldPRECOSAIDA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonEVENTOTECNICO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxEVENTOTECNICO" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonQTDCONTRATOS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldQTDCONTRATOS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonTIPOOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxTIPOOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxTIPOATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonTIPOATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonTIPOPOSICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxTIPOPOSICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldATIVO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonSTATUSOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSTATUSOPERACAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldPRECOENTRADA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonPRECOENTRADA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonPRECOSAIDA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldPRECOSAIDA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEVENTOTECNICO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxEVENTOTECNICO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -466,5 +478,16 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial Black" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o da An&#xe1;lise T&#xe9;cnica da opera&#xe7;&#xe3;o:"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
