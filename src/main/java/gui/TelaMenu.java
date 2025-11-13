@@ -28,6 +28,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(153, 153, 153));
+        setName("frameMENUPRINCIPAL"); // NOI18N
 
         jDesktopPaneContainerTelas.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPaneContainerTelas.setBorder(new javax.swing.border.MatteBorder(null));
@@ -41,7 +42,7 @@ public class TelaMenu extends javax.swing.JFrame {
         );
         jDesktopPaneContainerTelasLayout.setVerticalGroup(
             jDesktopPaneContainerTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 691, Short.MAX_VALUE)
+            .addGap(0, 697, Short.MAX_VALUE)
         );
 
         jMenuBar1.setForeground(new java.awt.Color(0, 0, 255));
@@ -162,14 +163,13 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPaneContainerTelas)
+            .addComponent(jDesktopPaneContainerTelas, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPaneContainerTelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jDesktopPaneContainerTelas))
         );
 
         pack();
@@ -180,6 +180,7 @@ public class TelaMenu extends javax.swing.JFrame {
                     setContentPane(jDesktopPaneContainerTelas); // Define o DesktopPane como o conteúdo principal da janela
                     setResizable(false);
                     setLocationRelativeTo(null);
+                    System.out.print(this.getName());
          }
     private void jMenuItemRegistrarOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarOperacaoActionPerformed
 

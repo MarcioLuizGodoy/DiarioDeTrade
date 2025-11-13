@@ -65,7 +65,7 @@
                         <goal>launch4j</goal>
                     </goals>
                     <configuration>
-                        <outfile>target/DiarioDeTrade.exe</outfile>
+                        <outfile>target/DiarioDeTradee.exe</outfile>
                         <jar>target/DiarioDeTrade-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
                         <dontWrapJar>false</dontWrapJar>
                         <headerType>gui</headerType>
@@ -73,7 +73,7 @@
                             <path>copiaDaJre</path>
                             <minVersion>24</minVersion>
                         </jre>
-                        <!--<icon>src/main/resources/imagens/icon.ico</icon>-->
+                        <icon>src/main/resources/imgs/jIconBlue.ico</icon>
                         <errTitle>Erro no Diario de Trade</errTitle>
                         <classPath>
                             <mainClass>app.App</mainClass>
@@ -113,9 +113,13 @@
 </dependency>
 
 
+
+
+
+<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 <dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
     <version>8.0.33</version>
 </dependency>
 

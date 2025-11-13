@@ -1,5 +1,5 @@
-
 package gui;
+
 import controller.EstatisticaPorTipoAtivoController;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,6 +15,7 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
+    
     String escolha;
     Double totalGain;
     Double totalLoss;

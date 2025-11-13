@@ -8,18 +8,20 @@ import javax.swing.SwingUtilities;
 import javax.swing.JDialog;
 import com.toedter.calendar.JCalendar;
 import controller.ImprimirRelatorioController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import model.Operacao;
 
 public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
-    
+
     public TelaImprimirRelatorioPDF() {
         initComponents();
         jTextField1.setEditable(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +33,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         jLabelTitulo = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -94,8 +95,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/pdfpreto.png"))); // NOI18N
-
         jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -121,10 +120,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 636, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(197, 197, 197))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,85 +128,95 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(422, 422, 422)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(10, Short.MAX_VALUE))))
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     JFrame framePai;
-     Date dataSelecionadaInicio;
-     Date dataSelecionadaFim;
-     Document document = new Document();
-     private List<Operacao> opLista; 
-    
+    JFrame framePai;
+    Date dataSelecionadaInicio;
+    Date dataSelecionadaFim;
+    Document document = new Document();
+    private List<Operacao> opLista;
+
     private void gerarPDF(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDF
 
-            //Essas duas linhas abaixo vão ser a ponte para as classes modelo e banco, retornando uma lista de operacoes nesse periodo de data especificado pelo usuario.
-           ImprimirRelatorioController lc = new ImprimirRelatorioController();
-           lc.pegarDataEFiltrarPorData(dataSelecionadaInicio, dataSelecionadaFim);
+        //Essas duas linhas abaixo vão ser a ponte para as classes modelo e banco, retornando uma lista de operacoes nesse periodo de data especificado pelo usuario.
+        ImprimirRelatorioController lc = new ImprimirRelatorioController();
+        lc.pegarDataEFiltrarPorData(dataSelecionadaInicio, dataSelecionadaFim);
     }//GEN-LAST:event_gerarPDF
 
-  
-  
+
     private void jButtonSelecionarPeriodo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarPeriodo
 
-     framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
-    JDialog dialogInicio = new JDialog(framePai, "Selecionar Período", true); 
-    dialogInicio.setSize(400, 350);
-    dialogInicio.setLocationRelativeTo(framePai);
-    JCalendar calendarInicio = new JCalendar();
-    dialogInicio.add(calendarInicio);
-    JButton okInicio = new JButton("OK");
-    dialogInicio.add(okInicio, BorderLayout.SOUTH);
-    Date[] dataInicioSelecionada = {null}; 
-    
-    okInicio.addActionListener(e -> {
-        dataInicioSelecionada[0] = calendarInicio.getDate();
-        dialogInicio.dispose();
-        });
-        dialogInicio.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialogInicio.setVisible(true);
-        dataSelecionadaInicio = dataInicioSelecionada[0];
-                
-            //===========================================
-       
-    JDialog dialogFim = new JDialog(framePai, "Selecionar Data Final", true);
-    dialogFim.setSize(400, 350);
-    dialogFim.setLocationRelativeTo(framePai);
-    JCalendar calendarFim = new JCalendar();
-    dialogFim.add(calendarFim);
-    JButton okFim = new JButton("OK");
-    dialogFim.add(okFim, BorderLayout.SOUTH);Date[] dataFimSelecionada = {null};
-    
-    okFim.addActionListener(e -> {
-        dataFimSelecionada[0] = calendarFim.getDate();
-        dialogFim.dispose();
-        });
-        dialogFim.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialogFim.setVisible(true);
-        dataSelecionadaFim = dataFimSelecionada[0];
+        framePai = (JFrame) SwingUtilities.getWindowAncestor(this); // é o frame onde o desktopPane esta emcima. 
+        //Criando o Dialog para receber outros componentes
+        JDialog dialogInicio = new JDialog(framePai, "Selecionar Data Início", true);
+        dialogInicio.setSize(400, 350);
+        dialogInicio.setLocationRelativeTo(framePai);
+        System.out.print(framePai.getName()); // --> frameMENUPRINCIPAL
+
+        //instanciando o JCalendar para por dentro do dialog e tbem pegar as datas
+        JCalendar calendarInicio = new JCalendar();
+
+        //Adicionando o Calendar ao Dialog que vai suportalo.
+        dialogInicio.add(calendarInicio);
+
+        //criando e adicionando o botao ok ao dialog e setando sua localização(Baixo)
+        JButton okInicio = new JButton("OK");
+        dialogInicio.add(okInicio, BorderLayout.SOUTH);
         
+        okInicio.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dataSelecionadaInicio = calendarInicio.getDate(); //LocalDateTime. 
+            dialogInicio.dispose();
+        }
+    });
+    dialogInicio.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+    dialogInicio.setVisible(true);
+    System.out.print(dataSelecionadaInicio);
+
+        //===========================================
+        JDialog dialogFim = new JDialog(framePai, "Selecionar Data Início", true);
+        dialogFim.setSize(400, 350);
+        dialogFim.setLocationRelativeTo(framePai);
+        System.out.print(framePai.getName()); 
+
+        JCalendar calendarFim = new JCalendar();
+        dialogFim.add(calendarFim);
+
+        JButton okFim = new JButton("OK");
+        dialogFim.add(okFim, BorderLayout.SOUTH);
+        
+        okFim.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dataSelecionadaFim = calendarFim.getDate();  
+            dataSelecionadaFim = calendarFim.getDate(); 
+            dialogFim.dispose();
+        }
+    });
+    dialogFim.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+    dialogFim.setVisible(true);
+    System.out.print(dataSelecionadaInicio);
+
     }//GEN-LAST:event_jButtonSelecionarPeriodo
 
-   
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
