@@ -5,7 +5,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -57,27 +56,28 @@ public final class GerarPdfs {
                 linha.add("Data/Hora: " + op.getDataHora() + "\n");
                 linha.add("Descrição: " + op.getDescricao() + "\n");
                 //  linha.add;
+               
                 linha.setSpacingAfter(10);
                 dc.add(linha);
-            }
-            PdfPTable table = new PdfPTable(8);
-            for (int aw = 0; aw < listaOperacoes.size(); aw++) {
-                table.addCell("hi");
-            }
-            dc.add(table);
 
+               
+            }
+            Paragraph p = new Paragraph();
+            p.add(CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(listaOperacoes).toString());
+            dc.add(p);
+            
             dc.close();
             w.close();
-            JOptionPane.showMessageDialog(null, "PDF gerado em AREA DE TRABALHO: " + caminhoEnomeArquivo.getAbsolutePath());
 
+            JOptionPane.showMessageDialog(null, "PDF gerado em AREA DE TRABALHO: " + caminhoEnomeArquivo.getAbsolutePath());
             Desktop.getDesktop().browse(caminhoEnomeArquivo.toURI());
 
         } catch (DocumentException e) {
-            e.printStackTrace();
+            System.out.println("Não foi possível abrir o PDF automaticamente 1: " + e.getMessage());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Não foi possível abrir o PDF automaticamente 2: " + e.getMessage());
         } catch (IOException ex) {
-            System.err.println("Não foi possível abrir o PDF automaticamente: " + ex.getMessage());
+            System.out.println("Não foi possível abrir o PDF automaticamente 3: " + ex.getMessage());
         }
     }
 

@@ -1,6 +1,5 @@
 package gui;
 
-import com.itextpdf.text.Document;
 import java.awt.BorderLayout;
 import java.util.Date;
 import javax.swing.JButton;
@@ -10,7 +9,6 @@ import com.toedter.calendar.JCalendar;
 import controller.ImprimirRelatorioController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.JFrame;
 import model.Operacao;
@@ -26,7 +24,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jFrame1 = new javax.swing.JFrame();
         jFrame2 = new javax.swing.JFrame();
         jDialog1 = new javax.swing.JDialog();
@@ -145,7 +142,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
     JFrame framePai;
     Date dataSelecionadaInicio;
     Date dataSelecionadaFim;
-    Document document = new Document();
     private List<Operacao> opLista;
 
     private void gerarPDF(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDF
@@ -175,6 +171,8 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         JButton okInicio = new JButton("OK");
         dialogInicio.add(okInicio, BorderLayout.SOUTH);
         
+        
+        //Adicionando evento ao btn ok com func anonima para receber a data clicada
         okInicio.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -214,7 +212,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
