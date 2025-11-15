@@ -4,15 +4,25 @@
 
 
 
+TODAS AS INSTRUÇÕES PRESENTES AQUI PODEM SER SEGUIDAS SEM A PASTA DIST-EXE/ COM EXCESSAO DO SCRIPT DO BANCO DE DADOS. ESPERE A DISPONIBILIZAÇÃO DA PASTA DIST-EXE/ PARA TESTAR!!!!!!!!
+
+
+
+
+
+
+
+
+
 1 - FAZER DOWNLOAD DO MySql v8.4.7 CLICANDO NO LINK:  https://dev.mysql.com/downloads/file/?id=545364 E INSTALANDO NA SUA MAQUINA OPTANDO PELA INSTALAÇÃO COMPLETA.
 
 
 
-&nbsp;  1.1 - CRIAR A CONEXÃO  PADRÃO NO ATO DA INSTALAÇAO : root
+   1.1 - CRIAR A CONEXÃO  PADRÃO NO ATO DA INSTALAÇAO : root
 
-&nbsp;      1.2 - O LOGIN: root E A SENHA: developer123@
+       1.2 - O LOGIN: root E A SENHA: developer123@
 
-&nbsp;         1.3 - ATENÇÃO:  PASSO  1.2 É INEGOCVIAVÉL.
+          1.3 - ATENÇÃO:  PASSO  1.2 É INEGOCVIAVÉL.
 
 
 
@@ -20,13 +30,13 @@
 
 
 
-&nbsp;  ATENÇÃO, ELE VAI PEPDIR UMA SENHA PARA VOCÊ LOGAR NO MYSQL COMMAND LINE E EXECUTAR O SCRIPT, É AQUI QUE ENTRA O PASSO ANTERIOR.
+   ATENÇÃO, ELE VAI PEPDIR UMA SENHA PARA VOCÊ LOGAR NO MYSQL COMMAND LINE E EXECUTAR O SCRIPT, É AQUI QUE ENTRA O PASSO ANTERIOR.
 
-&nbsp;      A SENHA DEVE SER: developer123@ // O USUARIO DEVE SER: root
+       A SENHA DEVE SER: developer123@ // O USUARIO DEVE SER: root
 
-&nbsp;	2.1 -   EXEMPLO PASSANDO O CAMINHO DO ARQUIVO dbCode.sql  que esta na minha maquina tendo como base a Area de Trabalho:
+ 	2.1 -   EXEMPLO PASSANDO O CAMINHO DO ARQUIVO dbCode.sql  que esta na minha maquina tendo como base a Area de Trabalho:
 
-&nbsp;		COMANDO A SER EXECUTADO NO MYSQL COMMAND LINE  --      SOURCE C:/Users/Godoy/Desktop/DiarioDeTradee/dist-exe/dbCode.sql;
+ 		COMANDO A SER EXECUTADO NO MYSQL COMMAND LINE  --      SOURCE C:/Users/Godoy/Desktop/DiarioDeTradee/dist-exe/dbCode.sql;
 
 
 
@@ -34,35 +44,35 @@
 
 OBS: ANTES DE VC EXECUTAR O SCRIPT, VC PODE ABRI-LO E MUDAR SEU LOGIN E SENHA DO SOFTWARE.  MAS PARA SER MAIS RAPIDO SUGIRO QUE DEIXE COM ESSE LOGIN E SENHA PADRÃO
 
-&nbsp;          2.2 - RESULTADO ESPERADO:
+           2.2 - RESULTADO ESPERADO:
 
 
 
 
 
-&nbsp;                          Query OK, 1 row affected (0.01 sec)
+                           Query OK, 1 row affected (0.01 sec)
 
-&nbsp;                          Database changed
-
-
-
-&nbsp;                        Query OK, 0 rows affected (0.02 sec)
+                           Database changed
 
 
 
-&nbsp;                         Query OK, 0 rows affected (0.02 sec)
+                         Query OK, 0 rows affected (0.02 sec)
 
 
 
-&nbsp;                          Query OK, 1 row affected (0.00 sec)
+                          Query OK, 0 rows affected (0.02 sec)
 
 
 
-&nbsp;                          Query OK, 0 rows affected (0.00 sec)
+                           Query OK, 1 row affected (0.00 sec)
 
 
 
-&nbsp;                        mysql>
+                           Query OK, 0 rows affected (0.00 sec)
+
+
+
+                         mysql>
 
 
 
@@ -70,11 +80,11 @@ OBS: ANTES DE VC EXECUTAR O SCRIPT, VC PODE ABRI-LO E MUDAR SEU LOGIN E SENHA DO
 
 
 
-&nbsp;     3.1 - CREDENCIAIS TELA LOGIN DIARIO DE TRADE :
+      3.1 - CREDENCIAIS TELA LOGIN DIARIO DE TRADE :
 
 
 
-&nbsp;		Login: user  e Senha: user
+ 		Login: user  e Senha: user
 
 
 
