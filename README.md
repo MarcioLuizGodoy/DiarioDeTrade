@@ -24,7 +24,7 @@ LINK PARA DOWNLOAD DA JDK/JRE 24.1:   https://download.oracle.com/java/24/archiv
 
 
 
-                                                                                            PASSOS DO PRIMEIRO JEITO DE EXECUTAR O PROGRAMA:
+                                     PASSOS DO PRIMEIRO JEITO DE EXECUTAR O PROGRAMA:
 
 
 
