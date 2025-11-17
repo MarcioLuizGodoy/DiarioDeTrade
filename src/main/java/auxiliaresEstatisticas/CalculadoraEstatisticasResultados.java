@@ -1,5 +1,6 @@
 
 package auxiliaresEstatisticas;
+import java.math.BigDecimal;
 import java.util.List;
 import model.Operacao;
 
@@ -8,8 +9,8 @@ public  final  class   CalculadoraEstatisticasResultados {
    
     private CalculadoraEstatisticasResultados(){}
    
-    public static Double calcularResultadoOperacaoGain(List<Operacao> operacoes){
-    Double ganhoOperacao = 0.0;
+    public static BigDecimal calcularResultadoOperacaoGain(List<Operacao> operacoes){
+    BigDecimal  ganhoOperacao = new BigDecimal("0.00") ;
 
     for (Operacao op : operacoes) {
         if (op.getStatusOperacao().equals("GAIN")) {

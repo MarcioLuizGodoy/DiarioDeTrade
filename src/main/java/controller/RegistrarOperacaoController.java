@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.image.BufferedImage;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import model.Dao.OperacaoDao;
 import model.Operacao;
@@ -11,8 +12,8 @@ public class RegistrarOperacaoController {
 
     private String tipoAtivo;
     private String ativo;
-    private Double precoEntrada;
-    private Double precoSaida;
+    private BigDecimal precoEntrada;
+    private BigDecimal precoSaida;
     private Integer quantidadeContratos;
     private TipoOperacao tipoOperacao;
     private TipoPosicao tipoPosicao;
@@ -26,8 +27,8 @@ public class RegistrarOperacaoController {
 
     @SuppressWarnings("empty-statement")
     public boolean receberDados(
-            String tipoAtivo, String ativo, Double precoEntrada, Double precoSaida, Integer quantidadeContratos, TipoOperacao tipoOperacao,
-            TipoPosicao tipoPosicao, String statusOperacao, BufferedImage image,
+            String tipoAtivo, String ativo, String precoEntrada, String precoSaida, Integer quantidadeContratos, String tipoOperacao,
+            String tipoPosicao, String statusOperacao, BufferedImage image,
             String descricao, String eventoTecnicoBase) {
 
         this.tipoAtivo = tipoAtivo;
@@ -39,17 +40,15 @@ public class RegistrarOperacaoController {
             this.ativo = ativo;
         }
 
-        String aux = String.valueOf(precoEntrada);
-        if (aux != null && aux.matches("\\d{3}\\.\\d+")) {
-            this.precoEntrada = Double.valueOf(aux);
+        if (precoEntrada != null && precoEntrada.matches("\\d{3}\\.\\d+")) {
+            this.precoEntrada = new BigDecimal(precoEntrada);
         } else {
             JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145.123");
             return false;
         }
 
-        String auxx = String.valueOf(precoSaida);
-        if (auxx != null && auxx.matches("\\d{3}\\.\\d+")) {
-            this.precoSaida = Double.valueOf(auxx);
+        if (precoSaida != null && precoSaida.matches("\\d{3}\\.\\d+")) {
+            this.precoSaida = new BigDecimal(precoSaida);
         } else {
             JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145.123");
             return false;
@@ -61,10 +60,25 @@ public class RegistrarOperacaoController {
             JOptionPane.showMessageDialog(null, "A quantidade de contratos tem que ser no minimo 1 contrato por ativo financeiro!");
             return false;
         }
-            
+
         //Criar as validação para esses enuns, só por garantia.
-        this.tipoOperacao = tipoOperacao;
-        this.tipoPosicao = tipoPosicao;
+        if (tipoOperacao.equals(TipoOperacao.DAY_TRADE) || tipoOperacao.equals(TipoOperacao.SWING_TRADE) | tipoOperacao.equals(TipoOperacao.POSITION)) {
+            TipoOperacao to = TipoOperacao.valueOf(tipoOperacao);
+            this.tipoOperacao = (to);
+        } else {
+            JOptionPane.showMessageDialog(null, "Coloque um Tipo de Operacao valida");
+
+        }
+
+        if (tipoPosicao.equals(TipoPosicao.BUY) || tipoPosicao.equals(TipoPosicao.SELL)) {
+            TipoPosicao tp = TipoPosicao.valueOf(tipoPosicao);
+            this.tipoPosicao = (tp);
+        } else {
+            JOptionPane.showMessageDialog(null, "Coloque um Tipo de Posicao valida");
+
+        }
+
+        //Aqui esta sem validação alguma
         this.statusOperacao = statusOperacao;
 
         if (image == null || image.getWidth() <= 0 || image.getHeight() <= 0) {
@@ -75,7 +89,7 @@ public class RegistrarOperacaoController {
         }
 
         if (descricao != null && !descricao.trim().isEmpty()) {
-            this.descricao = descricao.trim(); 
+            this.descricao = descricao.trim();
             System.out.print(this.descricao);
         } else {
             JOptionPane.showMessageDialog(null, "Visando ter boas informações pra estudo e analise posterior, não deixe de forma alguma esse campo em branco.");

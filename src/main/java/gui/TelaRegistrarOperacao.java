@@ -294,18 +294,16 @@ public class TelaRegistrarOperacao extends JInternalFrame {
 
             String tipoAtivo = (String) jComboBoxTipoAtivo.getSelectedItem();
             String ativo = jTextFieldAtivo.getText().trim();
-            Double precoEntrada = Double.valueOf(jTextFieldPrecoEntrada.getText().trim());
-            Double precoSaida = Double.valueOf(jTextFieldPrecoSaida.getText().trim());
+            String precoEntrada = (jTextFieldPrecoEntrada.getText().trim());
+            String precoSaida = (jTextFieldPrecoSaida.getText().trim());
             Integer qtdContratos = Integer.valueOf(jTextFieldQuantidadeContratos.getText());
             String status = (String) jComboBoxStatusOperacao.getSelectedItem();
             String tipoOpStr = (String) jComboBoxTipoOperacao.getSelectedItem();
             String tipoPosStr = (String) jComboBoxTipoPosicao.getSelectedItem();
-            TipoOperacao tipoOperacao = TipoOperacao.valueOf(tipoOpStr);
-            TipoPosicao tipoPosicao = TipoPosicao.valueOf(tipoPosStr);
             String descricao = jTextAreaDescricao.getText();
             String eventoTecnicoBase = (String) jComboBoxEventoTecnicoBase.getSelectedItem();
 
-            boolean dadosValidos = c.receberDados(tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOperacao, tipoPosicao, status, imggg, descricao, eventoTecnicoBase);
+            boolean dadosValidos = c.receberDados(tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOpStr, tipoPosStr, status, imggg, descricao, eventoTecnicoBase);
             if (dadosValidos == false) {
                 return;
             }

@@ -33,8 +33,8 @@ public class OperacaoDao {
 
             ps.setString(1, operacao.getTipoAtivo());
             ps.setString(2, operacao.getAtivo());
-            ps.setDouble(3, operacao.getPrecoEntrada());
-            ps.setDouble(4, operacao.getPrecoSaida());
+            ps.setBigDecimal(3, operacao.getPrecoEntrada());
+            ps.setBigDecimal(4, operacao.getPrecoSaida());
             ps.setInt(5, operacao.getQuantidadeContratos());
             ps.setString(6, operacao.getTipoOperacao().toString());
             ps.setString(7, operacao.getTipoPosicao().toString());
@@ -77,8 +77,8 @@ public class OperacaoDao {
                 op.setId(rs.getInt("id"));
                 op.setTipoAtivo(rs.getString("tipo_ativo"));
                 op.setAtivo(rs.getString("ativo"));
-                op.setPrecoEntrada(rs.getDouble("preco_entrada"));
-                op.setPrecoSaida(rs.getDouble("preco_saida"));
+                op.setPrecoEntrada(rs.getBigDecimal("preco_entrada"));
+                op.setPrecoSaida(rs.getBigDecimal("preco_saida"));
                 op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
@@ -122,8 +122,8 @@ public class OperacaoDao {
                 op.setId(rs.getInt("id"));
                 op.setTipoAtivo(rs.getString("tipo_ativo"));
                 op.setAtivo(rs.getString("ativo"));
-                op.setPrecoEntrada(rs.getDouble("preco_entrada"));
-                op.setPrecoSaida(rs.getDouble("preco_saida"));
+                op.setPrecoEntrada(rs.getBigDecimal("preco_entrada"));
+                op.setPrecoSaida(rs.getBigDecimal("preco_saida"));
                 op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
@@ -169,8 +169,8 @@ public class OperacaoDao {
                 op.setId(rs.getInt("id"));
                 op.setTipoAtivo(rs.getString("tipo_ativo"));
                 op.setAtivo(rs.getString("ativo"));
-                op.setPrecoEntrada(rs.getDouble("preco_entrada"));
-                op.setPrecoSaida(rs.getDouble("preco_saida"));
+                op.setPrecoEntrada(rs.getBigDecimal("preco_entrada"));
+                op.setPrecoSaida(rs.getBigDecimal("preco_saida"));
                 op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
@@ -218,8 +218,8 @@ public class OperacaoDao {
                 op.setId(rs.getInt("id"));
                 op.setTipoAtivo(rs.getString("tipo_ativo"));
                 op.setAtivo(rs.getString("ativo"));
-                op.setPrecoEntrada(rs.getDouble("preco_entrada"));
-                op.setPrecoSaida(rs.getDouble("preco_saida"));
+                op.setPrecoEntrada(rs.getBigDecimal("preco_entrada"));
+                op.setPrecoSaida(rs.getBigDecimal("preco_saida"));
                 op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
@@ -263,8 +263,8 @@ public class OperacaoDao {
                 op.setId(rs.getInt("id"));
                 op.setTipoAtivo(rs.getString("tipo_ativo"));
                 op.setAtivo(rs.getString("ativo"));
-                op.setPrecoEntrada(rs.getDouble("preco_entrada"));
-                op.setPrecoSaida(rs.getDouble("preco_saida"));
+                op.setPrecoEntrada(rs.getBigDecimal("preco_entrada"));
+                op.setPrecoSaida(rs.getBigDecimal("preco_saida"));
                 op.setQuantidadeContratos(rs.getInt("quantidade_contratos"));
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
@@ -305,9 +305,9 @@ public class OperacaoDao {
 
             ps.setString(1, operacao.getTipoAtivo());
             ps.setString(2, operacao.getAtivo());
-            ps.setDouble(3, operacao.getPrecoEntrada());
-            ps.setDouble(4, operacao.getPrecoSaida());
-            ps.setDouble(5, operacao.getQuantidadeContratos());
+            ps.setBigDecimal(3, operacao.getPrecoEntrada());
+            ps.setBigDecimal(4, operacao.getPrecoSaida());
+            ps.setInt(5, operacao.getQuantidadeContratos());
             ps.setString(6, operacao.getTipoOperacao().name());
             ps.setString(7, operacao.getTipoPosicao().name());
             ps.setString(8, operacao.getStatusOperacao());

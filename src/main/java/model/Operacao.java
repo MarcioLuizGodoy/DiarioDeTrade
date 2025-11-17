@@ -1,14 +1,15 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Operacao {
     private Integer id;  // Usar Integer para permitir null (antes de inserir)
     private String tipoAtivo;
     private String ativo;
-    private Double precoEntrada;
-    private Double precoSaida;
+    private BigDecimal precoEntrada;
+    private BigDecimal precoSaida;
     private Integer quantidadeContratos;
     private TipoOperacao tipoOperacao;
     private TipoPosicao tipoPosicao;
@@ -24,7 +25,7 @@ public class Operacao {
     // Construtor completo, ID E HORA. SAO AUTOINCREMENTADOS PELO BANCO DE DADOS.
     // DEPOIS É SÓ CHAMÁ-LOS COM GETTERS E SETTERS.
     
-    public Operacao(String tipoAtivo,String ativo, Double precoEntrada, Double precoSaida,
+    public Operacao(String tipoAtivo,String ativo, BigDecimal precoEntrada, BigDecimal precoSaida,
         Integer quantidadeContratos, TipoOperacao tipoOperacao, TipoPosicao tipoPosicao,
         String statusOperacao, BufferedImage img, String descricao, String eventoTecnicoBase ) {    
         
@@ -62,10 +63,10 @@ public class Operacao {
     public String getAtivo() {
         return ativo;
     }
-    public Double getPrecoEntrada() {
+    public BigDecimal getPrecoEntrada() {
         return precoEntrada;
     }
-    public Double getPrecoSaida() {
+    public BigDecimal getPrecoSaida() {
         return precoSaida;
     }
     public Integer getQuantidadeContratos() {
@@ -104,10 +105,10 @@ public class Operacao {
     public void setAtivo(String ativo) {
         this.ativo = ativo;
     }
-    public void setPrecoEntrada(Double precoEntrada) {
+    public void setPrecoEntrada(BigDecimal precoEntrada) {
         this.precoEntrada = precoEntrada;
     }
-    public void setPrecoSaida(Double precoSaida) {
+    public void setPrecoSaida(BigDecimal precoSaida) {
         this.precoSaida = precoSaida;
     }
     public void setQuantidadeContratos(Integer quantidadeContratos) {
