@@ -3,6 +3,7 @@ package gui;
 import controller.EstatisticaPorTipoAtivoController;
 import java.awt.Color;
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import model.Operacao;
@@ -17,9 +18,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
     
     String escolha;
-    Double totalGain;
-    Double totalLoss;
-    Double saldo;
+   BigDecimal totalGain;
+    BigDecimal totalLoss;
+    BigDecimal saldo;
       
     List<Operacao> operacoes= new ArrayList<>();
     EstatisticaPorTipoAtivoController c = new EstatisticaPorTipoAtivoController();

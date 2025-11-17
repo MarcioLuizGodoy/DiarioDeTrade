@@ -4,6 +4,7 @@ import controller.EstatisticaPorTipoOperacaoController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import model.Operacao;
@@ -18,9 +19,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
     
-        Double totalGain;
-        Double totalLoss;
-        Double saldo;    
+        BigDecimal totalGain;
+        BigDecimal totalLoss;
+        BigDecimal saldo;    
         String escolha;
         EstatisticaPorTipoOperacaoController c = new EstatisticaPorTipoOperacaoController();
         List<Operacao> operacoesFiltradasDevolvidas = new ArrayList<>();

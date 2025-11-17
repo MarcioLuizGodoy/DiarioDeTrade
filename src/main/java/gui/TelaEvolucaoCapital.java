@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JInternalFrame;
@@ -21,9 +22,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class TelaEvolucaoCapital extends JInternalFrame {
     
     EvolucaoCapitalController c = new EvolucaoCapitalController();
-    Double totalGain;
-    Double totalLoss;
-    Double saldo;
+    BigDecimal totalGain;
+    BigDecimal totalLoss;
+    BigDecimal saldo;
        List<Operacao> operacoes = new ArrayList<>();
     public TelaEvolucaoCapital() {
         initComponents();

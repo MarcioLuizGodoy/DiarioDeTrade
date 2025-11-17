@@ -1,88 +1,95 @@
-
 package auxiliaresEstatisticas;
+
 import java.math.BigDecimal;
 import java.util.List;
 import model.Operacao;
+import model.TipoPosicao;
 
-//chamar esse metodo dentro de todos os metodos pra validar o padrao de movimentacao do ativo
-public  final  class   CalculadoraEstatisticasResultados {
-   
-    private CalculadoraEstatisticasResultados(){}
-   
-    public static BigDecimal calcularResultadoOperacaoGain(List<Operacao> operacoes){
-    BigDecimal  ganhoOperacao = new BigDecimal("0.00") ;
+public final class CalculadoraEstatisticasResultados {
 
-    for (Operacao op : operacoes) {
-        if (op.getStatusOperacao().equals("GAIN")) {
-            if (op.getTipoPosicao().toString().equals("BUY")) {
-                ganhoOperacao += (op.getPrecoSaida() - op.getPrecoEntrada()) *
-                                 op.getQuantidadeContratos() *
-                                 setarPadraoMovimentacaoTipoAtivo(op);
-            } else if (op.getTipoPosicao().toString().equals("SELL")) {
-                ganhoOperacao += (op.getPrecoEntrada() - op.getPrecoSaida()) *
-                                 op.getQuantidadeContratos() *
-                                 setarPadraoMovimentacaoTipoAtivo(op);
-            }
-        }
+    private CalculadoraEstatisticasResultados() {
     }
 
-    return ganhoOperacao;
-}
+    public static BigDecimal calcularResultadoOperacaoGain(List<Operacao> operacoes) {
+        BigDecimal ganhoOperacao = new BigDecimal("0.00");
+
+        for (Operacao op : operacoes) {
+            if (op.getStatusOperacao().equals("GAIN")) {
+
+                BigDecimal precoEntrada = op.getPrecoEntrada();
+                BigDecimal precoSaida = op.getPrecoSaida();
+                BigDecimal quantidade = BigDecimal.valueOf(op.getQuantidadeContratos());
+                BigDecimal multiplicador = new BigDecimal(setarPadraoMovimentacaoTipoAtivo(op).toString());
+
+                BigDecimal resultado;
+                if (op.getTipoPosicao() == TipoPosicao.BUY) {
+                    resultado = precoSaida.subtract(precoEntrada).multiply(quantidade).multiply(multiplicador);
+                } else {
+                    resultado = precoEntrada.subtract(precoSaida).multiply(quantidade).multiply(multiplicador);
+                }
+
+                ganhoOperacao = ganhoOperacao.add(resultado);
+            }
+        }
+
+        return ganhoOperacao;
+    }
 
     //=====================================================================================================================
- 
-      public static Double calcularResultadoOperacaoLoss(List<Operacao> operacoes){
-    Double perdaOperacao = 0.0;
-    for (Operacao op : operacoes) {
-        if (op.getStatusOperacao().equals("LOSS")) {
-            if (op.getTipoPosicao().toString().equals("BUY")) {
-               
-                perdaOperacao += (op.getPrecoEntrada() - op.getPrecoSaida()) * op.getQuantidadeContratos() *setarPadraoMovimentacaoTipoAtivo(op);
-           
-            } else if (op.getTipoPosicao().toString().equals("SELL")) {
-              
-                perdaOperacao += (op.getPrecoSaida() - op.getPrecoEntrada()) *op.getQuantidadeContratos() *setarPadraoMovimentacaoTipoAtivo(op);
-           
+    public static BigDecimal calcularResultadoOperacaoLoss(List<Operacao> operacoes) {
+        BigDecimal perdaOperacao = new BigDecimal("0.00");
+                        BigDecimal resultado = BigDecimal.ZERO;
+        for (Operacao op : operacoes) {
+            if (op.getStatusOperacao().equals("LOSS")) {
+                
+                BigDecimal precoEntrada = op.getPrecoEntrada();
+                BigDecimal precoSaida = op.getPrecoSaida();
+                BigDecimal qtdContratos = BigDecimal.valueOf(op.getQuantidadeContratos());
+                BigDecimal multiplicador =  new BigDecimal(setarPadraoMovimentacaoTipoAtivo(op).toString());
+                
+                if (op.getTipoPosicao().toString().equals("BUY")) {
+
+                    resultado = precoEntrada.subtract(precoSaida).multiply( qtdContratos).multiply(multiplicador);
+
+                } else if (op.getTipoPosicao().toString().equals("SELL")) {
+
+                    resultado = precoSaida.subtract(precoEntrada).multiply(qtdContratos).multiply(multiplicador);
+
+                }
+                perdaOperacao = perdaOperacao.add(resultado);
             }
         }
+        return perdaOperacao.abs();
+               //return perdaOperacao;
+
     }
-    return  Math.abs(perdaOperacao); // já vai ser positivo, resultado da operação
-}
 
     //=========================================================================================================================
-     
-    
-    //QUANDO ESSE METODO ESTIVER PRONTO, SETAR ELE NAS DE BAIXO PRA QUE O CALCULO SEJA FEITO CORRETAMENTE!!!
-  public static Double setarPadraoMovimentacaoTipoAtivo(Operacao operacao) {
-    String tipoAtivo = operacao.getTipoAtivo();
+    public static BigDecimal setarPadraoMovimentacaoTipoAtivo(Operacao operacao) {
+        String tipoAtivo = operacao.getTipoAtivo();
 
-    
-    if (tipoAtivo == null) {
-        return 0.0; 
-    } switch (tipoAtivo.toUpperCase()) {
-        case "WIN":
-            return 0.20;
-        case "WDO":
-            return 0.50;
-        case "ACOES":
-            return 0.01;
-        default:
-            return 0.0; // Valor padrão se o tipo não for reconhecido
+        if (tipoAtivo == null) {
+            return BigDecimal.ZERO;
+        }
+        switch (tipoAtivo.toUpperCase()) {
+            case "WIN":
+                return new BigDecimal("0.20");
+            case "WDO":
+                return new BigDecimal("0.50");
+            case "ACOES":
+                return new BigDecimal("0.01");
+            default:
+                return BigDecimal.ZERO;
+        }
     }
-}
 //=====================================================================================
-   
-  
-  
-  
-  public static Double calcularResultadoOperacaoSaldo(List<Operacao> operacoes) {
-    Double ganho = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(operacoes);
-    Double perda = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(operacoes);
-    Double saldo = ganho - Math.abs(perda);
-    return saldo;
+
+    public static BigDecimal calcularResultadoOperacaoSaldo(List<Operacao> operacoes) {
+        BigDecimal ganho = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(operacoes);
+        BigDecimal perda = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(operacoes);
+        BigDecimal saldo = ganho.subtract(perda.abs());
+        return saldo;
     }
 //===============================================================================================
-   
 
-   
 }

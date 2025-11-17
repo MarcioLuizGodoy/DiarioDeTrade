@@ -3,57 +3,47 @@ package controller;
 import auxiliaresEstatisticas.CalculadoraEstatisticasResultados;
 import db.DbException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import model.Dao.OperacaoDao;
 import model.Operacao;
 
 public class EvolucaoCapitalController {
-    
+
     List<Operacao> listaOperacoes = new ArrayList<>();
-    Double auxGain;
-    Double auxLoss;
-    Double auxSaldo;
- 
-    public EvolucaoCapitalController(){
+    BigDecimal auxGain;
+    BigDecimal auxLoss;
+    BigDecimal auxSaldo;
+
+    public EvolucaoCapitalController() {
     }
-    
+
     public List<Operacao> consutarOperacoesController() {
         OperacaoDao oD = new OperacaoDao();
-            try {
-               this.listaOperacoes =  oD.consultarTodasOperacoes();
-            } catch (DbException | IOException e) {
-                e.printStackTrace(); 
-                return new ArrayList<>();
+        try {
+            this.listaOperacoes = oD.consultarTodasOperacoes();
+        } catch (DbException | IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return this.listaOperacoes;
 
-            }
-         return this.listaOperacoes;
-         
     }
-    
-    public double coletarOsGains(){
-       auxGain =  CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoes);
-       return auxGain;
+
+    public BigDecimal coletarOsGains() {
+        auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoes);
+        return auxGain;
     }
-    
-    public double coletarOsLoss(){
+
+    public BigDecimal coletarOsLoss() {
         auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(listaOperacoes);
         return auxLoss;
     }
-    public double coletarSaldoFinalCapital(){
+
+    public BigDecimal coletarSaldoFinalCapital() {
         auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(listaOperacoes);
         return auxSaldo;
     }
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }

@@ -2,6 +2,7 @@ package controller;
 
 import auxiliaresEstatisticas.CalculadoraEstatisticasResultados;
 import db.DbException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import model.Dao.OperacaoDao;
@@ -11,9 +12,9 @@ import model.Operacao;
 public class EstatisticasPorAtivoController {
     List<Operacao> listaOperacoes = new ArrayList<>();
     String ativo; //CASO NO FUTURO PRECISE, JÁ ESTA AQUI.
-    Double auxGain;
-    Double auxLoss;
-    Double auxSaldo;
+    BigDecimal auxGain;
+    BigDecimal auxLoss;
+    BigDecimal auxSaldo;
     Integer totalOperacoes;
 
     
@@ -33,17 +34,17 @@ public class EstatisticasPorAtivoController {
     
     
     
-    public double coletarOsGains(){
+    public BigDecimal coletarOsGains(){
         auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoes);
         return auxGain;
     }
     
-    public double coletarOsLoss(){
+    public BigDecimal coletarOsLoss(){
         auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(listaOperacoes);
         return auxLoss;
     }
     
-    public double coletarOsSaldos(){
+    public BigDecimal coletarOsSaldos(){
         auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(listaOperacoes);
         return auxSaldo;
     }

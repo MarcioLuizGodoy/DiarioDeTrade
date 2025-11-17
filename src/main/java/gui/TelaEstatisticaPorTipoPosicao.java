@@ -3,8 +3,8 @@ package gui;
 
 import controller.EstatisticaPorTipoPosicaoController;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.swing.JInternalFrame;
 import model.Operacao;
@@ -22,9 +22,9 @@ public class TelaEstatisticaPorTipoPosicao extends JInternalFrame {
     
     String escolha;
     public List <Operacao> operacoesFiltradas;
-    Double totalGain;
-    Double totalLoss;
-    Double saldo;
+    BigDecimal totalGain;
+    BigDecimal totalLoss;
+    BigDecimal saldo;
     
     
     public TelaEstatisticaPorTipoPosicao() {

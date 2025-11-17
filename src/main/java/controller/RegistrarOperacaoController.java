@@ -62,21 +62,21 @@ public class RegistrarOperacaoController {
         }
 
         //Criar as validação para esses enuns, só por garantia.
-        if (tipoOperacao.equals(TipoOperacao.DAY_TRADE) || tipoOperacao.equals(TipoOperacao.SWING_TRADE) | tipoOperacao.equals(TipoOperacao.POSITION)) {
+       // if (tipoOperacao.equals(TipoOperacao.DAY_TRADE) || tipoOperacao.equals(TipoOperacao.SWING_TRADE) || tipoOperacao.equals(TipoOperacao.POSITION)) {
             TipoOperacao to = TipoOperacao.valueOf(tipoOperacao);
             this.tipoOperacao = (to);
-        } else {
-            JOptionPane.showMessageDialog(null, "Coloque um Tipo de Operacao valida");
+        //} else {
+            //JOptionPane.showMessageDialog(null, "Coloque um Tipo de Operacao valida");
+//
+       // }
 
-        }
-
-        if (tipoPosicao.equals(TipoPosicao.BUY) || tipoPosicao.equals(TipoPosicao.SELL)) {
+        //if (tipoPosicao.equals(TipoPosicao.BUY) || tipoPosicao.equals(TipoPosicao.SELL)) {
             TipoPosicao tp = TipoPosicao.valueOf(tipoPosicao);
             this.tipoPosicao = (tp);
-        } else {
-            JOptionPane.showMessageDialog(null, "Coloque um Tipo de Posicao valida");
+       // } else {
+          //  JOptionPane.showMessageDialog(null, "Coloque um Tipo de Posicao valida");
 
-        }
+       // }
 
         //Aqui esta sem validação alguma
         this.statusOperacao = statusOperacao;

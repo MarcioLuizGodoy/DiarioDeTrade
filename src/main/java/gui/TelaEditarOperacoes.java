@@ -23,9 +23,7 @@ import model.Operacao;
 
 public class TelaEditarOperacoes extends JInternalFrame {
 
-    List<Operacao> listaopercoes; 
-    
-    
+    List<Operacao> listaopercoes;
     Integer valorId;
     int linhaSelecionada;
     EditarOperacoesController controller = new EditarOperacoesController();
@@ -139,7 +137,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jTableTabelaOperacoesEDITAROPERACOES.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jTableTabelaOperacoesEDITAROPERACOES.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableTabelaOperacoesEventoDuploClique(evt);
+                duploClique(evt);
             }
         });
         jScrollPane1.setViewportView(jTableTabelaOperacoesEDITAROPERACOES);
@@ -155,7 +153,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonbuscarOperacoes.setText("Buscar");
         jButtonbuscarOperacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarOperacoes(evt);
+                buscarOperacoesEditar(evt);
             }
         });
 
@@ -164,7 +162,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonEDITARSALVAR.setText("Editar e Salvar");
         jButtonEDITARSALVAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEDITARSALVARActionPerformed(evt);
+                editarSalvar(evt);
             }
         });
 
@@ -210,7 +208,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jButtonImagemGraficoOperacao.setText("Enviar Imagem");
         jButtonImagemGraficoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonImagemGraficoOperacaoActionPerformed(evt);
+                enviarImagem(evt);
             }
         });
 
@@ -360,13 +358,14 @@ public class TelaEditarOperacoes extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableTabelaOperacoesEventoDuploClique(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTabelaOperacoesEventoDuploClique
+    private void duploClique(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_duploClique
 
         if (evt.getClickCount() == 2) {
             linhaSelecionada = jTableTabelaOperacoesEDITAROPERACOES.getSelectedRow();
             jTableTabelaOperacoesEDITAROPERACOES.repaint();
 
             if (linhaSelecionada != -1) {
+                //aqui valor id serve como parametro pra percorrer a lista. NAO APAGAR ESSE COMENTARIO.
                 valorId = (Integer) jTableTabelaOperacoesEDITAROPERACOES.getValueAt(linhaSelecionada, 0);
                 jTextFieldID.setEditable(true);
                 jTextFieldID.setForeground(Color.red);
@@ -380,12 +379,11 @@ public class TelaEditarOperacoes extends JInternalFrame {
                     }
                 }
                 
-                //BUSCAR A DESCRIÇÃO DA TABEL
-            }
+                            }
         }
-    }//GEN-LAST:event_jTableTabelaOperacoesEventoDuploClique
+    }//GEN-LAST:event_duploClique
 
-    private void jButtonBuscarOperacoes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarOperacoes
+    private void buscarOperacoesEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarOperacoesEditar
         listaopercoes = controller.buscarParaEditarOperacoesController();
         atualizarTabelaEditarOperacoes(listaopercoes);
         String avisoo = "AVISO: Clique duas vezes na operação que deseja editar, ao clicar  Id e a descrição seram  preenchido automaticamente visando te ajuda-lo a minimizar erros! ";
@@ -394,7 +392,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         aviso.setEditable(false);
         aviso.setBorder(null);
         aviso.setText(avisoo);
-    }//GEN-LAST:event_jButtonBuscarOperacoes
+    }//GEN-LAST:event_buscarOperacoesEditar
 
     private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) {
         DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoesEDITAROPERACOES.getModel();
@@ -417,7 +415,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         }
     }
 
-    private void jButtonImagemGraficoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImagemGraficoOperacaoActionPerformed
+    private void enviarImagem(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarImagem
 
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Escolha a imagem que quer enviar!");
@@ -432,9 +430,9 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Erro ao carregar a imagem.");
             }
         }
-    }//GEN-LAST:event_jButtonImagemGraficoOperacaoActionPerformed
+    }//GEN-LAST:event_enviarImagem
 
-    private void jButtonEDITARSALVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEDITARSALVARActionPerformed
+    private void editarSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarSalvar
         
             String id = (String) jTextFieldID.getText();
             String tipoAtivo = (String) jComboBoxTIPOATIVO.getSelectedItem().toString();
@@ -456,44 +454,9 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 
             }
   
-    }//GEN-LAST:event_jButtonEDITARSALVARActionPerformed
-    //PASSAR ESSE METODO PARA O LADO DO CONTROLLER TBEM
+    }//GEN-LAST:event_editarSalvar
 
-    private boolean perguntarEscolherImagemComJDialog() {
-        Frame framePai = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-        JDialog dialog = new JDialog(framePai, "EscolherImagem", true);
-        dialog.setSize(350, 150);
-        dialog.setLayout(null);
-        dialog.setLocationRelativeTo(this);
-
-        javax.swing.JLabel lbl = new javax.swing.JLabel("Você não escolheu uma imagem. Deseja escolher agora?");
-        lbl.setBounds(20, 20, 310, 25);
-        dialog.add(lbl);
-
-        javax.swing.JButton btnSim = new javax.swing.JButton("Sim");
-        javax.swing.JButton btnNao = new javax.swing.JButton("Não");
-
-        btnSim.setBounds(70, 70, 80, 30);
-        btnNao.setBounds(180, 70, 80, 30);
-        dialog.add(btnSim);
-        dialog.add(btnNao);
-
-        final boolean[] resposta = {false};
-
-        btnSim.addActionListener(e -> {
-            resposta[0] = true;
-            dialog.dispose();
-        });
-
-        btnNao.addActionListener(e -> {
-            resposta[0] = false;
-            dialog.dispose();
-        });
-
-        dialog.setVisible(true);
-        return resposta[0];
-    }
 
     public void limparCampos() {
         jTextFieldID.setText("");
@@ -508,7 +471,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jComboBoxEVENTOTECNICO.setSelectedIndex(0);
         jButtonImagemGraficoOperacao.setIcon(null);
         jComboBoxSTATUSOPERACAO.setSelectedIndex(0);
-    }
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2,6 +2,7 @@
 package controller;
 
 import auxiliaresEstatisticas.CalculadoraEstatisticasResultados;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import model.Dao.OperacaoDao;
@@ -10,9 +11,9 @@ import model.Operacao;
 public class EstatisticaPorTipoPosicaoController {
     String escolha;
     List <Operacao> listaOperacoesPorTipoPosicao = new ArrayList<>();
-    Double totalGain;
-    Double totalLoss;
-    Double saldo;
+    BigDecimal totalGain;
+    BigDecimal totalLoss;
+    BigDecimal saldo;
     
     public EstatisticaPorTipoPosicaoController() {
     }
@@ -24,17 +25,17 @@ public class EstatisticaPorTipoPosicaoController {
         return listaOperacoesPorTipoPosicao;
         }
     
-    public Double coletarOsGains(){
+    public BigDecimal coletarOsGains(){
         totalGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(listaOperacoesPorTipoPosicao);
        return totalGain;
     }
     
-    public Double coletarOSLoss(){
+    public BigDecimal coletarOSLoss(){
         totalLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(listaOperacoesPorTipoPosicao);
         return totalLoss;
     }
     
-    public Double coletarSaldo(){
+    public BigDecimal coletarSaldo(){
         saldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(listaOperacoesPorTipoPosicao);
         return saldo;
     }

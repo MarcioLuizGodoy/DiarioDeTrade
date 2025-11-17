@@ -1,6 +1,7 @@
 package controller;
 
 import auxiliaresEstatisticas.CalculadoraEstatisticasResultados;
+import java.math.BigDecimal;
 import java.util.List;
 import model.Dao.OperacaoDao;
 import model.Operacao;
@@ -26,18 +27,18 @@ public class EstatisticaPorTipoAtivoController {
     
     
     
-   public double coletarOsGains(){
-        Double auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(operacoes);
+   public BigDecimal coletarOsGains(){
+        BigDecimal auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(operacoes);
         return auxGain;
     }
     
-    public double coletarOsLoss(){
-        Double auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(operacoes);
+    public BigDecimal coletarOsLoss(){
+        BigDecimal auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(operacoes);
         return auxLoss;
     }
     
-    public double coletarOsSaldos(){
-        Double auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(operacoes);
+    public BigDecimal coletarOsSaldos(){
+        BigDecimal auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(operacoes);
         return auxSaldo;
     }
     

@@ -3,6 +3,7 @@ import controller.EstatisticasPorAtivoController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import model.Operacao;
@@ -17,9 +18,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class TelaEstatisticaPorAtivo extends javax.swing.JInternalFrame {
     
     EstatisticasPorAtivoController c = new EstatisticasPorAtivoController();
-    Double totalGain;
-    Double totalLoss;
-    Double saldo;
+    BigDecimal totalGain;
+    BigDecimal totalLoss;
+    BigDecimal saldo;
     String ativoDigitado;
     List<Operacao> operacoesPorAtivo = new ArrayList<>();
     
