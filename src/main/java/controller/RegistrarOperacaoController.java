@@ -40,17 +40,17 @@ public class RegistrarOperacaoController {
             this.ativo = ativo;
         }
 
-        if (precoEntrada != null && precoEntrada.matches("\\d{3}\\.\\d+")) {
+        if (precoEntrada != null && precoEntrada.matches("\\d{6}")) {
             this.precoEntrada = new BigDecimal(precoEntrada);
         } else {
-            JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145.123");
+            JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145123");
             return false;
         }
 
-        if (precoSaida != null && precoSaida.matches("\\d{3}\\.\\d+")) {
+        if (precoSaida != null && precoSaida.matches("\\d{6}")) {
             this.precoSaida = new BigDecimal(precoSaida);
         } else {
-            JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145.123");
+            JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145123");
             return false;
         }
 

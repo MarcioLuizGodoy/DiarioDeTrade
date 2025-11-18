@@ -8,8 +8,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import model.TipoOperacao;
-import model.TipoPosicao;
 
 public class TelaRegistrarOperacao extends JInternalFrame {
 

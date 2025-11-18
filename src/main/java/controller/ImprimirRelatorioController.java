@@ -31,14 +31,14 @@ public class ImprimirRelatorioController {
 
             for (Operacao op : listaSemFiltro) {
                 Instant opInstant = op.getDataHora().atZone(ZoneId.systemDefault()).toInstant();
-              if (!opInstant.isBefore(inicio) && !opInstant.isAfter(fim)) {
+                if (!opInstant.isBefore(inicio) && !opInstant.isAfter(fim)) {
                     listaComFiltro.add(op);
                 }
             }
 
             GerarPdfs.gerarPdf(listaComFiltro);
         } catch (IOException ex) {
-            JOptionPane aviso = new JOptionPane("Ocorreu um Erro no percurso de Imprimir PDF, Aguarde!  :  " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Ocorreu um Erro no percurso de Imprimir PDF, Aguarde!  :  " + ex.getMessage());
         }
         return true;
     }

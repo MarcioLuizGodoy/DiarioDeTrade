@@ -12,6 +12,7 @@ public final class CalculadoraEstatisticasResultados {
 
     public static BigDecimal calcularResultadoOperacaoGain(List<Operacao> operacoes) {
         BigDecimal ganhoOperacao = new BigDecimal("0.00");
+        ganhoOperacao.precision();
 
         for (Operacao op : operacoes) {
             if (op.getStatusOperacao().equals("GAIN")) {
@@ -31,36 +32,36 @@ public final class CalculadoraEstatisticasResultados {
                 ganhoOperacao = ganhoOperacao.add(resultado);
             }
         }
-
         return ganhoOperacao;
     }
 
     //=====================================================================================================================
     public static BigDecimal calcularResultadoOperacaoLoss(List<Operacao> operacoes) {
-        BigDecimal perdaOperacao = new BigDecimal("0.00");
-                        BigDecimal resultado = BigDecimal.ZERO;
+        BigDecimal perdaOperacao = new BigDecimal("0.0");
+        BigDecimal resultado = BigDecimal.ZERO;
         for (Operacao op : operacoes) {
             if (op.getStatusOperacao().equals("LOSS")) {
-                
+
                 BigDecimal precoEntrada = op.getPrecoEntrada();
                 BigDecimal precoSaida = op.getPrecoSaida();
                 BigDecimal qtdContratos = BigDecimal.valueOf(op.getQuantidadeContratos());
-                BigDecimal multiplicador =  new BigDecimal(setarPadraoMovimentacaoTipoAtivo(op).toString());
-                
+                BigDecimal multiplicador = new BigDecimal(setarPadraoMovimentacaoTipoAtivo(op).toString());
+
                 if (op.getTipoPosicao().toString().equals("BUY")) {
 
-                    resultado = precoEntrada.subtract(precoSaida).multiply( qtdContratos).multiply(multiplicador);
+                    resultado = precoEntrada.subtract(precoSaida).multiply(qtdContratos).multiply(multiplicador);
 
                 } else if (op.getTipoPosicao().toString().equals("SELL")) {
 
                     resultado = precoSaida.subtract(precoEntrada).multiply(qtdContratos).multiply(multiplicador);
 
                 }
-                perdaOperacao = perdaOperacao.add(resultado);
+                //AQUI FOI NECESSARIO NEGTIVAR PORQUE A LOGICA DE VARIAÇÃO NAO COINCIDE COM A MATEMATICA.   NÃO APAGAR ESSA LINHA!!!
+                perdaOperacao = perdaOperacao.add(resultado).negate();
             }
         }
-        return perdaOperacao.abs();
-               //return perdaOperacao;
+        return perdaOperacao;
+        //return perdaOperacao;
 
     }
 
@@ -87,7 +88,8 @@ public final class CalculadoraEstatisticasResultados {
     public static BigDecimal calcularResultadoOperacaoSaldo(List<Operacao> operacoes) {
         BigDecimal ganho = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(operacoes);
         BigDecimal perda = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(operacoes);
-        BigDecimal saldo = ganho.subtract(perda.abs());
+        BigDecimal saldo = ganho.subtract(perda.negate());
+
         return saldo;
     }
 //===============================================================================================

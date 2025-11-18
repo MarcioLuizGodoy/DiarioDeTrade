@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Desktop;
 import javax.swing.JInternalFrame;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -210,10 +209,10 @@ public class TelaMenu extends javax.swing.JFrame {
         for (javax.swing.JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
             frame.dispose();
         }
-        TelaBuscarOperacoes tela = new TelaBuscarOperacoes();
-        tela.setSize(jDesktopPaneContainerTelas.getSize());
-        ((javax.swing.plaf.basic.BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
-        jDesktopPaneContainerTelas.add(tela).setVisible(true);
+        TelaBuscarOperacoes telaB = new TelaBuscarOperacoes();
+        telaB.setSize(jDesktopPaneContainerTelas.getSize());
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) telaB.getUI()).setNorthPane(null);
+        jDesktopPaneContainerTelas.add(telaB).setVisible(true);
 
     }//GEN-LAST:event_jMenuItemBuscarOperacoesActionPerformed
 
