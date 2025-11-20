@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -397,6 +398,9 @@ public class TelaEditarOperacoes extends JInternalFrame {
     private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) {
         DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoesEDITAROPERACOES.getModel();
         model.setRowCount(0);
+
+    DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
         for (Operacao op : operacoes) {
             model.addRow(new Object[]{
                 op.getId(),
@@ -409,7 +413,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 op.getTipoPosicao(),
                 op.getStatusOperacao(),
                 new ImageIcon(op.getImg()),
-                op.getDataHora(),
+                op.getDataHora().format(f),
                 op.getEventoTecnicoBase(),
                   });
         }

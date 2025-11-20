@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -33,13 +34,14 @@ public final class GerarPdfs {
             LocalDateTime agora = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 
-            String nomeArquivo = "Relatorio_Monetario_" + agora.format(formatter) + ".pdf";
+            String nomeArquivo = "Relatorio_Monetario - " + agora.format(formatter) + ".pdf";
             File caminhoEnomeArquivo = new File(diretorio, nomeArquivo);
 
             PdfWriter w = PdfWriter.getInstance(dc, new FileOutputStream(caminhoEnomeArquivo));
             dc.open();
 
-            Image img = Image.getInstance("src/main/resources/imgs/Estudo de media movel 50 periodos.png");
+            URL imageUrl = GerarPdfs.class.getResource("/imgs/Estudo de media movel 50 periodos.png");
+            Image img = Image.getInstance(imageUrl);
             img.scaleToFit(500, 500);
             img.setAlignment(Image.ALIGN_CENTER);
             dc.add(img);
@@ -72,12 +74,14 @@ public final class GerarPdfs {
                 tabela.addCell(cell4);
 
                 PdfPCell cell5 = new PdfPCell(new Phrase("Status Operação " + op.getStatusOperacao()));
-                tabela.addCell(cell4);
+                tabela.addCell(cell5);
 
                 PdfPCell cell6 = new PdfPCell(new Phrase("Preço de movimentação minima: " + CalculadoraEstatisticasResultados.setarPadraoMovimentacaoTipoAtivo(op)));
                 tabela.addCell(cell6);
 
-                PdfPCell cell7 = new PdfPCell(new Phrase("Data/Hora Operação: " + op.getDataHora()));
+                DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                
+                PdfPCell cell7 = new PdfPCell(new Phrase("Data/Hora Operação: " + op.getDataHora().format(f)));
                 tabela.addCell(cell7);
 
                 if (op.getStatusOperacao().equals("GAIN")) {
@@ -114,8 +118,6 @@ public final class GerarPdfs {
             System.out.println("Não foi possível abrir o PDF automaticamente 2: " + e.getMessage());
         } catch (IOException ex) {
             System.out.println("Não foi possível abrir o PDF automaticamente 3: " + ex.getMessage());
-        } catch(Exception e ){
-            e.printStackTrace();
         }
     }
 

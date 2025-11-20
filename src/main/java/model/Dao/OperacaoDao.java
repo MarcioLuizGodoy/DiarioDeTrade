@@ -85,9 +85,9 @@ public class OperacaoDao {
                 op.setStatusOperacao(rs.getString("status_operacao"));
                 op.setDescricao(rs.getString("descricao"));
                 op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
-                Timestamp timestamp = rs.getTimestamp("data_hora");
-                if (timestamp != null) {
-                    op.setDataHora(timestamp.toLocalDateTime());
+                LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                if (h != null) {
+                    op.setDataHora(h);
                 }
                 byte[] bytes = rs.getBytes("imagem");
                 if (bytes != null) {
@@ -100,7 +100,9 @@ public class OperacaoDao {
             DB.fecharConnection();
 
         } catch (SQLException e) {
-            e.printStackTrace(); // ou tratamento mais robusto
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
         }
         return lista;
     }
@@ -128,9 +130,9 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                Timestamp timestamp = rs.getTimestamp("data_hora");
-                if (timestamp != null) {
-                    op.setDataHora(timestamp.toLocalDateTime());
+                  LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                if (h != null) {
+                    op.setDataHora(h);
                 }
                 op.setDescricao(rs.getString("descricao"));
                 op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
@@ -175,9 +177,9 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                Timestamp timestamp = rs.getTimestamp("data_hora");
-                if (timestamp != null) {
-                    op.setDataHora(timestamp.toLocalDateTime());
+                  LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                if (h != null) {
+                    op.setDataHora(h);
                 }
                 op.setDescricao(rs.getString("descricao"));
                 op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
@@ -224,9 +226,9 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                Timestamp timestamp = rs.getTimestamp("data_hora");
-                if (timestamp != null) {
-                    op.setDataHora(timestamp.toLocalDateTime());
+                  LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                if (h != null) {
+                    op.setDataHora(h);
                 }
                 op.setDescricao(rs.getString("descricao"));
                 op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));
@@ -269,9 +271,10 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                Timestamp timestamp = rs.getTimestamp("data_hora");
-                if (timestamp != null) {
-                    op.setDataHora(timestamp.toLocalDateTime());
+                
+                LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                if (h != null) {
+                    op.setDataHora(h);
                 }
                 op.setDescricao(rs.getString("descricao"));
                 op.setEventoTecnicoBase(rs.getString("evento_tecnico_base"));

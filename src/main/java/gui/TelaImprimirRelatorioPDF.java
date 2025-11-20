@@ -176,7 +176,7 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         okInicio.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            dataSelecionadaInicio = calendarInicio.getDate(); //LocalDateTime. 
+            dataSelecionadaInicio = calendarInicio.getDate(); 
             dialogInicio.dispose();
         }
     });
@@ -200,7 +200,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             dataSelecionadaFim = calendarFim.getDate();  
-            dataSelecionadaFim = calendarFim.getDate(); 
             dialogFim.dispose();
         }
     });

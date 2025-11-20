@@ -2,9 +2,8 @@ package controller;
 
 import auxiliaresEstatisticas.GerarPdfs;
 import java.io.IOException;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,15 +22,18 @@ public class ImprimirRelatorioController {
 
     public Boolean pegarDataEFiltrarPorData(Date dataInicio, Date dataFim) {
 
-        Instant inicio = dataInicio.toInstant().truncatedTo(ChronoUnit.DAYS);
-        Instant fim = dataFim.toInstant().truncatedTo(ChronoUnit.DAYS).plus(1, ChronoUnit.DAYS).minus(1, ChronoUnit.MILLIS);
+        LocalDateTime inicio = dataInicio.toInstant()
+                .atZone(ZoneId.systemDefault()).toLocalDate().atStartOfDay();
+
+        LocalDateTime fim = dataFim.toInstant()
+                .atZone(ZoneId.systemDefault()).toLocalDate().plusDays(1).atStartOfDay();
 
         try {
             listaSemFiltro = oD.consultarTodasOperacoes();
 
             for (Operacao op : listaSemFiltro) {
-                Instant opInstant = op.getDataHora().atZone(ZoneId.systemDefault()).toInstant();
-                if (!opInstant.isBefore(inicio) && !opInstant.isAfter(fim)) {
+
+                if (op.getDataHora().isAfter(inicio) && op.getDataHora().isBefore(fim)) {
                     listaComFiltro.add(op);
                 }
             }
