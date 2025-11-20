@@ -3,7 +3,6 @@ package gui;
 import controller.EditarOperacoesController;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Frame;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,25 +10,22 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Operacao;
 
 public class TelaEditarOperacoes extends JInternalFrame {
-
+    
     List<Operacao> listaopercoes;
     Integer valorId;
     int linhaSelecionada;
     EditarOperacoesController controller = new EditarOperacoesController();
-    BufferedImage imagemEDITAR = null;
-
+    private BufferedImage imagemEDITAR = null;
+    
     public TelaEditarOperacoes() {
         initComponents();
         jTextFieldID.setEditable(false);
@@ -45,9 +41,9 @@ public class TelaEditarOperacoes extends JInternalFrame {
             }
         };
         jTableTabelaOperacoesEDITAROPERACOES.setDefaultRenderer(Object.class, renderer);
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -136,6 +132,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
             }
         });
         jTableTabelaOperacoesEDITAROPERACOES.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTableTabelaOperacoesEDITAROPERACOES.setShowGrid(true);
         jTableTabelaOperacoesEDITAROPERACOES.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 duploClique(evt);
@@ -360,11 +357,11 @@ public class TelaEditarOperacoes extends JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void duploClique(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_duploClique
-
+        
         if (evt.getClickCount() == 2) {
             linhaSelecionada = jTableTabelaOperacoesEDITAROPERACOES.getSelectedRow();
             jTableTabelaOperacoesEDITAROPERACOES.repaint();
-
+            
             if (linhaSelecionada != -1) {
                 //aqui valor id serve como parametro pra percorrer a lista. NAO APAGAR ESSE COMENTARIO.
                 valorId = (Integer) jTableTabelaOperacoesEDITAROPERACOES.getValueAt(linhaSelecionada, 0);
@@ -373,14 +370,24 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 jTextFieldID.setText(String.valueOf(valorId));
                 jTextFieldID.setEditable(false);
                 
-                for(Operacao op: listaopercoes){
-                    if(op.getId() == valorId){
+                for (Operacao op : listaopercoes) {
+                    if (op.getId() == valorId) {
                         jTextAreaDESCRICAO.setText(op.getDescricao());
                         jTextAreaDESCRICAO.setEditable(true);
+                        this.imagemEDITAR = op.getImg();
+                        jComboBoxTIPOATIVO.setSelectedItem(op.getTipoAtivo());
+                        jTextFieldATIVO.setText(op.getAtivo());
+                        jTextFieldPRECOENTRADA.setText(op.getPrecoEntrada().toPlainString());
+                        jTextFieldPRECOSAIDA.setText(op.getPrecoSaida().toPlainString());
+                        jTextFieldQTDCONTRATOS.setText(Integer.toString(op.getQuantidadeContratos()));
+                        jComboBoxTIPOPOSICAO.setSelectedItem(op.getTipoPosicao().toString());
+                        jComboBoxTIPOOPERACAO.setSelectedItem(op.getTipoOperacao().toString());
+                        jComboBoxSTATUSOPERACAO.setSelectedItem(op.getStatusOperacao().toString());
+                        jComboBoxEVENTOTECNICO.setSelectedItem(op.getEventoTecnicoBase().toString());
                     }
                 }
                 
-                            }
+            }
         }
     }//GEN-LAST:event_duploClique
 
@@ -394,13 +401,13 @@ public class TelaEditarOperacoes extends JInternalFrame {
         aviso.setBorder(null);
         aviso.setText(avisoo);
     }//GEN-LAST:event_buscarOperacoesEditar
-
+    
     private void atualizarTabelaEditarOperacoes(List<Operacao> operacoes) {
         DefaultTableModel model = (DefaultTableModel) jTableTabelaOperacoesEDITAROPERACOES.getModel();
         model.setRowCount(0);
-
-    DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-
+        
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        
         for (Operacao op : operacoes) {
             model.addRow(new Object[]{
                 op.getId(),
@@ -414,13 +421,12 @@ public class TelaEditarOperacoes extends JInternalFrame {
                 op.getStatusOperacao(),
                 new ImageIcon(op.getImg()),
                 op.getDataHora().format(f),
-                op.getEventoTecnicoBase(),
-                  });
+                op.getEventoTecnicoBase(),});
         }
     }
 
     private void enviarImagem(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarImagem
-
+        
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Escolha a imagem que quer enviar!");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -438,30 +444,28 @@ public class TelaEditarOperacoes extends JInternalFrame {
 
     private void editarSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarSalvar
         
-            String id = (String) jTextFieldID.getText();
-            String tipoAtivo = (String) jComboBoxTIPOATIVO.getSelectedItem().toString();
-            String ativo = (String) jTextFieldATIVO.getText();
-            String precoEntrada = (String) jTextFieldPRECOENTRADA.getText();
-            String precoSaida = (String) jTextFieldPRECOSAIDA.getText();
-            String qtdContratos =(String) jTextFieldQTDCONTRATOS.getText();
-            String tipoOp = (String) jComboBoxTIPOOPERACAO.getSelectedItem().toString();
-            String  tipoPo = (String) jComboBoxTIPOPOSICAO.getSelectedItem().toString();
-            String statusOp = (String) jComboBoxSTATUSOPERACAO.getSelectedItem().toString();
-            String evTecBase = (String) jComboBoxEVENTOTECNICO.getSelectedItem().toString();
-            String descricao = (String) jTextAreaDESCRICAO.getText().toString();
-            BufferedImage img = imagemEDITAR;
+        String id = (String) jTextFieldID.getText();
+        String tipoAtivo = (String) jComboBoxTIPOATIVO.getSelectedItem().toString();
+        String ativo = (String) jTextFieldATIVO.getText();
+        String precoEntrada = (String) jTextFieldPRECOENTRADA.getText();
+        String precoSaida = (String) jTextFieldPRECOSAIDA.getText();
+        String qtdContratos = (String) jTextFieldQTDCONTRATOS.getText();
+        String tipoOp = (String) jComboBoxTIPOOPERACAO.getSelectedItem().toString();
+        String tipoPo = (String) jComboBoxTIPOPOSICAO.getSelectedItem().toString();
+        String statusOp = (String) jComboBoxSTATUSOPERACAO.getSelectedItem().toString();
+        String evTecBase = (String) jComboBoxEVENTOTECNICO.getSelectedItem().toString();
+        String descricao = (String) jTextAreaDESCRICAO.getText().toString();
+        BufferedImage img = imagemEDITAR; // Aqui o objeto recebe a mesma imagem por padrão caso não ocorra erro na inserção na imagem
 
-            boolean result = controller.validarDadosEdicao(id, tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOp, tipoPo, statusOp, evTecBase, descricao, img);
-            if (result == true) {
-                jTextFieldID.setEditable(true);
-                limparCampos();
-                
-            }
-  
+        boolean result = controller.validarDadosEdicao(id, tipoAtivo, ativo, precoEntrada, precoSaida, qtdContratos, tipoOp, tipoPo, statusOp, evTecBase, descricao, img);
+        if (result == true) {
+            jTextFieldID.setEditable(true);
+            limparCampos();
+            
+        }
+        
     }//GEN-LAST:event_editarSalvar
-
-
-
+    
     public void limparCampos() {
         jTextFieldID.setText("");
         jComboBoxTIPOATIVO.setSelectedIndex(0);
@@ -475,7 +479,7 @@ public class TelaEditarOperacoes extends JInternalFrame {
         jComboBoxEVENTOTECNICO.setSelectedIndex(0);
         jButtonImagemGraficoOperacao.setIcon(null);
         jComboBoxSTATUSOPERACAO.setSelectedIndex(0);
-}
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
