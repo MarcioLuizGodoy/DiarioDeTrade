@@ -42,7 +42,7 @@ public class TelaEstatisticaPorTipoPosicao extends JInternalFrame {
         jComboBoxTipoPosicao = new javax.swing.JComboBox<>();
         jButtonEstatiticasPorTipoPosicao = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -61,15 +61,15 @@ public class TelaEstatisticaPorTipoPosicao extends JInternalFrame {
         jLabelTitulo.setText("Estatística Por Tipo Posição");
 
         jButtonTipoPosicao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButtonTipoPosicao.setForeground(new java.awt.Color(0, 51, 255));
+        jButtonTipoPosicao.setForeground(new java.awt.Color(51, 51, 51));
         jButtonTipoPosicao.setText("TIpoPosicao: ");
 
         jComboBoxTipoPosicao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jComboBoxTipoPosicao.setForeground(new java.awt.Color(0, 51, 255));
+        jComboBoxTipoPosicao.setForeground(new java.awt.Color(51, 51, 51));
         jComboBoxTipoPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUY", "SELL" }));
 
         jButtonEstatiticasPorTipoPosicao.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jButtonEstatiticasPorTipoPosicao.setForeground(new java.awt.Color(0, 51, 255));
+        jButtonEstatiticasPorTipoPosicao.setForeground(new java.awt.Color(51, 51, 51));
         jButtonEstatiticasPorTipoPosicao.setText("Buscar");
         jButtonEstatiticasPorTipoPosicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

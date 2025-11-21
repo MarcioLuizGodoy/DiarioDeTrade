@@ -52,7 +52,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuOperacoes.setText("Operações");
 
-        jMenuItemRegistrarOperacao.setForeground(new java.awt.Color(0, 0, 255));
+        jMenuItemRegistrarOperacao.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItemRegistrarOperacao.setText("Registrar Operação");
         jMenuItemRegistrarOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +61,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItemRegistrarOperacao);
 
-        jMenuItemBuscarOperacoes.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItemBuscarOperacoes.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItemBuscarOperacoes.setText("Buscar Operações");
         jMenuItemBuscarOperacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +70,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItemBuscarOperacoes);
 
-        jMenuItem1.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem1.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem1.setText("Editar Operação");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +79,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItem1);
 
-        jMenuItem2.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem2.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem2.setText("Excluir Operação");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +92,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuFinanceiro.setText("Estatisticas e Financeiro");
 
-        jMenuItemEstatisticaPorTipoAtivo.setForeground(new java.awt.Color(51, 51, 255));
+        jMenuItemEstatisticaPorTipoAtivo.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItemEstatisticaPorTipoAtivo.setText("Estatistica por Tipo Ativo");
         jMenuItemEstatisticaPorTipoAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemEstatisticaPorTipoAtivo);
 
-        jMenuItemEvolucaoCapital.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItemEvolucaoCapital.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItemEvolucaoCapital.setText("Evolucao Capital");
         jMenuItemEvolucaoCapital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemEvolucaoCapital);
 
-        jMenuItemBuscarPorAtivo.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItemBuscarPorAtivo.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItemBuscarPorAtivo.setText("Estatistica Por Ativo");
         jMenuItemBuscarPorAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +119,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemBuscarPorAtivo);
 
-        jMenuItemEstatiticaPorTipoOperacao.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItemEstatiticaPorTipoOperacao.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItemEstatiticaPorTipoOperacao.setText("Estatistica Por Tipo Operacao");
         jMenuItemEstatiticaPorTipoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +128,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItemEstatiticaPorTipoOperacao);
 
-        jMenuItem7.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem7.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem7.setText("Estatistica Por Tipo Posicao");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +137,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItem7);
 
-        jMenuItem8.setForeground(new java.awt.Color(0, 51, 255));
+        jMenuItem8.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem8.setText("Buscar por Evento Tecnico Base");
         jMenuFinanceiro.add(jMenuItem8);
 
@@ -145,7 +145,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenu2.setText("Relatórios PDF");
 
-        jMenuItem6.setForeground(new java.awt.Color(0, 0, 204));
+        jMenuItem6.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem6.setText("Quantidade de Operações e Respectivo Resultado  Financeiro");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

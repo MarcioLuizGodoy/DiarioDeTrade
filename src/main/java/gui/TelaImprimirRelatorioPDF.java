@@ -75,7 +75,7 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         jLabelTitulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jButton2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 204));
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("Gerar PDF");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +84,7 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 204));
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Clique e selecione o período");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +93,6 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
         });
 
         jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("#Aqui, você se informará a cerca das totalidades por período escolhido!");
         jTextField1.setToolTipText("");

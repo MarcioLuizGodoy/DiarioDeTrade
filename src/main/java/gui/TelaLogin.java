@@ -22,25 +22,24 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFundo.setBackground(new java.awt.Color(153, 153, 153));
-        jPanelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 1, 18), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 1, 18))); // NOI18N
         jPanelFundo.setForeground(new java.awt.Color(204, 204, 204));
+        jPanelFundo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabelUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        jLabelUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelUsuario.setForeground(new java.awt.Color(0, 0, 204));
+        jLabelUsuario.setForeground(new java.awt.Color(51, 51, 51));
         jLabelUsuario.setText("Usuario: ");
 
-        jLabelSenha.setBackground(new java.awt.Color(102, 102, 102));
         jLabelSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelSenha.setForeground(new java.awt.Color(51, 0, 255));
+        jLabelSenha.setForeground(new java.awt.Color(51, 51, 51));
         jLabelSenha.setText("Senha: ");
 
         jLabelMensagemLogin.setBackground(new java.awt.Color(51, 51, 51));
         jLabelMensagemLogin.setForeground(new java.awt.Color(0, 0, 255));
 
-        jButtonEntrar.setBackground(new java.awt.Color(102, 102, 102));
         jButtonEntrar.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButtonEntrar.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonEntrar.setForeground(new java.awt.Color(51, 51, 51));
         jButtonEntrar.setText("Entrar");
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,17 +79,17 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButtonEntrar)
                 .addGap(19, 19, 19))
             .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFundoLayout.createSequentialGroup()
-                    .addContainerGap(58, Short.MAX_VALUE)
+                    .addContainerGap(63, Short.MAX_VALUE)
                     .addComponent(jLabelMensagemLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(17, Short.MAX_VALUE)))
+                    .addContainerGap(22, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 840, 150));
+        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 840, 160));
 
         jLabelNomeDoPrograma.setBackground(new java.awt.Color(0, 0, 255));
         jLabelNomeDoPrograma.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N

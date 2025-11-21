@@ -43,7 +43,7 @@ public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
         jComboBoxTipoOperacao = new javax.swing.JComboBox<>();
         jButtonBuscarEstatisticaPorTipoOperacao = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -62,15 +62,15 @@ public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
         jLabelTitulo.setText("Estatística Por Tipo Operacao");
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 255));
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Tipo Operacao: ");
 
         jComboBoxTipoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jComboBoxTipoOperacao.setForeground(new java.awt.Color(0, 51, 255));
+        jComboBoxTipoOperacao.setForeground(new java.awt.Color(51, 51, 51));
         jComboBoxTipoOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DAY_TRADE", "SWING_TRADE", "POSITION", "" }));
 
         jButtonBuscarEstatisticaPorTipoOperacao.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButtonBuscarEstatisticaPorTipoOperacao.setForeground(new java.awt.Color(0, 51, 255));
+        jButtonBuscarEstatisticaPorTipoOperacao.setForeground(new java.awt.Color(51, 51, 51));
         jButtonBuscarEstatisticaPorTipoOperacao.setText("Buscar");
         jButtonBuscarEstatisticaPorTipoOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

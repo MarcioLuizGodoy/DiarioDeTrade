@@ -48,44 +48,44 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jTableTabelaOperacoes.setForeground(new java.awt.Color(0, 51, 204));
         jTableTabelaOperacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "TipoAtivo", "Ativo", "Preco Entrada", "Preco Saida", "Qtd Contratos", "Tipo Operação", "Tipo Posição", "Status  Operação", "Data Hora"
+                "Id", "TipoAtivo", "Ativo", "Preco Entrada", "Preco Saida", "Qtd Contratos", "Tipo Operação", "Tipo Posição", "Status  Operação", "Data Hora", "E.Tec.Base"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -101,14 +101,14 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         });
         jScrollPane1.setViewportView(jTableTabelaOperacoes);
 
-        jButton1.setForeground(new java.awt.Color(0, 51, 255));
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Buscar por: ");
 
-        jComboBoxFiltros.setForeground(new java.awt.Color(0, 51, 255));
+        jComboBoxFiltros.setForeground(new java.awt.Color(51, 51, 51));
         jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas Operacoes" }));
 
         jButtonBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButtonBuscar.setForeground(new java.awt.Color(0, 51, 255));
+        jButtonBuscar.setForeground(new java.awt.Color(51, 51, 51));
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +116,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
             }
         });
 
-        jButton2.setForeground(new java.awt.Color(0, 51, 255));
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("Descricao da Operação: ");
 
         jTextAreaDescricaoOperacao.setEditable(false);
@@ -126,7 +126,7 @@ public class TelaBuscarOperacoes extends JInternalFrame {
         jScrollPane2.setViewportView(jTextAreaDescricaoOperacao);
 
         abrirImagemBotao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        abrirImagemBotao.setForeground(new java.awt.Color(0, 51, 255));
+        abrirImagemBotao.setForeground(new java.awt.Color(51, 51, 51));
         abrirImagemBotao.setText("Abrir Imagem do grafico");
         abrirImagemBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +249,8 @@ public class TelaBuscarOperacoes extends JInternalFrame {
                 op.getTipoOperacao(),
                 op.getTipoPosicao(),
                 op.getStatusOperacao(),
-                op.getDataHora().format(f), // op.getEventoTecnicoBase(),
+                op.getDataHora().format(f), 
+                op.getEventoTecnicoBase(),
             });
         }
     }

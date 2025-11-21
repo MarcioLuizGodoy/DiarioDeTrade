@@ -28,17 +28,17 @@ public class EstatisticaPorTipoAtivoController {
     
     
    public BigDecimal coletarOsGains(){
-        BigDecimal auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(operacoes);
+        BigDecimal auxGain = CalculadoraEstatisticasResultados.calcularResultadoOperacaoGain(this.operacoes);
         return auxGain;
     }
     
     public BigDecimal coletarOsLoss(){
-        BigDecimal auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(operacoes);
+        BigDecimal auxLoss = CalculadoraEstatisticasResultados.calcularResultadoOperacaoLoss(this.operacoes);
         return auxLoss;
     }
     
     public BigDecimal coletarOsSaldos(){
-        BigDecimal auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(operacoes);
+        BigDecimal auxSaldo = CalculadoraEstatisticasResultados.calcularResultadoOperacaoSaldo(this.operacoes);
         return auxSaldo;
     }
     

@@ -128,7 +128,7 @@
                   <Color blue="cc" green="33" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="10" rowCount="31">
+                  <Table columnCount="11" rowCount="31">
                     <Column editable="false" title="Id" type="java.lang.Object"/>
                     <Column editable="false" title="TipoAtivo" type="java.lang.Object"/>
                     <Column editable="false" title="Ativo" type="java.lang.Object"/>
@@ -139,6 +139,7 @@
                     <Column editable="false" title="Tipo Posi&#xe7;&#xe3;o" type="java.lang.Object"/>
                     <Column editable="false" title="Status  Opera&#xe7;&#xe3;o" type="java.lang.Object"/>
                     <Column editable="false" title="Data Hora" type="java.lang.Object"/>
+                    <Column editable="false" title="E.Tec.Base" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -222,7 +223,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="0" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar por: "/>
           </Properties>
@@ -230,7 +231,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxFiltros">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="0" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -248,7 +249,7 @@
               <Font name="Arial" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="0" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
@@ -259,7 +260,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="0" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Descricao da Opera&#xe7;&#xe3;o: "/>
           </Properties>
@@ -289,7 +290,7 @@
               <Font name="Arial" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="0" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Abrir Imagem do grafico"/>
           </Properties>

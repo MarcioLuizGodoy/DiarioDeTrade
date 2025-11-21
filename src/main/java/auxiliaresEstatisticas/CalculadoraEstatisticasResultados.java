@@ -12,7 +12,6 @@ public final class CalculadoraEstatisticasResultados {
 
     public static BigDecimal calcularResultadoOperacaoGain(List<Operacao> operacoes) {
         BigDecimal ganhoOperacao = new BigDecimal("0.00");
-        ganhoOperacao.precision();
 
         for (Operacao op : operacoes) {
             if (op.getStatusOperacao().equals("GAIN")) {
