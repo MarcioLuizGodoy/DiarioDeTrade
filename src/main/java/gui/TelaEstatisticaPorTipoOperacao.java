@@ -2,8 +2,6 @@ package gui;
 
 import controller.EstatisticaPorTipoOperacaoController;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,28 +9,23 @@ import model.Operacao;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.DefaultCategoryDataset;
-
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
-    
-        BigDecimal totalGain;
-        BigDecimal totalLoss;
-        BigDecimal saldo;    
-        String escolha;
-        EstatisticaPorTipoOperacaoController c = new EstatisticaPorTipoOperacaoController();
-        List<Operacao> operacoesFiltradasDevolvidas = new ArrayList<>();
-    
-    
-    
+
+    BigDecimal totalGain;
+    BigDecimal totalLoss;
+    BigDecimal saldo;
+    String escolha;
+    EstatisticaPorTipoOperacaoController c = new EstatisticaPorTipoOperacaoController();
+    List<Operacao> operacoesFiltradasDevolvidas = new ArrayList<>();
+
     public TelaEstatisticaPorTipoOperacao() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -123,55 +116,73 @@ public class TelaEstatisticaPorTipoOperacao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarEstatisticaPorTipoOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarEstatisticaPorTipoOperacaoActionPerformed
-            escolha = (String) jComboBoxTipoOperacao.getSelectedItem();
-            operacoesFiltradasDevolvidas =  c.consultarOperacoesTipoOperacao(escolha);
-            totalGain = c.coletarOsGains();
-            totalLoss =  c.coletarOsLoss();
-            saldo = c.coletarOsSaldos();
-            exibirGraficoEstatisticaTipoOperacao();
+        escolha = (String) jComboBoxTipoOperacao.getSelectedItem();
+        operacoesFiltradasDevolvidas = c.consultarOperacoesTipoOperacao(escolha);
+        totalGain = c.coletarOsGains();
+        totalLoss = c.coletarOsLoss().abs();
+        saldo = c.coletarOsSaldos();
+        exibirGraficoEstatisticaTipoOperacao();
     }//GEN-LAST:event_jButtonBuscarEstatisticaPorTipoOperacaoActionPerformed
 
-    
     public void exibirGraficoEstatisticaTipoOperacao() {
-       DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
+        //Essa mudança tornou mais simples a exibição das informações.
+        DefaultPieDataset dados = new DefaultPieDataset();
+        JFreeChart desenho = ChartFactory.createPieChart("Resultados", dados, true, true, false);
+        PiePlot plotPintor = (PiePlot) desenho.getPlot();
 
-        dataset.addValue(operacoesFiltradasDevolvidas.size(), "TOTAL OPERACOES", "Totalidades");
-        dataset.addValue(totalGain, "GAIN", "Ganhos");
-        dataset.addValue(totalLoss, "LOSS", "Perdas");
-        dataset.addValue(saldo, "BALANCE", "Saldos");
+        dados.setValue("Ganhos", totalGain);
+        dados.setValue("Perdas", totalLoss);
+        dados.setValue("Saldo", saldo);
 
-       JFreeChart jfc = ChartFactory.createBarChart(
-       "Estatísticas do Ativo",
-       " ",
-       "Estatística",
-       dataset,
-       PlotOrientation.VERTICAL,
-       true, true, true
-           );
-       jfc.setBackgroundPaint(java.awt.Color.WHITE);
-       jfc.getTitle().setFont(new Font("Arial Black", Font.BOLD,30));
-       jfc.getTitle().setPaint(Color.BLUE);
+        plotPintor.setSectionPaint("Ganhos", Color.GREEN);
+        plotPintor.setSectionPaint("Perdas", Color.RED);
+        plotPintor.setSectionPaint("Saldo", Color.BLUE);
+        
+        plotPintor.setBackgroundPaint(Color.WHITE);
 
-       CategoryPlot plot = jfc.getCategoryPlot();
-       BarRenderer renderer = (BarRenderer) plot.getRenderer();
-       renderer.setSeriesPaint(0, Color.BLACK);
-       renderer.setSeriesPaint(1, Color.GREEN);
-       renderer.setSeriesPaint(2, Color.RED);
-       renderer.setSeriesPaint(3, Color.BLUE);
+        plotPintor.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}: {1}"));
+        ChartPanel painel = new ChartPanel(desenho);
 
+        jDesktopPane1.setLayout(new java.awt.BorderLayout());
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(painel);
+        jDesktopPane1.revalidate();
+        jDesktopPane1.repaint();
 
-       ChartPanel chartPanel = new ChartPanel(jfc);
-       //chartPanel.setSize(jDesktopPane1.getSize());
-       chartPanel.setPreferredSize(new Dimension(850, 650));
+        /*
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            dataset.addValue(operacoesFiltradasDevolvidas.size(), "TOTAL OPERACOES", "Totalidades");
+            dataset.addValue(totalGain, "GAIN", "Ganhos");
+            dataset.addValue(totalLoss, "LOSS", "Perdas");
+            dataset.addValue(saldo, "BALANCE", "Saldos");
+            JFreeChart jfc = ChartFactory.createBarChart(
+            "Estatísticas do Ativo",
+            " ",
+            "Estatística",
+            dataset,
+            PlotOrientation.VERTICAL,
+            true, true, true
+            );
+            jfc.setBackgroundPaint(java.awt.Color.WHITE);
+            jfc.getTitle().setFont(new Font("Arial Black", Font.BOLD,30));
+            jfc.getTitle().setPaint(Color.BLUE);
+            CategoryPlot plot = jfc.getCategoryPlot();
+            BarRenderer renderer = (BarRenderer) plot.getRenderer();
+            renderer.setSeriesPaint(0, Color.BLACK);
+            renderer.setSeriesPaint(1, Color.GREEN);
+            renderer.setSeriesPaint(2, Color.RED);
+            renderer.setSeriesPaint(3, Color.BLUE);
+            ChartPanel chartPanel = new ChartPanel(jfc);
+            //chartPanel.setSize(jDesktopPane1.getSize());
+            chartPanel.setPreferredSize(new Dimension(850, 650));
+            jDesktopPane1.setLayout(new java.awt.BorderLayout());
+            jDesktopPane1.removeAll();
+            jDesktopPane1.add(chartPanel);
+            jDesktopPane1.revalidate();
+            jDesktopPane1.repaint();*/
+    }
 
-       jDesktopPane1.setLayout(new java.awt.BorderLayout());
-       jDesktopPane1.removeAll();
-       jDesktopPane1.add(chartPanel);
-       jDesktopPane1.revalidate();
-       jDesktopPane1.repaint();
-       }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

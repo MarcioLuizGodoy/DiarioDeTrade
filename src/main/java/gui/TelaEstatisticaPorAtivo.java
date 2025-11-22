@@ -1,8 +1,7 @@
 package gui;
+
 import controller.EstatisticasPorAtivoController;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,25 +9,25 @@ import model.Operacao;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class TelaEstatisticaPorAtivo extends javax.swing.JInternalFrame {
-    
+
     EstatisticasPorAtivoController c = new EstatisticasPorAtivoController();
     BigDecimal totalGain;
     BigDecimal totalLoss;
     BigDecimal saldo;
     String ativoDigitado;
     List<Operacao> operacoesPorAtivo = new ArrayList<>();
-    
+
     public TelaEstatisticaPorAtivo() {
         initComponents();
-            getRootPane().setDefaultButton(jButtonBuscarEstatisticas);
+        getRootPane().setDefaultButton(jButtonBuscarEstatisticas);
 
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -112,61 +111,60 @@ public class TelaEstatisticaPorAtivo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void jButtonBuscarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarEstatisticasActionPerformed
-            this.ativoDigitado = jTextFieldAtivoDigitado.getText();
-            this.operacoesPorAtivo = c.consultarOperacoesController(ativoDigitado);
-            totalGain = c.coletarOsGains();
-            totalLoss = c.coletarOsLoss();
-            saldo = c.coletarOsSaldos();
-            exibirGraficoEstatisticaAtivo();
+        this.ativoDigitado = jTextFieldAtivoDigitado.getText();
+        this.operacoesPorAtivo = c.consultarOperacoesController(ativoDigitado);
+        totalGain = c.coletarOsGains();
+        totalLoss = c.coletarOsLoss().abs();
+        saldo = c.coletarOsSaldos();
+        exibirGraficoEstatisticaAtivo();
 
     }//GEN-LAST:event_jButtonBuscarEstatisticasActionPerformed
 
- 
+    public void exibirGraficoEstatisticaAtivo() {
 
-public void exibirGraficoEstatisticaAtivo() {
-    
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    
-    dataset.addValue(operacoesPorAtivo.size(), "TOTAL OPERACOES", "TOTAL OPERACOES");
-    dataset.addValue(totalGain, "GAIN", "GAIN");
-    dataset.addValue(totalLoss,"LOSS" , "LOSS");
-    dataset.addValue(saldo, "BALANCE", "BALANCE");
+        //organizador de dados em valor,serie,categoria
+        //DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultPieDataset organizacao = new DefaultPieDataset();  //criando   o organizador
 
-    JFreeChart jfc = ChartFactory.createBarChart(
-    "Estatísticas do Ativo",
-    " ",
-    "Estatística",
-    dataset,
-    PlotOrientation.VERTICAL,
-    true, true, false
-);
-    jfc.setBackgroundPaint(java.awt.Color.WHITE);
-    jfc.getTitle().setFont(new Font("Arial Black", Font.BOLD,30));
-    jfc.getTitle().setPaint(Color.BLUE);
-    
-    CategoryPlot plot = jfc.getCategoryPlot();
-    BarRenderer renderer = (BarRenderer) plot.getRenderer();
-    renderer.setSeriesPaint(0, Color.BLACK);
-    renderer.setSeriesPaint(1, Color.GREEN);
-    renderer.setSeriesPaint(2, Color.RED);
-    renderer.setSeriesPaint(3, Color.BLUE);
+        //passando dados pra o organizador
+       // organizacao.setValue("Operações: ", operacoesPorAtivo.size());
+        organizacao.setValue("Ganhos: ", totalGain);
+        organizacao.setValue("Perdas: ", totalLoss);
+        organizacao.setValue("Saldo: ", saldo);
 
-    
-    ChartPanel chartPanel = new ChartPanel(jfc);
-    //chartPanel.setSize(jDesktopPane1.getSize());
-    chartPanel.setPreferredSize(new Dimension(870, 650));
+        // criando o grafico em si, mas aqui ele ainda não esta completo. Se parece mais um esboço final
+        JFreeChart desenho = ChartFactory.createPieChart("Resultados", organizacao, true, true, false);
 
-    jDesktopPane1.setLayout(new java.awt.BorderLayout());
-    jDesktopPane1.removeAll();
-    jDesktopPane1.add(chartPanel);
-    jDesktopPane1.revalidate();
-    jDesktopPane1.repaint();
-}
+        // Aqui o plot é o pintor e vai receber o esboço/grafico/desenho. Ele é o quadro e tem um pintor dentro que vai finalmente fazer o acabamento usando o quadro.
+        PiePlot plotPintor = (PiePlot) desenho.getPlot();
+        //  plotPintor.setInteriorGap(0.02);
+        plotPintor.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} {1}"));
+
+        //Aqui o plot/pintor esta acabamento no grafico
+        //plotPintor.setOutlinePaint( Color.BLACK);        
+        //plotPintor.setSectionPaint("Operações: ", Color.BLACK);
+        plotPintor.setSectionPaint("Ganhos: ", Color.GREEN);
+        plotPintor.setSectionPaint("Perdas: ", Color.RED);
+        plotPintor.setSectionPaint("Saldo: ", Color.BLUE);
+
+        //defininfo outras configurações
+        plotPintor.setBackgroundPaint(Color.WHITE);
+
+        //passando pronto para o 'exibidor'/ lugar onde vai ser exibido
+        ChartPanel chartPanel = new ChartPanel(desenho);
+        chartPanel.setPreferredSize(jDesktopPane1.getSize());
+
+        //Adicionando ao desktopPane para continuar na estrutura de telas criada por mim.
+        jDesktopPane1.setLayout(new java.awt.BorderLayout());
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(chartPanel);
+        jDesktopPane1.revalidate();
+        jDesktopPane1.repaint();
+    }
 
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBuscarEstatisticas;

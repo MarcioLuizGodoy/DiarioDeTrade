@@ -1,9 +1,7 @@
-
 package gui;
 
 import controller.EstatisticaPorTipoPosicaoController;
 import java.awt.Color;
-import java.awt.Font;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.swing.JInternalFrame;
@@ -11,26 +9,23 @@ import model.Operacao;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class TelaEstatisticaPorTipoPosicao extends JInternalFrame {
- 
+
     EstatisticaPorTipoPosicaoController c = new EstatisticaPorTipoPosicaoController();
-    
+
     String escolha;
-    public List <Operacao> operacoesFiltradas;
+    public List<Operacao> operacoesFiltradas;
     BigDecimal totalGain;
     BigDecimal totalLoss;
     BigDecimal saldo;
-    
-    
+
     public TelaEstatisticaPorTipoPosicao() {
         initComponents();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -117,59 +112,78 @@ public class TelaEstatisticaPorTipoPosicao extends JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEstatiticasPorTipoPosicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstatiticasPorTipoPosicaoActionPerformed
-    escolha = jComboBoxTipoPosicao.getSelectedItem().toString();    
-    this.operacoesFiltradas = c.buscarOperacaoPorTipoPosicaoController(escolha);
-   totalGain=  c.coletarOsGains();
-    totalLoss = c.coletarOSLoss();
-    saldo = c.coletarSaldo();
-    exibirGraficoEstatisticaTipoPosicao();
+        escolha = jComboBoxTipoPosicao.getSelectedItem().toString();
+        this.operacoesFiltradas = c.buscarOperacaoPorTipoPosicaoController(escolha);
+        totalGain = c.coletarOsGains();
+        totalLoss = c.coletarOSLoss().abs();
+        saldo = c.coletarSaldo();
+        exibirGraficoEstatisticaTipoPosicao();
     }//GEN-LAST:event_jButtonEstatiticasPorTipoPosicaoActionPerformed
 
- public void exibirGraficoEstatisticaTipoPosicao() {
+    public void exibirGraficoEstatisticaTipoPosicao() {
+
+        DefaultPieDataset dados = new DefaultPieDataset();
+        
+        dados.setValue("Ganhos", totalGain);
+        dados.setValue("Perdas", totalLoss);
+        dados.setValue("Saldo", saldo);
+
+        JFreeChart desenho = ChartFactory.createPieChart("Resultados", dados, true, true, false);
+
+        PiePlot plot = (PiePlot) desenho.getPlot();
+        plot.setSectionPaint("Ganhos", Color.GREEN);
+        plot.setSectionPaint("Perdas", Color.RED);
+        plot.setSectionPaint("Saldo", Color.BLUE);
+
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} {1}"));
+        plot.setBackgroundPaint(Color.WHITE);
+        
+        ChartPanel p = new ChartPanel(desenho);
+
+          jDesktopPane1.setLayout(new java.awt.BorderLayout());
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(p);
+        jDesktopPane1.revalidate();
+        jDesktopPane1.repaint();
+        
+        /*
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
+        dataset.addValue(operacoesFiltradas.size(), "TOTAL OPERACOES", "Totalidades");
+        dataset.addValue(totalGain, "GAIN", "Ganhos");
+        dataset.addValue(totalLoss, "LOSS", "Perdas");
+        dataset.addValue(saldo, "BALANCE", "Saldo");
 
-            dataset.addValue(operacoesFiltradas.size(), "TOTAL OPERACOES", "Totalidades");
-            dataset.addValue(totalGain, "GAIN", "Ganhos");
-            dataset.addValue(totalLoss, "LOSS", "Perdas");
-            dataset.addValue(saldo, "BALANCE", "Saldo");
+        JFreeChart jfc = ChartFactory.createBarChart(
+                "Estatísticas do Ativo",
+                " ",
+                "Estatística",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false
+        );
+        jfc.setBackgroundPaint(java.awt.Color.WHITE);
+        jfc.getTitle().setFont(new Font("Arial Black", Font.BOLD, 30));
+        jfc.getTitle().setPaint(Color.BLUE);
 
-       JFreeChart jfc = ChartFactory.createBarChart(
-       "Estatísticas do Ativo",
-       " ",
-       "Estatística",
-       dataset,
-       PlotOrientation.VERTICAL,
-       true, true, false
-           );
-       jfc.setBackgroundPaint(java.awt.Color.WHITE);
-       jfc.getTitle().setFont(new Font("Arial Black", Font.BOLD,30));
-       jfc.getTitle().setPaint(Color.BLUE);
+        CategoryPlot plot = jfc.getCategoryPlot();
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, Color.BLACK);
+        renderer.setSeriesPaint(1, Color.GREEN);
+        renderer.setSeriesPaint(2, Color.RED);
+        renderer.setSeriesPaint(3, Color.BLUE);
 
-       CategoryPlot plot = jfc.getCategoryPlot();
-       BarRenderer renderer = (BarRenderer) plot.getRenderer();
-       renderer.setSeriesPaint(0, Color.BLACK);
-       renderer.setSeriesPaint(1, Color.GREEN);
-       renderer.setSeriesPaint(2, Color.RED);
-       renderer.setSeriesPaint(3, Color.BLUE);
+        ChartPanel chartPanel = new ChartPanel(jfc);
+        chartPanel.setSize(jDesktopPane1.getSize());
+        //chartPanel.setPreferredSize(new Dimension(850, 650));
+*/
+      
+    }
 
-
-       ChartPanel chartPanel = new ChartPanel(jfc);
-       chartPanel.setSize(jDesktopPane1.getSize());
-       //chartPanel.setPreferredSize(new Dimension(850, 650));
-
-       jDesktopPane1.setLayout(new java.awt.BorderLayout());
-       jDesktopPane1.removeAll();
-       jDesktopPane1.add(chartPanel);
-       jDesktopPane1.revalidate();
-       jDesktopPane1.repaint();
-       }            
-            
-            
-        /*public static void main(String args[]) {
+   /* public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new TelaEstatisticaPorTipoPosicao().setVisible(true));
-        }*/
-
+        }
+*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEstatiticasPorTipoPosicao;
     private javax.swing.JButton jButtonTipoPosicao;

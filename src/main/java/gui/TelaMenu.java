@@ -14,6 +14,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuOperacoes = new javax.swing.JMenu();
         jMenuItemRegistrarOperacao = new javax.swing.JMenuItem();
         jMenuItemBuscarOperacoes = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuFinanceiro = new javax.swing.JMenu();
@@ -70,6 +71,14 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItemBuscarOperacoes);
 
+        jMenuItem4.setText("BuscarOperacaoPorData");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenuOperacoes.add(jMenuItem4);
+
         jMenuItem1.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem1.setText("Editar Operação");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +92,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem2.setText("Excluir Operação");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemExcluirOperacao(evt);
             }
         });
         jMenuOperacoes.add(jMenuItem2);
@@ -293,12 +302,12 @@ public class TelaMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemimprimirRelatorioPDF
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemExcluirOperacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirOperacao
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemExcluirOperacao
 
     private void umPoucoInfoMundoTradeClique(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_umPoucoInfoMundoTradeClique
-         for (JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+        for (JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
             frame.dispose();
         }
         TelaSobre tela = new TelaSobre();
@@ -306,6 +315,15 @@ public class TelaMenu extends javax.swing.JFrame {
         ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
         jDesktopPaneContainerTelas.add(tela).setVisible(true);
     }//GEN-LAST:event_umPoucoInfoMundoTradeClique
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        for (JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+            frame.dispose();
+        }
+        BuscarOperacoesPorData tela = new BuscarOperacoesPorData();
+        tela.setSize(jDesktopPaneContainerTelas.getSize());
+        ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+        jDesktopPaneContainerTelas.add(tela).setVisible(true);    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -316,6 +334,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

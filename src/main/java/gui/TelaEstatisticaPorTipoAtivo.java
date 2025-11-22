@@ -131,7 +131,7 @@ public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
         DefaultPieDataset organizacao = new DefaultPieDataset();  //criando   o organizador
 
         //passando dados pra o organizador
-        organizacao.setValue("Operações: ", operacoes.size());
+       // organizacao.setValue("Operações: ", operacoes.size());
         organizacao.setValue("Ganhos: " , totalGain);
         organizacao.setValue("Perdas: " , totalLoss);
         organizacao.setValue("Saldo: " , saldo);
@@ -142,11 +142,12 @@ public class TelaEstatisticaPorTipoAtivo extends javax.swing.JInternalFrame {
         
         // Aqui o plot é o pintor e vai receber o esboço/grafico/desenho. Ele é o quadro e tem um pintor dentro que vai finalmente fazer o acabamento usando o quadro.
         PiePlot plotPintor = (PiePlot) desenho.getPlot();
+      //  plotPintor.setInteriorGap(0.02);
         plotPintor.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} {1}"));
         
         //Aqui o plot/pintor esta acabamento no grafico
-        plotPintor.setOutlinePaint( Color.BLACK);        
-        plotPintor.setSectionPaint("Operações: " , Color.BLACK);
+        //plotPintor.setOutlinePaint( Color.BLACK);        
+       // plotPintor.setSectionPaint("Operações: " , Color.BLACK);
         plotPintor.setSectionPaint("Ganhos: ", Color.GREEN);
         plotPintor.setSectionPaint("Perdas: ", Color.RED);
         plotPintor.setSectionPaint("Saldo: ", Color.BLUE);

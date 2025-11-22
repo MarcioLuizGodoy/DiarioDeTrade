@@ -6,23 +6,27 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JInternalFrame;
 import model.Operacao;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 public class TelaEvolucaoCapital extends JInternalFrame {
 
     EvolucaoCapitalController c = new EvolucaoCapitalController();
-    BigDecimal totalGain;
-    BigDecimal totalLoss;
+    //BigDecimal totalGain;
+    //BigDecimal totalLoss;
     BigDecimal saldo;
     List<Operacao> operacoes = new ArrayList<>();
 
@@ -51,44 +55,39 @@ public class TelaEvolucaoCapital extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //O NETBEANS NÃO TEM SUPORTE PRA CRIAR TELA ARRASTANDO. POR ISSO, CRIAR A TELA EM UM METODO E DEPOIS JOGAR NO INIT COMPONENTS ´EMAI SFACIL.
-    // NO METODO VC JÁ FAZ A LOGICA E INSERIR NO 
     public void exibirGraficoEvolucao() {
         this.operacoes = c.consutarOperacoesController();
-        totalGain = c.coletarOsGains();
-        totalLoss = c.coletarOsLoss();
+        //totalGain = c.coletarOsGains();
+       // totalLoss = c.coletarOsLoss().abs();
         saldo = c.coletarSaldoFinalCapital();
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        dataset.addValue(totalGain, "GAIN", "GAIN");
-        dataset.addValue(totalLoss, "LOSS", "LOSS");
-        dataset.addValue(saldo, "BALANCE", "BALANCE");
-        dataset.addValue(this.operacoes.size(), "TOTAL OPERACOES", "totallidades");
-        JFreeChart chart = ChartFactory.createBarChart(
-                "Relatório Evolução de Capital", // título
-                "Categoria", // eixo X
-                "Valor", // eixo Y
-                dataset,
-                PlotOrientation.VERTICAL,
-                true, // legenda
-                true, // tooltips
-                false // URLs
-        );
+        dataset.addValue(saldo, "Capital", " ");
 
-        chart.getTitle().setPaint(new Color(0, 51, 255));
+        JFreeChart chart = ChartFactory.createBarChart("Evolução de Capital", "", "Capital Acumulado", dataset, PlotOrientation.VERTICAL, false, true, false);
+
+        chart.getTitle().setPaint(Color.BLACK);
         chart.getTitle().setFont(new Font("Arial Black", Font.BOLD, 40));
 
         CategoryPlot plot = chart.getCategoryPlot();
-        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setRangeGridlinePaint(Color.BLACK);
 
-        renderer.setSeriesPaint(0, Color.GREEN); // GAIN em verde
-        renderer.setSeriesPaint(1, Color.RED);   // LOSS em vermelho
-        renderer.setSeriesPaint(2, Color.BLUE);  // BALANCE em azul
-        renderer.setSeriesPaint(3, Color.BLACK);
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, Color.BLUE);
+        renderer.setSeriesItemLabelsVisible(0, true);
+        // renderer.setSeriesItemLabelGenerator(0, new StandardCategoryItemLabelGenerator());
+        renderer.setSeriesItemLabelFont(0, new Font("Arial", Font.BOLD, 16));
+        renderer.setSeriesItemLabelPaint(0, Color.BLACK);
+        renderer.setBarPainter(new StandardBarPainter());
+        renderer.setShadowVisible(true);
+        renderer.setMaximumBarWidth(0.3);
+        NumberAxis nA = (NumberAxis) plot.getRangeAxis();
+        nA.setNumberFormatOverride(NumberFormat.getCurrencyInstance(Locale.US));
 
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(500, 300)); // Pode ajustar a altura
+        chartPanel.setPreferredSize(new Dimension(500, 300));
 
         this.getContentPane().removeAll();
         this.setLayout(new BorderLayout());
