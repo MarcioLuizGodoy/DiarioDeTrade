@@ -184,7 +184,7 @@ public class TelaImprimirRelatorioPDF extends javax.swing.JInternalFrame {
     System.out.print(dataSelecionadaInicio);
 
         //===========================================
-        JDialog dialogFim = new JDialog(framePai, "Selecionar Data Início", true);
+        JDialog dialogFim = new JDialog(framePai, "Selecionar Data Fim", true);
         dialogFim.setSize(400, 350);
         dialogFim.setLocationRelativeTo(framePai);
         System.out.print(framePai.getName()); 
