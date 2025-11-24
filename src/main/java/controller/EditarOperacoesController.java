@@ -21,8 +21,8 @@ public class EditarOperacoesController {
 
     public EditarOperacoesController() {
     }
-    
-     public List<Operacao> buscarParaEditarOperacoesController() {
+
+    public List<Operacao> buscarParaEditarOperacoesController() {
         OperacaoDao oD = new OperacaoDao();
         try {
             List<Operacao> lista = oD.consultarTodasOperacoes();
@@ -32,19 +32,17 @@ public class EditarOperacoesController {
         }
         return null;
     }
-     
-     
-     public void editarOperacaoController(Integer id, Operacao operacao) {
+
+    public void editarOperacaoController(Integer id, Operacao operacao) {
 
         OperacaoDao oD = new OperacaoDao();
         oD.editarOperacao(id, operacao);
 
     }
-     
-     
-     
+
     //AQUI É ONDE OCORRE A MAGIA DA VALIDAÇÃO E O METODO QUE EDITA É CHAMADO
-     public boolean validarDadosEdicao(String id, String tipoAtivo, String ativo, String precoEntrada, String precoSaida,String qtdContratos, String tipoOpc, String tipoPos, String statusOp, String evTecBase, String descricao, BufferedImage b) {
+    public boolean validarDadosEdicao(String id, String tipoAtivo, String ativo, String precoEntrada,
+            String precoSaida, String qtdContratos, String tipoOpc, String tipoPos, String statusOp, String evTecBase, String descricao, BufferedImage b) {
 
         try {
 
@@ -61,11 +59,30 @@ public class EditarOperacoesController {
                 return false;
             }
 
-            if (ativo != null && !ativo.isBlank() && ativo.matches("^[A-Z]{4,5}\\d+$")) {
+            if (tipoAtivo.equals("WIN")) {
 
-            } else {
-                JOptionPane.showMessageDialog(null, "O nome do ativo esta fora de padrão, ajuste antes de  enviar a Operação. Tente algo nesse padrão: BBAS3, BBAS3F, WINZ25");
-                return false;
+                if (ativo == null || ativo.isBlank() || !ativo.matches("^WIN[FGHJKMNQUVXZ]\\d{2}$")) {
+                    JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de nomes ativos financeiros, exemplo: WINV25.");
+                    return false;
+                } else {
+                }
+
+            } else if (tipoAtivo.equals("WDO")) {
+
+                if (ativo == null || ativo.isBlank() || !ativo.matches("^WDO[FGHJKMNQUVXZ]\\d{2}$")) {
+                    JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de nomes ativos financeiros, exemplo: WDOM25.");
+                    return false;
+                } else {
+                }
+
+            }
+
+            if (tipoAtivo.equals("ACOES")) {
+                if (ativo == null || ativo.isBlank() || !ativo.matches("^[A-Z]{4}\\dF$")) {
+                    JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de ativo para Ações. Siga esse padrão: BBAS3F, BBAS4F, PETR4F, PETR3F ");
+                    return false;
+                } else {
+                }
             }
 
             if (precoEntrada != null && precoEntrada.matches("\\d{6}")) {
@@ -140,25 +157,18 @@ public class EditarOperacoesController {
         }
 
         try {
-            
-            
+
             Operacao op = new Operacao(tipoAtivo, ativo, conversaoEntrada, conversaoSaida, qtdAux, tO, tP, statusOp, b, descricao, evTecBase);
-            
-            
+
             editarOperacaoController(auxID, op);
-            
-            
+
             JOptionPane.showMessageDialog(null, "EDITADO!\n CLIQUE EM BUSCAR PRA VER SE TUDO ESTA COMO VOCÊ DESEJA");
 
         } catch (Exception e) {
-            
+
             JOptionPane.showMessageDialog(null, "ERRO: Objeto com erro");
         }
         return true;
     }
-    
-    
-    
-   
 
 }
