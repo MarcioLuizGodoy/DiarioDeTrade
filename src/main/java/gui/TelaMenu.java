@@ -14,7 +14,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuOperacoes = new javax.swing.JMenu();
         jMenuItemRegistrarOperacao = new javax.swing.JMenuItem();
         jMenuItemBuscarOperacoes = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        buscarOperacoesPorData = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuFinanceiro = new javax.swing.JMenu();
@@ -71,13 +71,13 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuOperacoes.add(jMenuItemBuscarOperacoes);
 
-        jMenuItem4.setText("BuscarOperacaoPorData");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        buscarOperacoesPorData.setText("BuscarOperacaoPorData");
+        buscarOperacoesPorData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemBuscarOperacoesPorDataActionPerformed(evt);
             }
         });
-        jMenuOperacoes.add(jMenuItem4);
+        jMenuOperacoes.add(buscarOperacoesPorData);
 
         jMenuItem1.setForeground(new java.awt.Color(51, 51, 51));
         jMenuItem1.setText("Editar Operação");
@@ -170,7 +170,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem3.setText("Conhecendo o mundo Trading");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                umPoucoInfoMundoTradeClique(evt);
+                jMenuItemUmPoucoInfoMundoTradeClique(evt);
             }
         });
         jMenuSobre.add(jMenuItem3);
@@ -303,10 +303,14 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemimprimirRelatorioPDF
 
     private void jMenuItemExcluirOperacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirOperacao
-        // TODO add your handling code here:
+
+
+////////////////////////
+
+
     }//GEN-LAST:event_jMenuItemExcluirOperacao
 
-    private void umPoucoInfoMundoTradeClique(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_umPoucoInfoMundoTradeClique
+    private void jMenuItemUmPoucoInfoMundoTradeClique(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUmPoucoInfoMundoTradeClique
         for (JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
             frame.dispose();
         }
@@ -314,19 +318,20 @@ public class TelaMenu extends javax.swing.JFrame {
         tela.setSize(jDesktopPaneContainerTelas.getSize());
         ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
         jDesktopPaneContainerTelas.add(tela).setVisible(true);
-    }//GEN-LAST:event_umPoucoInfoMundoTradeClique
+    }//GEN-LAST:event_jMenuItemUmPoucoInfoMundoTradeClique
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemBuscarOperacoesPorDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarOperacoesPorDataActionPerformed
         for (JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
             frame.dispose();
         }
         BuscarOperacoesPorData tela = new BuscarOperacoesPorData();
         tela.setSize(jDesktopPaneContainerTelas.getSize());
         ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
-        jDesktopPaneContainerTelas.add(tela).setVisible(true);    }//GEN-LAST:event_jMenuItem4ActionPerformed
+        jDesktopPaneContainerTelas.add(tela).setVisible(true);    }//GEN-LAST:event_jMenuItemBuscarOperacoesPorDataActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem buscarOperacoesPorData;
     private javax.swing.JDesktopPane jDesktopPaneContainerTelas;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -334,7 +339,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

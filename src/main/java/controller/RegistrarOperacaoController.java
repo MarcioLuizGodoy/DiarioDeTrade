@@ -9,7 +9,7 @@ import model.TipoOperacao;
 import model.TipoPosicao;
 
 public class RegistrarOperacaoController {
-
+    
     private String tipoAtivo;
     private String ativo;
     private BigDecimal precoEntrada;
@@ -22,38 +22,61 @@ public class RegistrarOperacaoController {
     private String descricao;
     private String eventoTecnicoBase;
 
+    // this.tipoAtivo.equals("WIN") &&
     public RegistrarOperacaoController() {
     }
-
+    
     @SuppressWarnings("empty-statement")
     public boolean receberDados(
             String tipoAtivo, String ativo, String precoEntrada, String precoSaida, Integer quantidadeContratos, String tipoOperacao,
             String tipoPosicao, String statusOperacao, BufferedImage image,
             String descricao, String eventoTecnicoBase) {
-
+        
         this.tipoAtivo = tipoAtivo;
-
-        if (ativo == null || ativo.isBlank() || !ativo.matches("^[A-Z]{4}\\d+$")) {
-            JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de nomes ativos financeiros, exemplo: BBAS3, BBAS4, WINV25.");
-            return false;
-        } else {
-            this.ativo = ativo;
+        
+        if (this.tipoAtivo.equals("WIN")) {
+            
+            if (ativo == null || ativo.isBlank() || !ativo.matches("^WIN[FGHJKMNQUVXZ]\\d{2}$")) {
+                JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de nomes ativos financeiros, exemplo: WINV25.");
+                return false;
+            } else {
+                this.ativo = ativo;
+            }
+            
+        } else if (this.tipoAtivo.equals("WDO")) {
+            
+            if (ativo == null || ativo.isBlank() || !ativo.matches("^WDO[FGHJKMNQUVXZ]\\d{2}$")) {
+                JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de nomes ativos financeiros, exemplo: WDOM25.");
+                return false;
+            } else {
+                this.ativo = ativo;
+            }
+            
         }
-
+        
+        if (this.tipoAtivo.equals("ACOES")) {
+            if (ativo == null || ativo.isBlank() || ! ativo.matches("^[A-Z]{4}\\dF$")) {
+                JOptionPane.showMessageDialog(null, "Erro no padrão de escrita de ativo para Ações. Siga esse padrão: BBAS3F, BBAS4F, PETR4F, PETR3F ");
+                return false;
+            }else{
+                this.ativo = ativo;
+            }
+        }
+        
         if (precoEntrada != null && precoEntrada.matches("\\d{6}")) {
             this.precoEntrada = new BigDecimal(precoEntrada);
         } else {
             JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145123");
             return false;
         }
-
+        
         if (precoSaida != null && precoSaida.matches("\\d{6}")) {
             this.precoSaida = new BigDecimal(precoSaida);
         } else {
             JOptionPane.showMessageDialog(null, "VocêTem que digitar um valor valido parao preco de entrada. Siga esse exemplo: 145123");
             return false;
         }
-
+        
         if (quantidadeContratos != null && quantidadeContratos > 0) {
             this.quantidadeContratos = quantidadeContratos;
         } else {
@@ -62,32 +85,31 @@ public class RegistrarOperacaoController {
         }
 
         //Criar as validação para esses enuns, só por garantia.
-       // if (tipoOperacao.equals(TipoOperacao.DAY_TRADE) || tipoOperacao.equals(TipoOperacao.SWING_TRADE) || tipoOperacao.equals(TipoOperacao.POSITION)) {
-            TipoOperacao to = TipoOperacao.valueOf(tipoOperacao);
-            this.tipoOperacao = (to);
+        // if (tipoOperacao.equals(TipoOperacao.DAY_TRADE) || tipoOperacao.equals(TipoOperacao.SWING_TRADE) || tipoOperacao.equals(TipoOperacao.POSITION)) {
+        TipoOperacao to = TipoOperacao.valueOf(tipoOperacao);
+        this.tipoOperacao = (to);
         //} else {
-            //JOptionPane.showMessageDialog(null, "Coloque um Tipo de Operacao valida");
+        //JOptionPane.showMessageDialog(null, "Coloque um Tipo de Operacao valida");
 //
-       // }
+        // }
 
         //if (tipoPosicao.equals(TipoPosicao.BUY) || tipoPosicao.equals(TipoPosicao.SELL)) {
-            TipoPosicao tp = TipoPosicao.valueOf(tipoPosicao);
-            this.tipoPosicao = (tp);
-       // } else {
-          //  JOptionPane.showMessageDialog(null, "Coloque um Tipo de Posicao valida");
+        TipoPosicao tp = TipoPosicao.valueOf(tipoPosicao);
+        this.tipoPosicao = (tp);
+        // } else {
+        //  JOptionPane.showMessageDialog(null, "Coloque um Tipo de Posicao valida");
 
-       // }
-
+        // }
         //Aqui esta sem validação alguma
         this.statusOperacao = statusOperacao;
-
+        
         if (image == null || image.getWidth() <= 0 || image.getHeight() <= 0) {
             JOptionPane.showMessageDialog(null, "Escolha uma imagem, é inegociável");
             return false;
         } else {
             this.imagem = image;
         }
-
+        
         if (descricao != null && !descricao.trim().isEmpty()) {
             this.descricao = descricao.trim();
             System.out.print(this.descricao);
@@ -95,16 +117,16 @@ public class RegistrarOperacaoController {
             JOptionPane.showMessageDialog(null, "Visando ter boas informações pra estudo e analise posterior, não deixe de forma alguma esse campo em branco.");
             return false;
         }
-
+        
         this.eventoTecnicoBase = eventoTecnicoBase;
-
+        
         return true;
     }
-
+    
     public boolean salvarRegistroController() {
         OperacaoDao oD = new OperacaoDao();
         Operacao operacao = new Operacao(tipoAtivo, ativo, precoEntrada, precoSaida, quantidadeContratos, tipoOperacao, tipoPosicao, statusOperacao, imagem, descricao, eventoTecnicoBase);
         return oD.persistirRegistro(operacao);
     }
-
+    
 }

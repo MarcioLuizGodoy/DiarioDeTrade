@@ -36,7 +36,7 @@ public final class CalculadoraEstatisticasResultados {
 
     //=====================================================================================================================
     public static BigDecimal calcularResultadoOperacaoLoss(List<Operacao> operacoes) {
-        BigDecimal perdaOperacao = new BigDecimal("0.0");
+        BigDecimal perdaOperacao = new BigDecimal("0.00");
         BigDecimal resultado = BigDecimal.ZERO;
         for (Operacao op : operacoes) {
             if (op.getStatusOperacao().equals("LOSS")) {

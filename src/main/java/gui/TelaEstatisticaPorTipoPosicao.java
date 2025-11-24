@@ -116,6 +116,7 @@ public class TelaEstatisticaPorTipoPosicao extends JInternalFrame {
         this.operacoesFiltradas = c.buscarOperacaoPorTipoPosicaoController(escolha);
         totalGain = c.coletarOsGains();
         totalLoss = c.coletarOSLoss().abs();
+        System.out.print(totalLoss+ " Perdas!!!!");
         saldo = c.coletarSaldo();
         exibirGraficoEstatisticaTipoPosicao();
     }//GEN-LAST:event_jButtonEstatiticasPorTipoPosicaoActionPerformed
