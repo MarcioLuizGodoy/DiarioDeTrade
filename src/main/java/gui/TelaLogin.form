@@ -169,7 +169,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Diario De Trade"/>
+        <Property name="text" type="java.lang.String" value="Di&#xe1;rio De Trade"/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
       <Constraints>

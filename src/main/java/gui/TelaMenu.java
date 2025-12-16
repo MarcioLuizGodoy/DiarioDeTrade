@@ -23,11 +23,12 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItemBuscarPorAtivo = new javax.swing.JMenuItem();
         jMenuItemEstatiticaPorTipoOperacao = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(153, 153, 153));
@@ -89,7 +90,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuOperacoes.add(jMenuItem1);
 
         jMenuItem2.setForeground(new java.awt.Color(51, 51, 51));
-        jMenuItem2.setText("Excluir Operação");
+        jMenuItem2.setText("Buscar e Excluir Operação Por Data");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemExcluirOperacao(evt);
@@ -146,10 +147,6 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenuFinanceiro.add(jMenuItem7);
 
-        jMenuItem8.setForeground(new java.awt.Color(51, 51, 51));
-        jMenuItem8.setText("Buscar por Evento Tecnico Base");
-        jMenuFinanceiro.add(jMenuItem8);
-
         jMenuBar1.add(jMenuFinanceiro);
 
         jMenu2.setText("Relatórios PDF");
@@ -165,7 +162,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenuSobre.setText("Sobre");
+        jMenuSobre.setText("Sobre Trading");
 
         jMenuItem3.setText("Conhecendo o mundo Trading");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +173,18 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuSobre.add(jMenuItem3);
 
         jMenuBar1.add(jMenuSobre);
+
+        jMenu1.setText("Ações Importantes");
+
+        jMenuItem4.setText("Backup Banco de Dados");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acoesImportantes(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -303,9 +312,14 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemimprimirRelatorioPDF
 
     private void jMenuItemExcluirOperacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirOperacao
+     for (JInternalFrame frame : jDesktopPaneContainerTelas.getAllFrames()) {
+            frame.dispose();
+        }
+        TelaExcluirOperacoes tela = new TelaExcluirOperacoes();
+        tela.setSize(jDesktopPaneContainerTelas.getSize());
+        ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+        jDesktopPaneContainerTelas.add(tela).setVisible(true);
 
-
-////////////////////////
 
 
     }//GEN-LAST:event_jMenuItemExcluirOperacao
@@ -329,19 +343,30 @@ public class TelaMenu extends javax.swing.JFrame {
         ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
         jDesktopPaneContainerTelas.add(tela).setVisible(true);    }//GEN-LAST:event_jMenuItemBuscarOperacoesPorDataActionPerformed
 
+    private void acoesImportantes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acoesImportantes
+       for(JInternalFrame frame:jDesktopPaneContainerTelas.getAllFrames()) {
+           frame.dispose();
+       }
+       TelaAcoesImportantes tela = new TelaAcoesImportantes();
+       tela.setSize(jDesktopPaneContainerTelas.getSize());
+       ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null);
+       jDesktopPaneContainerTelas.add(tela).setVisible(true);
+    }//GEN-LAST:event_acoesImportantes
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem buscarOperacoesPorData;
     private javax.swing.JDesktopPane jDesktopPaneContainerTelas;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuFinanceiro;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemBuscarOperacoes;
     private javax.swing.JMenuItem jMenuItemBuscarPorAtivo;
     private javax.swing.JMenuItem jMenuItemEstatisticaPorTipoAtivo;

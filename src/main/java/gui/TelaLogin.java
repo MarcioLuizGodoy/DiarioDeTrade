@@ -94,7 +94,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelNomeDoPrograma.setBackground(new java.awt.Color(0, 0, 255));
         jLabelNomeDoPrograma.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabelNomeDoPrograma.setForeground(new java.awt.Color(0, 0, 255));
-        jLabelNomeDoPrograma.setText("Diario De Trade");
+        jLabelNomeDoPrograma.setText("Diário De Trade");
         jLabelNomeDoPrograma.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(jLabelNomeDoPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 80));
 

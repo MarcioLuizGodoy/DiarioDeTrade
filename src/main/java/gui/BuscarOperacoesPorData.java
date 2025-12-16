@@ -206,9 +206,10 @@ public class BuscarOperacoesPorData extends JInternalFrame {
     private void buscarOperacoes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarOperacoes
          
         if(opLista == null   &&   dataSelecionadaInicio !=null  &&    dataSelecionadaFim != null){
+               if(dataSelecionadaInicio.before(dataSelecionadaFim)){        
         opLista = c.receberDados(dataSelecionadaInicio, dataSelecionadaFim);
         atualizarTabela(opLista);
-        }else{
+        }}else{
             JOptionPane.showMessageDialog(null, "Nao permitido! Selecione Datas");
         }
     }//GEN-LAST:event_buscarOperacoes

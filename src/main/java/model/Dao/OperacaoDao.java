@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import model.Operacao;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.TipoOperacao;
 import model.TipoPosicao;
 
@@ -101,7 +102,7 @@ public class OperacaoDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return lista;
@@ -130,7 +131,7 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                  LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
                 if (h != null) {
                     op.setDataHora(h);
                 }
@@ -177,7 +178,7 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                  LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
                 if (h != null) {
                     op.setDataHora(h);
                 }
@@ -226,7 +227,7 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                  LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
+                LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
                 if (h != null) {
                     op.setDataHora(h);
                 }
@@ -271,7 +272,7 @@ public class OperacaoDao {
                 op.setTipoOperacao(TipoOperacao.valueOf(rs.getString("tipo_operacao")));
                 op.setTipoPosicao(TipoPosicao.valueOf(rs.getString("tipo_posicao")));
                 op.setStatusOperacao(rs.getString("status_operacao"));
-                
+
                 LocalDateTime h = rs.getObject("data_hora", LocalDateTime.class);
                 if (h != null) {
                     op.setDataHora(h);
@@ -332,7 +333,6 @@ public class OperacaoDao {
             ps.setInt(13, id);
 
             int linhasAfetadas = ps.executeUpdate();
-            System.out.println("Operação atualizada. Linhas afetadas: " + linhasAfetadas);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -342,4 +342,23 @@ public class OperacaoDao {
 
         }
     }
+
+    public void excluirOperacao(Integer id) {
+        try {
+            String sql = "DELETE FROM operacoes WHERE id = ?";
+
+            Connection conn = DB.pegarConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+       int executeUpdate = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Exclusao com problemas!!! ");
+
+        }
+    }
+
+    
 }
