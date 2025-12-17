@@ -54,7 +54,10 @@ Link de Download da versão correta:  https://download.oracle.com/java/24/archiv
 
 
 **Usando o terminal ou powershell, entrar com  usuario root no MySQL Command Line:**  
-- mysql -uroot -p "sua senha root aqui sem aspas/ é a senha que você criou no momento  da instalação do mysql";
+- mysql -uroot -p "sua senha root aqui sem aspas/ é a senha que você criou no momento  da instalação do mysql";  
+
+
+- Se você encontrar dificuldades de reconhecimento de comandos do mysql no seu terminal, ajuste as variaveis de ambiente( Path), passando o caminho da pasta bin. Fazendo isso o SO ira reconhecer os comandos executados.  
 
 **Criar  Usuario da aplicação no MySQL:** 
  
