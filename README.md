@@ -38,7 +38,9 @@ Trabalho realizado para a disciplina de Programação Orientada a Objetos. Este 
  **Obs: Verifique a necessidade do mysql esteja configurado na variavel de ambiente/sistemas no sistema operacional de sua maquina!**  
 
 ( path )  
- C:\Program Files\MySQL\MySQL Server 8.4\bin 
+ C:\Program Files\MySQL\MySQL Server 8.4\bin  
+
+ **Verifique se a instalação já fez isso por você completamente ou parcialmente, se tiver feito completamente não altere.**
 
  
 **- - - -**
