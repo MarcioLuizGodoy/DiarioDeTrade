@@ -97,7 +97,7 @@ CREATE TABLE Operacoes (
     evento_tecnico_base VARCHAR (100)  
 );  
 INSERT INTO Usuarios (nome, senha) VALUES ('user','user');  
--- INSERT INTO Usuarios (nome, senha) VALUES ('seu usuario', 'sua senha');  
+-- INSERT INTO Usuarios (nome, senha) VALUES ('user', 'user');  
 
 **Agora, clique nesse link e baixe o artefato com extensão .jar:**  
 -

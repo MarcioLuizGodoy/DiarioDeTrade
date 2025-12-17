@@ -25,7 +25,7 @@ CREATE TABLE Operacoes (
 
 
 INSERT INTO Usuarios (nome, senha) VALUES ('user','user');
--- INSERT INTO Usuarios (nome, senha) VALUES ('godoy', 'godoy');
+-- INSERT INTO Usuarios (nome, senha) VALUES ('user', 'user');
 
 
 
