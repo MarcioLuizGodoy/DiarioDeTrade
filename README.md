@@ -75,7 +75,7 @@ Link de Download da versão correta:  https://download.oracle.com/java/24/archiv
   mysql -udeveloper -p    
 
   Depois disso, o terminal vai mostrar:  
-  Enter password: ' voce digita sua senha do novo usuario/ usuarioda aplicacao '  
+  Enter password: ' voce digita sua senha do novo usuario/ usuario da aplicacao '  
   password: developer123@
 
 **ou**  
@@ -91,7 +91,7 @@ Link de Download da versão correta:  https://download.oracle.com/java/24/archiv
 **Sua senha padrão: user**
 
 
-**Agora, clique nesse link e baixe o artefato com extensão .jar:**  
+**Agora, clique nesse link e baixe o artefato com extensão .jar caso nao tenha baixado ainda:**  
 -
 
 **Esse é o path que leva a diretório dist-exe no repositório:https://github.com/MarcioLuizGodoy/DiarioDeTrade/tree/main/dist-exe**
