@@ -84,10 +84,15 @@ Link de Download da versão correta:  https://download.oracle.com/java/24/archiv
 **ou**  
       mysql -u developer -pdeveloper123@ 
 
-**Apos entrar com o usuario da aplicação, rode o comando no script do banco de dados:**
+**Apos entrar no MYSQL com o usuario da aplicação, rode o comando no script do banco de dados:**
+
+- Execute esse comando no mesmo diretório em que esta o arquivo sql. Seu mysql precisa estar aberto e logado com usuario da aplicação justamente no diretorio onde esta esse arquivo. Assegurando-se disso, execute: 
   
         SOURCE dbCode.sql;
 
+- O mysql vai retornar status de querys executados com sucesso: Query OK.
+- Agora digite:  use diariodetrade;  
+  
 **Ao finalizar suas credenciais são:**  
 
 **Seu usuario padrão: user**  
@@ -98,6 +103,8 @@ Link de Download da versão correta:  https://download.oracle.com/java/24/archiv
 -
 
 **Esse é o path que leva a diretório dist-exe no repositório:https://github.com/MarcioLuizGodoy/DiarioDeTrade/tree/main/dist-exe**
+
+- Se você já tiver baixado, ignore! Apenas execute aaplicação e teste as funcionalidades.
 
 **BOM USO DESTE ARTEFATO!**
 -
