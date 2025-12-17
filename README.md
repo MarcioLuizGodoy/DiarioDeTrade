@@ -35,7 +35,11 @@ Trabalho realizado para a disciplina de Programação Orientada a Objetos. Este 
         https://dev.mysql.com/downloads/mysql/8.4.html
 
 
- **Obs: Verifique a necessidade do mysql esteja configurado na variavel de ambiente/sistemas no sistema operacional de sua maquina!**
+ **Obs: Verifique a necessidade do mysql esteja configurado na variavel de ambiente/sistemas no sistema operacional de sua maquina!**  
+
+( path )  
+ C:\Program Files\MySQL\MySQL Server 8.4\bin 
+
  
 **- - - -**
 
@@ -43,7 +47,15 @@ Trabalho realizado para a disciplina de Programação Orientada a Objetos. Este 
 Link de Download da versão correta:  https://download.oracle.com/java/24/archive/jdk-24.0.2_windows-x64_bin.msi  
 
 
-**Obs: É importante que o java 24 esteja bem configurado na variavel de ambiente/sistemasno sistema operacional de sua maquina!**  
+**Obs: É importante que o java 24 esteja bem configurado na variavel de ambiente/sistemasno sistema operacional de sua maquina!**   
+  
+( variável path )  
+C:\Program Files\Common Files\Oracle\Java\javapath  
+
+( variável de sistema )  
+JAVA_HOME     C:\Program Files\Java\jdk-24  
+
+**Verifique se a instalação já fez isso por você completamente ou parcialmente, se tiver feito completamente não altere.**
 
 **- - - -**
 
